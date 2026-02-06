@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatly Docs - Interaktywna Dokumentacja</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+      :root {
+        --bg-light: #f8fafc;
+        --panel-bg: rgba(255, 255, 255, 0.8);
+        --text-main: #1e293b;
+        --accent-blue: #0284c7;
+        --accent-glow: rgba(2, 132, 199, 0.1);
+        --border-color: #e2e8f0;
+        --header-box: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+        --mdn-link: #e11d48;
+        --card-hover: #ffffff;
+      }
+      a {
+        font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+        color: var(--text-main);
+        text-decoration: none;
+      }
+      body {
+        font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+        background: radial-gradient(circle at top left, #f1f5f9, #f8fafc);
+        color: var(--text-main);
+        margin: 0;
+        padding: 60px 20px;
+        display: flex;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      * {
+        scroll-behavior: smooth;
+      }
+      /* --- NOWA NAWIGACJA PRAWA (BEZ ZMIAN W TWOIM CSS) --- */
+      .sidebar-nav {
+        position: fixed;
+        right: 40px;
+        top: 60px;
+        width: 240px;
+        background: var(--panel-bg);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        display: none; /* Pokaże się gdy JavaScript wykryje nagłówki */
+      }
+
+      @media (min-width: 1400px) {
+        .sidebar-nav {
+          display: block;
+        }
+      }
+
+      .sidebar-nav h5 {
+        margin: 0 0 15px 0;
+        color: var(--accent-blue);
+        text-transform: uppercase;
+        font-size: 0.75em;
+        letter-spacing: 1px;
+      }
+
+      .sidebar-nav a {
+        display: block;
+        color: var(--text-main);
+        text-decoration: none;
+        font-size: 0.85em;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border-color);
+        transition: 0.2s;
+      }
+
+      .sidebar-nav a:hover {
+        color: var(--accent-blue);
+        padding-left: 5px;
+      }
+      .sidebar-nav a:last-child {
+        border: none;
+      }
+
+      /* Twoje oryginalne style */
+      #preview {
+        max-width: 850px;
+        width: 100%;
+        line-height: 1.7;
+        animation: fadeIn 0.8s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      #preview h2 {
+        background: var(--header-box);
+        border-radius: 12px;
+        padding: 18px 25px;
+        font-size: 1.1em;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 50px;
+        box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.2);
+        border: none;
+        scroll-margin-top: 30px; /* Dla płynnego skoku */
+      }
+
+      #preview h4 {
+        color: var(--accent-blue);
+        margin: 35px 0 15px 0;
+        font-size: 1.1em;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      #preview ul {
+        padding: 0;
+        margin: 0;
+      }
+
+      #preview li {
+        background: var(--panel-bg);
+        backdrop-filter: blur(8px);
+        margin-bottom: 12px;
+        padding: 16px 24px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      #preview li:hover {
+        transform: translateY(-3px);
+        background: var(--card-hover);
+        border-color: var(--accent-blue);
+        box-shadow: 0 10px 20px rgba(2, 132, 199, 0.1);
+      }
+
+      .mdn-link {
+        color: var(--mdn-link);
+        text-decoration: none;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85em;
+        font-weight: 700;
+        background: rgba(225, 29, 72, 0.05);
+        padding: 6px 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(225, 29, 72, 0.1);
+        transition: all 0.2s ease;
+      }
+
+      .mdn-link:hover {
+        background: var(--mdn-link);
+        color: #ffffff;
+        box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="sidebar-nav">
+      <h5>Spis treści</h5>
+      <div id="dynamic-nav"></div>
+    </nav>
+
+    <div id="preview"></div>
+
+    <script>
+      const preview = document.getElementById("preview");
+      const navContainer = document.getElementById("dynamic-nav");
+
+      const rawContent = `
+## Formatowanie tekstu:
+
+#### Znaczniki niesemantyczne:
+
+- <b> - pogrubienie tekstu
+- <i> - pochylenie tekstu
+- <u> - podkreślenie tekstu
+- <s> - przekreślenie tekstu
+
+#### Znaczniki semantyczne:
+
+- <strong> - ważny tekst
+- <em> - wyróżniony tekst
+- <ins> - wstawiony tekst
+- <del> - usunięty tekst
+- <mark> - zaznaczony tekst
+- <small> - mniejszy tekst
+- <bdi> - izolacja tekstu
+- <bdo> - kierunek tekstu
+- <sub> - indeks dolny
+- <sup> - indeks górny
+
+## Cytaty i referencje:
+
+- <blockquote> - cytat blokowy
+- <q> - cytat liniowy
+- <abbr> - skrót
+- <dfn> - definicja
+- <address> - dane kontaktowe
+- <time> - czas
+- <cite> - odniesienie do źródła
+- <hgroup> - odniesienie do źródła
+
+## Logika i zmienne:
+
+- <kbd> - dane wejściowe z klawiatury
+- <samp> - dane wyjściowe systemu
+- <code> - fragment kodu
+- <var> - zmienna w kodzie
+- <noscript> - treść dla przeglądarek bez JavaScript
+- <script> - treść dla przeglądarek bez JavaScript
+- <fencedframe> - treść dla przeglądarek bez JavaScript
+- <iframe> - treść dla przeglądarek bez JavaScript
+- <template> - treść dla przeglądarek bez JavaScript
+- <slot> - treść dla przeglądarek bez JavaScript
+- <math> - treść dla przeglądarek bez JavaScript
+- <data> - treść dla przeglądarek bez JavaScript
+
+## Listy:
+
+#### Listy wyliczeniowe:
+
+- <ol> - lista uporządkowana
+- <ul> - lista nieuporządkowana
+- <menu> - lista interaktywna
+- <li> - element listy
+
+#### Lista definicji:
+
+- <dl> - lista opisowa
+- <dt> - termin do opisania
+- <dd> - definicja terminu
+
+## Tabele:
+
+#### Listy wyliczeniowe:
+
+- <table> - kontener tabeli
+- <caption> - tytuł tabeli
+- <thead> - nagłówek tabeli
+- <tbody> - treść tabeli
+- <tfoot> - stopka tabeli
+- <colgroup> - grupa kolumn
+- <col> - kolumna tabeli
+
+#### Lista definicji:
+
+- <tr> - wiersz tabeli
+- <th> - komórka nagłówkowa
+- <td> - komórka danych
+
+## Multimedia:
+
+- <audio> - kontener tabeli
+- <track> - nagłówek tabeli
+- <video> - treść tabeli
+- <embed> - treść tabeli
+- <object> - treść tabeli
+- <param> - treść tabeli
+- <source> - treść tabeli
+- <portal> - treść tabeli
+- <dialog> - treść tabeli
+
+## Formularz:
+
+#### Listy wyliczeniowe:
+
+- <form> - kontener tabeli
+- <fieldset> - kontener tabeli
+- <legend> - kontener tabeli
+- <output> - kontener tabeli
+- <select> - kontener tabeli
+- <selectedcontent> - tytuł tabeli
+- <optgroup> - nagłówek tabeli
+- <option> - treść tabeli
+- <datalist> - stopka tabeli
+- <details> - grupa kolumn
+- <summary> - kolumna tabeli
+- <search> - kolumna tabeli
+- <input> - treść dla przeglądarek bez JavaScript
+- <label> - treść dla przeglądarek bez JavaScript
+- <textarea> - treść dla przeglądarek bez JavaScript
+
+#### Listy wyliczeniowe:
+
+- <meter> - kontener tabeli
+- <progress> - tytuł tabeli
+
+## Grafika:
+
+- <img> - kontener tabeli
+- <map> - tytuł tabeli
+- <area> - nagłówek tabeli
+- <canvas> - treść tabeli
+- <figcaption> - treść tabeli
+- <figure> - treść tabeli
+- <picture> - treść tabeli
+- <svg> - treść tabeli
+
+## Adnotacje:
+
+- <ruby> - kontener grafiki
+- <rt> - podpis grafiki
+- <rp> - podpis grafiki
+- <hr> - podpis grafiki
+
+## Metadane:
+
+- <base> - kontener grafiki
+- <html> - kontener grafiki
+- <head> - podpis grafiki
+- <body> - podpis grafiki
+- <link> - podpis grafiki
+- <meta> - podpis grafiki
+- <style> - podpis grafiki
+- <title> - podpis grafiki
+
+## Semantyka:
+
+- <article> - kontener grafiki
+- <aside> - podpis grafiki
+- <footer> - kontener grafiki
+- <header> - podpis grafiki
+- <h1> - podpis grafiki
+- <h2> - podpis grafiki
+- <h3> - podpis grafiki
+- <h4> - podpis grafiki
+- <h5> - podpis grafiki
+- <h6> - podpis grafiki
+- <main> - podpis grafiki
+- <nav> - podpis grafiki
+- <section> - podpis grafiki
+- <pre> - podpis grafiki
+- <a> - podpis grafiki
+- <br> - podpis grafiki
+- <span> - podpis grafiki
+- <wbr> - podpis grafiki
+- <button> - treść dla przeglądarek bez JavaScript
+- <div> - treść dla przeglądarek bez JavaScript
+
+      `;
+
+      function enrichWithMdnLinks(text) {
+        // Merytorycznie szukamy nawiasów < > i zamieniamy na linki z encjami
+
+        return text.replace(/<([a-z1-6]+)>/g, (match, tag) => {
+          const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/${tag}`;
+          return `<a href="${url}" >&lt;${tag}&gt;</a>`;
+        });
+      }
+
+      // Merytoryczne renderowanie + generowanie nawigacji
+      const linkedContent = enrichWithMdnLinks(rawContent);
+      preview.innerHTML = marked.parse(linkedContent);
+
+      // AUTOMATYCZNA NAWIGACJA
+      const headers = preview.querySelectorAll("h2");
+      headers.forEach((header, index) => {
+        const id = `section-${index}`;
+        header.id = id; // Dodajemy ID do nagłówka by link działał
+
+        const link = document.createElement("a");
+        link.href = `#${id}`;
+        link.innerText = header.innerText;
+        navContainer.appendChild(link);
+      });
+    </script>
+  </body>
+</html>
