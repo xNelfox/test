@@ -187,76 +187,47 @@
       const navContainer = document.getElementById("dynamic-nav");
 
       const rawContent = `
-## Formatowanie tekstu:
+## Struktura dokumentu:
 
-#### Stylistyka tekstu:
+#### Metadane dokumentu:
 
-- <b> – pogrubienie tekstu
-- <i> – pochylenie tekstu
-- <u> – podkreślenie tekstu
-- <s> – przekreślenie tekstu
+- <!DOCTYPE html> – deklaracja standardu
+- <html> – korzeń dokumentu
+- <head> – nagłówek dokumentu
+- <body> – treść dokumentu
+- <base> – adres bazowy
+- <link> – powiązanie zasobów
+- <meta> – metadane strony
+- <style> – arkusz stylów
+- <title> – tytuł strony
 
-#### Wyróżnienia tekstu:
+#### Układ strony:
 
-- <strong> – uwypuklenie tekstu
-- <em> – wyróżnienie tekstu
-- <ins> – wstawienie tekstu
-- <del> – usunięcie tekstu
-- <mark> – zaznaczenie tekstu
-- <small> – pomniejszenie tekstu
+- <header> – nagłówek sekcji
+- <main> – treść główna
+- <footer> – stopka sekcji
+- <nav> – menu nawigacyjne
+- <address> – dane kontaktowe
+- <hgroup> – grupa nagłówków
+- <article> – samodzielny wpis
+- <section> – sekcja tematyczna
+- <aside> – treść boczna
+- <search> – sekcja wyszukiwania
+- <div> – blok ogólny
 
-#### Orientacja tekstu:
+#### Hierarchia treści:
 
-- <sub> – indeks dolny
-- <sup> – indeks górny
-- <bdo> – kierunek tekstu
-- <bdi> – izolacja tekstu
-- <wbr> – łamanie linii
-
-## Objaśnianie tekstu:
-
-#### Cytaty tekstowe:
-
-- <blockquote> – cytat blokowy
-- <q> – cytat liniowy
-- <cite> – źródło cytatu
-- <abbr> – skrót nazwy
-- <dfn> – definicja terminu
-
-#### Informacje tekstowe:
-
-- <time> – format czasu
-- <data> – wartość danych
-
-#### Adnotacje tekstowe:
-
-- <ruby> – adnotacja fonetyczna
-- <rt> – wymowa znaku
-- <rp> – nawias adnotacji
-
-## Przetwarzanie danych:
-
-#### Zapis techniczny:
-
-- <pre> – tekst sformatowany
-- <code> – fragment kodu
-- <math> – zapis matematyczny
-- <kbd> – wejście klawiaturowe
-- <samp> – wyjście systemowe
-- <var> – zmienna kodowa
-
-#### Osadzanie kodu:
-
-- <script> – skrypt zewnętrzny
-- <noscript> – alternatywa skryptu
-- <iframe> – ramka witryny
-- <fencedframe> – ramka izolowana
-- <portal> – portal nawigacyjny
-
-#### Szablony treści:
-
-- <template> – szablon treści
-- <slot> – gniazdo szablonu
+- <h1> – nagłówek pierwszy
+- <h2> – nagłówek drugi
+- <h3> – nagłówek trzeci
+- <h4> – nagłówek czwarty
+- <h5> – nagłówek piąty
+- <h6> – nagłówek szósty
+- <p> – blok tekstu
+- <hr> – linia pozioma
+- <br> – przełamanie linii
+- <a> – odnośnik zewnętrzny
+- <span> – kontener liniowy
 
 ## Porządkowanie treści:
 
@@ -339,47 +310,77 @@
 - <dialog> – okno dialogowe
 - <button> – przycisk akcji
 
-## Struktura dokumentu:
+## Przetwarzanie danych:
 
-#### Metadane dokumentu:
+#### Zapis techniczny:
 
-- <!DOCTYPE html> – deklaracja standardu
-- <html> – korzeń dokumentu
-- <head> – nagłówek dokumentu
-- <body> – treść dokumentu
-- <base> – adres bazowy
-- <link> – powiązanie zasobów
-- <meta> – metadane strony
-- <style> – arkusz stylów
-- <title> – tytuł strony
+- <pre> – tekst sformatowany
+- <code> – fragment kodu
+- <math> – zapis matematyczny
+- <kbd> – wejście klawiaturowe
+- <samp> – wyjście systemowe
+- <var> – zmienna kodowa
 
-#### Układ strony:
+#### Osadzanie kodu:
 
-- <header> – nagłówek sekcji
-- <main> – treść główna
-- <footer> – stopka sekcji
-- <nav> – menu nawigacyjne
-- <address> – dane kontaktowe
-- <hgroup> – grupa nagłówków
-- <article> – samodzielny wpis
-- <section> – sekcja tematyczna
-- <aside> – treść boczna
-- <search> – sekcja wyszukiwania
-- <div> – blok ogólny
-- <span> – kontener liniowy
-- <a> – odnośnik zewnętrzny
+- <script> – skrypt zewnętrzny
+- <noscript> – alternatywa skryptu
+- <iframe> – ramka witryny
+- <fencedframe> – ramka izolowana
+- <portal> – portal nawigacyjny
 
-#### Hierarchia treści:
+#### Szablony treści:
 
-- <h1> – nagłówek pierwszy
-- <h2> – nagłówek drugi
-- <h3> – nagłówek trzeci
-- <h4> – nagłówek czwarty
-- <h5> – nagłówek piąty
-- <h6> – nagłówek szósty
-- <p> – blok tekstu
-- <hr> – linia pozioma
-- <br> – przełamanie linii
+- <template> – szablon treści
+- <slot> – gniazdo szablonu
+
+## Objaśnianie tekstu:
+
+#### Cytaty tekstowe:
+
+- <blockquote> – cytat blokowy
+- <q> – cytat liniowy
+- <cite> – źródło cytatu
+- <abbr> – skrót nazwy
+- <dfn> – definicja terminu
+
+#### Informacje tekstowe:
+
+- <time> – format czasu
+- <data> – wartość danych
+
+#### Adnotacje tekstowe:
+
+- <ruby> – adnotacja fonetyczna
+- <rt> – wymowa znaku
+- <rp> – nawias adnotacji
+
+## Formatowanie tekstu:
+
+#### Stylistyka tekstu:
+
+- <b> – pogrubienie tekstu
+- <i> – pochylenie tekstu
+- <u> – podkreślenie tekstu
+- <s> – przekreślenie tekstu
+
+#### Wyróżnienia tekstu:
+
+- <strong> – uwypuklenie tekstu
+- <em> – wyróżnienie tekstu
+- <ins> – wstawienie tekstu
+- <del> – usunięcie tekstu
+- <mark> – zaznaczenie tekstu
+- <small> – pomniejszenie tekstu
+
+#### Orientacja tekstu:
+
+- <sub> – indeks dolny
+- <sup> – indeks górny
+- <bdo> – kierunek tekstu
+- <bdi> – izolacja tekstu
+- <wbr> – łamanie linii
+
 
       `;
 
