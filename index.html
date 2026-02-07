@@ -125,10 +125,23 @@
         gap: 10px;
       }
 
-      #preview ul {
-        padding: 0;
+
+
+      #preview li.not-learned {
+  border-left: 5px solid var(--mdn-link);
+  background: rgba(225, 29, 72, 0.05);
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.1);
+  order: -1; /* Merytorycznie: to wyrzuci element na górę flex-boxa */
+}
+
+/* Musimy zmienić kontener <ul> w flexbox, by 'order' zadziałał */
+#preview ul {
+  display: flex;
+  flex-direction: column;
+
+          padding: 0;
         margin: 0;
-      }
+}
 
       #preview li {
         background: var(--panel-bg);
@@ -377,20 +390,38 @@ function enrichWithMdnLinks(text) {
     return `<a href="${url}" target="_blank" class="mdn-link">&lt;${tag}&gt;</a> `;
   });
 }      // Merytoryczne renderowanie + generowanie nawigacji
-      const linkedContent = enrichWithMdnLinks(rawContent);
-      preview.innerHTML = marked.parse(linkedContent);
+const linkedContent = enrichWithMdnLinks(rawContent);
+preview.innerHTML = marked.parse(linkedContent);
 
-      // AUTOMATYCZNA NAWIGACJA
-      const headers = preview.querySelectorAll("h2");
-      headers.forEach((header, index) => {
-        const id = `section-${index}`;
-        header.id = id; // Dodajemy ID do nagłówka by link działał
+// Merytorycznie: Inicjalizacja interakcji po wyrenderowaniu HTML
+function initInteractivity() {
+  const items = preview.querySelectorAll("li");
+  
+  items.forEach(item => {
+    item.style.cursor = "pointer";
+    item.addEventListener("click", (e) => {
+      // Merytorycznie: sprawdzamy czy użytkownik nie kliknął w link MDN
+      if (e.target.tagName === 'A') return;
 
-        const link = document.createElement("a");
-        link.href = `#${id}`;
-        link.innerText = header.innerText;
-        navContainer.appendChild(link);
-      });
+      item.classList.toggle("not-learned");
+      
+      // Merytorycznie: Opcjonalne powiadomienie dźwiękowe lub wizualne można dodać tutaj
+    });
+  });
+}
+
+initInteractivity();
+
+// --- AUTOMATYCZNA NAWIGACJA (pozostaje bez zmian) ---
+const headers = preview.querySelectorAll("h2");
+headers.forEach((header, index) => {
+  const id = `section-${index}`;
+  header.id = id;
+  const link = document.createElement("a");
+  link.href = `#${id}`;
+  link.innerText = header.innerText;
+  navContainer.appendChild(link);
+});
     </script>
   </body>
 </html>
