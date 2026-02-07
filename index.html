@@ -369,13 +369,14 @@
       `;
 
 function enrichWithMdnLinks(text) {
-  // Merytorycznie: Szukamy tagu i opcjonalnego myślnika po nim
-  return text.replace(/<(!?[a-z1-6]+)>\s*[–-]\s*/g, (match, tag) => {
-    // Logika wyboru URL dla MDN
-    const cleanTag = tag.toLowerCase().startsWith('!') ? '!DOCTYPE' : tag;
+  // Merytorycznie: Poprawiony regex, który czyściej wyłapuje tag i opcjonalny separator
+  return text.replace(/<(!?[a-z1-6]+)>(\s*[–-]\s*)?/gi, (match, tag, separator) => {
+    
+    // Merytorycznie: MDN wymaga 'Doctype' bez wykrzyknika dla poprawnego linku
+    const cleanTag = tag.startsWith('!') ? 'Doctype' : tag.toLowerCase();
     const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${cleanTag}`;
     
-    // Zwracamy merytorycznie sformatowany link, usuwając myślnik z wyniku
+    // Zwracamy link, a separator (myślnik) ignorujemy, usuwając go z finalnego tekstu
     return `<a href="${url}" target="_blank" class="mdn-link">&lt;${tag}&gt;</a> `;
   });
 }      // Merytoryczne renderowanie + generowanie nawigacji
