@@ -152,7 +152,6 @@
       }
 
       .mdn-link {
-        color: var(--mdn-link);
         text-decoration: none;
       }
     </style>
@@ -376,7 +375,7 @@
     const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${cleanTag}`;
     
     // Zwracamy merytorycznie sformatowany link z encjami HTML
-    return `<a href="${url}" target="_blank" class="mdn-link">&lt;${tag.toUpperCase()}&gt;</a>`;
+    return `<a href="${url}" target="_blank" class="mdn-link">&lt;${tag}&gt;</a>`;
   });
 }
       // Merytoryczne renderowanie + generowanie nawigacji
