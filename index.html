@@ -491,17 +491,36 @@
       `;
 
 function enrichWithMdnLinks(text) {
-  // Merytorycznie: Poprawiony regex, który czyściej wyłapuje tag i opcjonalny separator
-  return text.replace(/<(!?[a-z1-6]+)>(\s*[–-]\s*)?/gi, (match, tag, separator) => {
-    
-    // Merytorycznie: MDN wymaga 'Doctype' bez wykrzyknika dla poprawnego linku
+  // 1. Obsługa tagów HTML: <tag>
+  text = text.replace(/<(!?[a-z1-6]+)>(\s*[–-]\s*)?/gi, (match, tag) => {
     const cleanTag = tag.startsWith('!') ? 'Doctype' : tag.toLowerCase();
     const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${cleanTag}`;
-    
-    // Zwracamy link, a separator (myślnik) ignorujemy, usuwając go z finalnego tekstu
     return `<a href="${url}" target="_blank" class="mdn-link">&lt;${tag}&gt;</a> `;
   });
-}      // Merytoryczne renderowanie + generowanie nawigacji
+
+  // 2. Obsługa atrybutów rel, name, http-equiv, type: rel="value"
+  // Linkuje bezpośrednio do dokumentacji konkretnej wartości atrybutu
+  text = text.replace(/(rel|name|http-equiv|type)="([^"]+)"(\s*[–-]\s*)?/gi, (match, attr, value) => {
+    let url;
+    if (attr === 'rel') url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/${value}`;
+    else if (attr === 'name') url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/${value}`;
+    else if (attr === 'http-equiv') url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/http-equiv/${value}`;
+    else if (attr === 'type') url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/${value}`;
+    
+    return `<a href="${url}" target="_blank" class="mdn-link"><strong>${attr}</strong>="${value}"</a> `;
+  });
+
+  // 3. Obsługa atrybutów globalnych: słowo na początku linii (po myślniku z markdowna)
+  // Wyrażenie szuka tekstu po "- " który nie jest linkiem i kończy się myślnikiem/pauzą
+  text = text.replace(/^- ([a-z*]+)(\s*[–-]\s*)/gm, (match, attr) => {
+    // Specjalny przypadek dla data-*
+    const cleanAttr = attr.replace('*', '');
+    const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/${cleanAttr}`;
+    return `- <a href="${url}" target="_blank" class="mdn-link">${attr}</a> `;
+  });
+
+  return text;
+}     // Merytoryczne renderowanie + generowanie nawigacji
 const linkedContent = enrichWithMdnLinks(rawContent);
 preview.innerHTML = marked.parse(linkedContent);
 
