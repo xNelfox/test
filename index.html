@@ -385,14 +385,16 @@
       `;
 
       function enrichWithMdnLinks(text) {
-        // Merytorycznie szukamy nawiasów < > i zamieniamy na linki z encjami
-
-        return text.replace(/<([a-z1-6]+)>/g, (match, tag) => {
-          const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/${tag}`;
-          return `<a href="${url}" >&lt;${tag}&gt;</a>`;
-        });
-      }
-
+  // Merytorycznie: poprawiony regex obsługujący <!DOCTYPE> i standardowe tagi
+  return text.replace(/<(!?[a-z1-6]+)>/g, (match, tag) => {
+    // Jeśli to doctype, kierujemy do odpowiedniej strony dokumentacji
+    const cleanTag = tag.startsWith('!') ? 'Doctype' : tag;
+    const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${cleanTag}`;
+    
+    // Zwracamy merytorycznie sformatowany link z encjami HTML
+    return `<a href="${url}" target="_blank" class="mdn-link">&lt;${tag.toUpperCase()}&gt;</a>`;
+  });
+}
       // Merytoryczne renderowanie + generowanie nawigacji
       const linkedContent = enrichWithMdnLinks(rawContent);
       preview.innerHTML = marked.parse(linkedContent);
