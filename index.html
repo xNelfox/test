@@ -39,7 +39,7 @@
       .sidebar-nav {
         position: fixed;
         right: 40px;
-        top: 100px;
+        top: 20px;
         width: 240px;
         background: var(--panel-bg);
         backdrop-filter: blur(8px);
@@ -88,6 +88,9 @@
         width: 100%;
         line-height: 1.7;
         animation: fadeIn 0.8s ease-out;
+        position:absolute;
+        left: 50%; 
+        transform: translateX(-50%); 
       }
 
       @keyframes fadeIn {
