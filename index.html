@@ -191,9 +191,6 @@
     <div id="preview"></div>
 
     <script>
-      const preview = document.getElementById("preview");
-      const navContainer = document.getElementById("dynamic-nav");
-
       const rawContent = `
 ## Struktura dokumentu
 
@@ -592,151 +589,112 @@
 
 
       `;
+const preview = document.getElementById("preview");
+      const navContainer = document.getElementById("dynamic-nav");
+      const searchInput = document.getElementById('tag-search');
+      const toggleFilterBtn = document.getElementById('toggle-filter');
+      let showOnlyNotLearned = false;
 
-function enrichWithMdnLinks(text) {
-  // 1. Obsługa tagów HTML: <tag> - MDN używa /Web/HTML/Element/
-  text = text.replace(/<(!?[a-z1-6]+)>(\s*[–-]\s*)?/gi, (match, tag) => {
-    const cleanTag = tag.startsWith('!') ? 'Doctype' : tag.toLowerCase();
-    const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${cleanTag}`;
-    return `<a href="${url}" target="_blank" class="mdn-link">&lt;${tag}&gt;</a> `;
-  });
+      function enrichWithMdnLinks(text) {
+        // Tagi
+        text = text.replace(/<(!?[a-z1-6]+)>(\s*[–-]\s*)?/gi, (match, tag) => {
+          const cleanTag = tag.startsWith('!') ? 'Doctype' : tag.toLowerCase();
+          const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${cleanTag}`;
+          return `<a href="${url}" target="_blank" class="mdn-link">&lt;${tag}&gt;</a> `;
+        });
 
-  // 2. Obsługa atrybutów rel, name, http-equiv, type
-  text = text.replace(/(rel|name|http-equiv|type)="([^"]+)"(\s*[–-]\s*)?/gi, (match, attr, value) => {
-    let url;
-    const cleanVal = value.toLowerCase();
+        // Atrybuty globalne i media (lista z myślnikiem)
+        text = text.replace(/^- ([a-z*]+)(\s*[–-]\s*)/gm, (match, attr) => {
+          const cleanAttr = attr.replace('*', '').toLowerCase();
+          const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/${cleanAttr}`;
+          if (rawContent.includes("Zarządzanie mediami") && !["id", "class", "style", "hidden"].includes(cleanAttr)) {
+             // Link do atrybutów specyficznych jeśli nie globalne
+             const specUrl = `https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/${cleanAttr}`;
+             return `- <a href="${specUrl}" target="_blank" class="mdn-link">${attr}</a> `;
+          }
+          return `- <a href="${url}" target="_blank" class="mdn-link">${attr}</a> `;
+        });
 
-    // Merytorycznie: MDN przeniosło wiele atrybutów do sekcji /Reference/
-    if (attr === 'rel') {
-      url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/${cleanVal}`;
-      // Dla nowszych wartości jak compression-dictionary MDN czasem wymaga /Reference/Attributes/
-    } 
-    else if (attr === 'name') {
-      // Dla meta name="referrer" i innych
-      url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/${cleanVal}`;
-    } 
-    else if (attr === 'http-equiv') {
-      url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/http-equiv/${cleanVal}`;
-    } 
-    else if (attr === 'type') {
-      url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/${cleanVal}`;
-    }
-    
-    return `<a href="${url}" target="_blank" class="mdn-link"><strong>${attr}</strong>="${value}"</a> `;
-  });
+        return text;
+      }
 
-  // 3. Obsługa atrybutów globalnych: - attribute --
-  text = text.replace(/^- ([a-z*]+)(\s*[–-]\s*)/gm, (match, attr) => {
-    const cleanAttr = attr.replace('*', '').toLowerCase();
-    const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/${cleanAttr}`;
-    return `- <a href="${url}" target="_blank" class="mdn-link">${attr}</a> `;
-  });
-
-  return text;
-}     // Merytoryczne renderowanie + generowanie nawigacji
-const linkedContent = enrichWithMdnLinks(rawContent);
-preview.innerHTML = marked.parse(linkedContent);
-
-// Merytorycznie: Inicjalizacja interakcji po wyrenderowaniu HTML
-const searchInput = document.getElementById('tag-search');
-    const toggleFilterBtn = document.getElementById('toggle-filter');
-    let showOnlyNotLearned = false;
-
-    function updateStats() {
-        const total = preview.querySelectorAll('li').length;
+      function updateStats() {
+        const items = preview.querySelectorAll('li');
         const notLearned = preview.querySelectorAll('li.not-learned').length;
-        document.getElementById('stat-total').innerText = `Tagi: ${total}`;
-        document.getElementById('stat-learned').innerText = `Opanowane: ${total - notLearned}`;
+        document.getElementById('stat-total').innerText = `Tagi: ${items.length}`;
+        document.getElementById('stat-learned').innerText = `Opanowane: ${items.length - notLearned}`;
         document.getElementById('stat-not-learned').innerText = `Do nauki: ${notLearned}`;
         
-        // Zapisz stan do localStorage
-        const learnedIds = Array.from(preview.querySelectorAll('li.not-learned')).map(li => li.innerText.trim());
-        localStorage.setItem('html_progress', JSON.stringify(learnedIds));
-    }
+        const notLearnedTexts = Array.from(preview.querySelectorAll('li.not-learned')).map(li => li.innerText.trim());
+        localStorage.setItem('html_progress', JSON.stringify(notLearnedTexts));
+      }
 
-    function filterElements() {
+      function filterElements() {
         const query = searchInput.value.toLowerCase();
         const items = preview.querySelectorAll('li');
         
         items.forEach(item => {
-            const text = item.innerText.toLowerCase();
-            const matchesSearch = text.includes(query);
-            const isNotLearned = item.classList.contains('not-learned');
-            
-            let shouldShow = matchesSearch;
-            if (showOnlyNotLearned && !isNotLearned) {
-                shouldShow = false;
-            }
-
-            item.style.display = shouldShow ? 'flex' : 'none';
+          const text = item.innerText.toLowerCase();
+          const matchesSearch = text.includes(query);
+          const isNotLearned = item.classList.contains('not-learned');
+          
+          let shouldShow = matchesSearch;
+          if (showOnlyNotLearned && !isNotLearned) shouldShow = false;
+          item.style.display = shouldShow ? 'flex' : 'none';
         });
 
-        // Ukryj puste nagłówki sekcji
+        // Ukrywanie pustych nagłówków
         preview.querySelectorAll('h2, h3').forEach(header => {
-            let next = header.nextElementSibling;
-            let hasVisibleContent = false;
-            while(next && next.tagName !== 'H2' && next.tagName !== 'H3') {
-                if(next.tagName === 'UL') {
-                    const visibleLis = Array.from(next.querySelectorAll('li')).filter(li => li.style.display !== 'none');
-                    if(visibleLis.length > 0) hasVisibleContent = true;
-                }
-                next = next.nextElementSibling;
+          let next = header.nextElementSibling;
+          let hasVisible = false;
+          while(next && next.tagName !== 'H2' && next.tagName !== 'H3') {
+            if(next.tagName === 'UL') {
+              if(Array.from(next.querySelectorAll('li')).some(li => li.style.display !== 'none')) hasVisible = true;
             }
-            header.style.display = hasVisibleContent ? 'block' : 'none';
+            next = next.nextElementSibling;
+          }
+          header.style.display = hasVisible ? 'block' : 'none';
         });
-    }
+      }
 
-    // Inicjalizacja interaktywności (nadpisanie Twojej funkcji)
-    function initInteractivity() {
+      function init() {
+        preview.innerHTML = marked.parse(enrichWithMdnLinks(rawContent));
+        
         const items = preview.querySelectorAll("li");
-        const savedNotLearned = JSON.parse(localStorage.getItem('html_progress') || "[]");
+        const saved = JSON.parse(localStorage.getItem('html_progress') || "[]");
 
         items.forEach(item => {
-            item.style.cursor = "pointer";
-            
-            // Przywróć postęp
-            if (savedNotLearned.includes(item.innerText.trim())) {
-                item.classList.add("not-learned");
-            }
+          item.style.cursor = "pointer";
+          if (saved.includes(item.innerText.trim())) item.classList.add("not-learned");
 
-            item.addEventListener("click", (e) => {
-                if (e.target.tagName === 'A' || e.target.tagName === 'STRONG') return;
-                item.classList.toggle("not-learned");
-                updateStats();
-                if (showOnlyNotLearned) filterElements();
-            });
+          item.addEventListener("click", (e) => {
+            if (e.target.tagName === 'A') return;
+            item.classList.toggle("not-learned");
+            updateStats();
+            if (showOnlyNotLearned) filterElements();
+          });
         });
-        updateStats();
-    }
 
-    // Event Listeners
-    searchInput.addEventListener('input', filterElements);
-    
-    toggleFilterBtn.addEventListener('click', () => {
+        // Generowanie Nav
+        preview.querySelectorAll("h2").forEach((header, i) => {
+          header.id = `sec-${i}`;
+          const link = document.createElement("a");
+          link.href = `#${header.id}`;
+          link.innerText = header.innerText;
+          navContainer.appendChild(link);
+        });
+
+        updateStats();
+      }
+
+      searchInput.addEventListener('input', filterElements);
+      toggleFilterBtn.addEventListener('click', () => {
         showOnlyNotLearned = !showOnlyNotLearned;
         toggleFilterBtn.innerText = showOnlyNotLearned ? "Pokaż wszystko" : "Pokaż tylko do nauki";
-        toggleFilterBtn.style.background = showOnlyNotLearned ? "var(--mdn-link)" : "none";
-        toggleFilterBtn.style.color = showOnlyNotLearned ? "white" : "var(--accent-blue)";
         filterElements();
-    });
+      });
 
-    // --- URUCHOMIENIE ---
-    const linkedContent = enrichWithMdnLinks(rawContent);
-    preview.innerHTML = marked.parse(linkedContent);
-    initInteractivity();
-
-    // Generowanie nawigacji (Twój kod)
-    const headers = preview.querySelectorAll("h2");
-    headers.forEach((header, index) => {
-        const id = `section-${index}`;
-        header.id = id;
-        const link = document.createElement("a");
-        link.href = `#${id}`;
-        link.innerText = header.innerText;
-        navContainer.appendChild(link);
-    });
-
-;
+      init();
     </script>
   </body>
 </html>
