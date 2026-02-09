@@ -39,7 +39,7 @@
       .sidebar-nav {
         position: fixed;
         right: 40px;
-        top: 60px;
+        top: 100px;
         width: 240px;
         background: var(--panel-bg);
         backdrop-filter: blur(8px);
@@ -170,8 +170,7 @@
     </style>
   </head>
   <body>
-    <nav class="sidebar-nav">
-      <div class="search-container" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; width: 100%; max-width: 850px; padding: 0 20px; box-sizing: border-box;">
+          <div class="search-container" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; width: 100%; max-width: 850px; padding: 0 20px; box-sizing: border-box;">
     <input type="text" id="tag-search" placeholder="Szukaj tagu lub atrybutu (np. 'video' lub 'href')..." 
            style="width: 100%; padding: 12px 20px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--panel-bg); backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-family: inherit; font-size: 1em; outline: none;">
     
@@ -182,6 +181,8 @@
         <button id="toggle-filter" style="margin-left: auto; background: none; border: 1px solid var(--accent-blue); color: var(--accent-blue); border-radius: 4px; cursor: pointer; padding: 2px 8px;">Pokaż tylko do nauki</button>
     </div>
 </div>
+    
+    <nav class="sidebar-nav">
       
       <h5>Spis treści</h5>      
       <div id="dynamic-nav"></div>
