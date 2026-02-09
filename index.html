@@ -3,143 +3,121 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevSphere</title>
+    <title>DevSphere - Chatly Engine</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
       :root {
         --bg-light: #f8fafc;
-        --panel-bg: rgba(255, 255, 255, 0.8);
+        --panel-bg: rgba(255, 255, 255, 0.85);
         --text-main: #1e293b;
         --accent-blue: #0284c7;
-        --accent-glow: rgba(2, 132, 199, 0.1);
         --border-color: #e2e8f0;
         --header-box: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
         --mdn-link: #e11d48;
         --card-hover: #ffffff;
       }
-      a {
-        font-family: "Inter", "Segoe UI", system-ui, sans-serif;
-        color: var(--text-main);
-        text-decoration: none;
-      }
+
       body {
         font-family: "Inter", "Segoe UI", system-ui, sans-serif;
         background: radial-gradient(circle at top left, #f1f5f9, #f8fafc);
         color: var(--text-main);
         margin: 0;
-        padding: 60px 20px;
+        padding: 120px 20px 60px 20px; /* Zwiększony górny padding dla wyszukiwarki */
         display: flex;
         justify-content: center;
         min-height: 100vh;
       }
-      * {
-        scroll-behavior: smooth;
+
+      /* --- FIXED SEARCH CONTAINER --- */
+      .search-container {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        width: 100%;
+        max-width: 850px;
+        padding: 20px;
+        box-sizing: border-box;
+        background: rgba(248, 250, 252, 0.8); /* Lekkie tło pod wyszukiwarką */
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-color);
       }
-      /* --- NOWA NAWIGACJA PRAWA (BEZ ZMIAN W TWOIM CSS) --- */
+
+      #tag-search {
+        width: 100%;
+        padding: 14px 20px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        background: var(--panel-bg);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        font-family: inherit;
+        font-size: 1em;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+
+      #tag-search:focus {
+        border-color: var(--accent-blue);
+      }
+
+      .stats-bar {
+        display: flex;
+        gap: 12px;
+        margin-top: 12px;
+        font-size: 0.85em;
+        color: var(--text-main);
+        font-weight: 500;
+        align-items: center;
+      }
+
+      /* --- SIDEBAR NAV --- */
       .sidebar-nav {
         position: fixed;
         right: 40px;
-        top: 20px;
-        width: 240px;
+        top: 100px;
+        width: 220px;
         background: var(--panel-bg);
         backdrop-filter: blur(8px);
         border: 1px solid var(--border-color);
         border-radius: 12px;
         padding: 20px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        display: none; /* Pokaże się gdy JavaScript wykryje nagłówki */
+        display: none;
       }
 
       @media (min-width: 1400px) {
-        .sidebar-nav {
-          display: block;
-        }
+        .sidebar-nav { display: block; }
       }
 
-      .sidebar-nav h5 {
-        margin: 0 0 15px 0;
-        color: var(--accent-blue);
-        text-transform: uppercase;
-        font-size: 0.75em;
-        letter-spacing: 1px;
-      }
-
-      .sidebar-nav a {
-        display: block;
-        color: var(--text-main);
-        text-decoration: none;
-        font-size: 0.85em;
-        padding: 8px 0;
-        border-bottom: 1px solid var(--border-color);
-        transition: 0.2s;
-      }
-
-      .sidebar-nav a:hover {
-        color: var(--accent-blue);
-        padding-left: 5px;
-      }
-      .sidebar-nav a:last-child {
-        border: none;
-      }
-
-      /* Twoje oryginalne style */
+      /* --- CONTENT PREVIEW --- */
       #preview {
         max-width: 850px;
         width: 100%;
         line-height: 1.7;
-        animation: fadeIn 0.8s ease-out;      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        animation: fadeIn 0.6s ease-out;
       }
 
       #preview h2 {
         background: var(--header-box);
         border-radius: 12px;
-        padding: 18px 25px;
-        font-size: 1.1em;
+        padding: 20px 25px;
+        font-size: 1.2em;
         color: #ffffff;
         text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-top: 50px;
-        box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.2);
-        border: none;
-        scroll-margin-top: 30px; /* Dla płynnego skoku */
+        letter-spacing: 1.5px;
+        margin-top: 40px;
+        box-shadow: 0 8px 20px rgba(2, 132, 199, 0.15);
+        scroll-margin-top: 140px; /* Żeby nagłówek nie wpadał pod wyszukiwarkę */
       }
 
-      #preview h4 {
-        color: var(--accent-blue);
-        margin: 35px 0 15px 0;
-        font-size: 1.1em;
-        font-weight: 700;
+      #preview ul {
         display: flex;
-        align-items: center;
-        gap: 10px;
+        flex-direction: column;
+        padding: 0;
+        margin: 20px 0;
+        list-style: none;
       }
-
-
-
-      #preview li.not-learned {
-  border-left: 5px solid var(--mdn-link);
-  background: rgba(225, 29, 72, 0.05);
-  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.1);
-}
-
-/* Musimy zmienić kontener <ul> w flexbox, by 'order' zadziałał */
-#preview ul {
-  display: flex;
-  flex-direction: column;
-
-          padding: 0;
-        margin: 0;
-}
 
       #preview li {
         background: var(--panel-bg);
@@ -147,47 +125,63 @@
         margin-bottom: 12px;
         padding: 16px 24px;
         border-radius: 12px;
-        corner-shape: squircle;
         border: 1px solid var(--border-color);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         justify-content: space-between;
         align-items: center;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        cursor: pointer;
       }
 
       #preview li:hover {
-        transform: translateY(-3px);
+        transform: translateX(5px);
         background: var(--card-hover);
         border-color: var(--accent-blue);
-        box-shadow: 0 10px 20px rgba(2, 132, 199, 0.1);
+      }
+
+      #preview li.not-learned {
+        border-left: 6px solid var(--mdn-link);
+        background: rgba(225, 29, 72, 0.03);
       }
 
       .mdn-link {
-        text-decoration: none;
+        color: var(--mdn-link);
+        font-weight: 600;
+        font-size: 0.9em;
+        padding: 4px 8px;
+        border-radius: 6px;
+        transition: background 0.2s;
+      }
+
+      .mdn-link:hover {
+        background: rgba(225, 29, 72, 0.1);
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
       }
     </style>
   </head>
   <body>
-          <div class="search-container" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; width: 100%; max-width: 850px; padding: 0 20px; box-sizing: border-box;">
-    <input type="text" id="tag-search" placeholder="Szukaj tagu lub atrybutu (np. 'video' lub 'href')..." 
-           style="width: 100%; padding: 12px 20px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--panel-bg); backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-family: inherit; font-size: 1em; outline: none;">
-    
-    <div class="stats-bar" style="display: flex; gap: 10px; margin-top: 10px; font-size: 0.8em; color: var(--text-main); font-weight: 500;">
-        <span id="stat-total">Tagi: 0</span> | 
-        <span id="stat-learned" style="color: var(--accent-blue)">Opanowane: 0</span> |
+
+    <div class="search-container">
+      <input type="text" id="tag-search" placeholder="Szukaj tagu lub atrybutu (np. 'video' lub 'href')...">
+      <div class="stats-bar">
+        <span id="stat-total">Tagi: 0</span>
+        <span id="stat-learned" style="color: var(--accent-blue)">Opanowane: 0</span>
         <span id="stat-not-learned" style="color: var(--mdn-link)">Do nauki: 0</span>
-        <button id="toggle-filter" style="margin-left: auto; background: none; border: 1px solid var(--accent-blue); color: var(--accent-blue); border-radius: 4px; cursor: pointer; padding: 2px 8px;">Pokaż tylko do nauki</button>
+        <button id="toggle-filter" style="margin-left: auto; background: white; border: 1px solid var(--accent-blue); color: var(--accent-blue); border-radius: 6px; cursor: pointer; padding: 4px 12px; font-weight: 600; font-size: 0.8em; transition: 0.3s;">Pokaż tylko do nauki</button>
+      </div>
     </div>
-</div>
-    
-    <nav class="sidebar-nav">
-      
-      <h5>Spis treści</h5>      
-      <div id="dynamic-nav"></div>
+
+    <nav class="sidebar-nav" id="sidebar-nav">
+      <h5>Nawigacja</h5>
+      <div id="nav-container"></div>
     </nav>
 
-    <div id="preview"></div>
+    <div id="preview">
+      </div>
 
     <script>
       const rawContent = `
@@ -391,6 +385,7 @@
 - class – klasa stylów
 - style – style liniowe
 - data-\* – własne dane
+  aria-\* – dostępność elementu
 - role – rola elementu
 - title – opis pomocniczy
 
@@ -585,7 +580,6 @@
 - optimum – wartość optymalna
 - start – numer startowy
 - reversed – kolejność odwrotna
-
 
       `;
 const preview = document.getElementById("preview");
