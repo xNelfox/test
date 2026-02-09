@@ -378,16 +378,16 @@
 
 ## Atrybuty Globalne
 
-### Tożsamość style:
+#### Identyfikacja style:
 
 - id – unikalny identyfikator
 - class – klasa stylów
 - style – style liniowe
 - data-\* – własne dane
-- nonce – kod bezpieczeństwa
 - role – rola elementu
+- title – opis pomocniczy
 
-### Interakcja użytkownika:
+#### Interakcja zachowanie:
 
 - tabindex – kolejność tabulacji
 - accesskey – skrót klawiaturowy
@@ -395,17 +395,18 @@
 - hidden – ukrycie elementu
 - inert – ignorowanie interakcji
 - popover – okno wyskakujące
+- contenteditable – edycja treści
+- spellcheck – sprawdzanie pisowni
 
-### Klawiatura wejście:
+#### Język tekst:
 
-- inputmode – tryb klawiatury
-- enterkeyhint – przycisk Enter
+- lang – język elementu
+- dir – kierunek tekstu
+- translate – zgoda tłumaczenia
 - autocapitalize – automatyczne wielkie
-- autocorrect – automatyczna korekta
-- virtualkeyboardpolicy – polityka klawiatury
-- writingsuggestions – sugestie pisania
+- nonce – kod bezpieczeństwa
 
-### Dane strukturalne:
+#### Dane strukturalne:
 
 - itemscope – zakres obiektu
 - itemtype – typ obiektu
@@ -413,30 +414,36 @@
 - itemid – identyfikator obiektu
 - itemref – referencja obiektu
 
-### Definicje techniczne:
+## Konfiguracja Techniczna
+
+#### Definicje zasobów:
 
 - type – typ elementu
 - rel – powiązania zasobów
 - http-equiv – nagłówki dokumentu
-- dir – kierunek tekstu
+- charset – kodowanie znaków
+- content – treść metadanych
+
+#### Zaawansowane funkcje:
+
 - is – rozszerzenie elementu
 - slot – gniazdo szablonu
-
-### Parametry dodatkowe:
-
 - part – część cienia
 - exportparts – eksport części
 - anchor – powiązanie kotwicy
 - csp – zasady bezpieczeństwa
 - elementtiming – pomiar elementu
+
+#### Parametry specjalne:
+
 - data – źródło danych
 - alpha – poziom przezroczystości
 - colorspace – przestrzeń kolorów
 - default – wartość domyślna
 
-## Układ Dokumentu
+## Układ Geometria
 
-### Tabele danych:
+#### Tabele dane:
 
 - colspan – scalanie kolumn
 - rowspan – scalanie wierszy
@@ -444,45 +451,47 @@
 - scope – zakres nagłówka
 - span – zakres kolumn
 
-### Wymiary geometria:
+#### Wymiary mapy:
 
+- width – szerokość elementu
+- height – wysokość elementu
 - coords – współrzędne mapy
-- sizes – rozmiary ikon
+- shape – kształt obszaru
 - ismap – mapa serwera
 - usemap – mapa klienta
-- shape – kształt obszaru
-- size – rozmiar wizualny
 
-### Funkcje ramki:
+#### Ramki okna:
 
 - sandbox – izolacja ramki
 - srcdoc – treść dokumentu
 - allow – uprawnienia ramki
-- open – element otwarty
-- start – numer startowy
-- reversed – odwrócona kolejność
 - target – okno docelowe
+- open – element otwarty
 
-## Zasoby Multimedialne
+## Zasoby Multimedia
 
-### Obsługa mediów:
+#### Obsługa plików:
 
 - src – źródło pliku
 - srcset – zestawy obrazów
+- sizes – rozmiary ikon
 - alt – tekst alternatywny
+- poster – miniatura wideo
+- preload – wstępne ładowanie
+- crossorigin – zapytania zewnętrzne
+
+#### Odtwarzanie mediów:
+
 - controls – panel sterowania
 - autoplay – autostart mediów
 - loop – pętla odtwarzania
 - muted – wyciszenie dźwięku
-- poster – miniatura wideo
 - playsinline – odtwarzanie wewnątrz
-- preload – wstępne ładowanie
 - decoding – metoda dekodowania
-- crossorigin – zapytania zewnętrzne
 - media – warunki mediów
 - srclang – język napisów
 
-### Ładowanie plików:
+#### Ładowanie sieć:
 
 - href – adres zasobu
 - hreflang – język zasobu
@@ -496,18 +505,17 @@
 - ping – śledzenie kliknięć
 - referrerpolicy – polityka poleceń
 
-## Atrybuty Formularzy
+## Formularze Interakcja
 
-### Przesyłanie danych:
+#### Dane wejściowe:
 
 - action – adres wysyłki
 - method – metoda przesyłu
 - enctype – kodowanie danych
 - name – nazwa pola
 - value – wartość domyślna
-- content – treść metadanych
 
-### Walidacja pól:
+#### Walidacja ograniczenia:
 
 - required – pole wymagane
 - readonly – tylko odczyt
@@ -521,7 +529,7 @@
 - min – wartość minimalna
 - step – skok wartości
 
-### Interfejs podpowiedzi:
+#### Podpowiedzi wybór:
 
 - placeholder – tekst zastępczy
 - autocomplete – autouzupełnianie pól
@@ -530,11 +538,20 @@
 - multiple – wiele wartości
 - checked – pole zaznaczone
 - selected – element wybrany
+- size – rozmiar wizualny
+
+#### Obsługa wejścia:
+
 - capture – źródło mediów
 - accept – akceptowane pliki
 - accept-charset – kodowanie formularza
+- inputmode – tryb klawiatury
+- enterkeyhint – przycisk Enter
+- autocorrect – automatyczna korekta
+- virtualkeyboardpolicy – polityka klawiatury
+- writingsuggestions – sugestie pisania
 
-### Powiązania elementów:
+#### Powiązania pól:
 
 - for – powiązanie etykiety
 - form – przypisanie formularza
@@ -543,30 +560,27 @@
 - formmethod – alternatywna metoda
 - formtarget – okno odpowiedzi
 
-## Treść Semantyka
+## Semantyka Tekst
 
-### Źródła opisy:
+#### Opisy źródła:
 
 - cite – źródło cytatu
 - datetime – data czas
 - label – etykieta elementu
-- title – opis pomocniczy
-- lang – język elementu
-- translate – zgoda tłumaczenia
-- charset – kodowanie znaków
+- kind – rodzaj ścieżki
+- dirname – kierunek zapisu
 
-### Formatowanie edycja:
+#### Formatowanie granice:
 
-- contenteditable – edycja treści
-- spellcheck – sprawdzanie pisowni
 - wrap – zawijanie tekstu
 - cols – kolumny tekstowe
 - rows – wiersze tekstowe
 - high – górna granica
 - low – dolna granica
 - optimum – wartość optymalna
-- kind – rodzaj ścieżki
-- dirname – kierunek zapisu
+- start – numer startowy
+- reversed – odwrócona kolejność
+
 
       `;
 
