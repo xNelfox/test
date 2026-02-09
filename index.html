@@ -432,74 +432,12 @@
 - type="reset" – czyszczenie pól
 - type="button" – przycisk ogólny
 
-## Układ Dokumentu
-
-### Tabele danych:
-
-- colspan – scalanie kolumn
-- rowspan – scalanie wierszy
-- headers – nagłówki komórki
-- scope – zakres nagłówka
-- span – zakres kolumn
-
-### Wymiary geometria:
-
-- coords – współrzędne mapy
-- sizes – rozmiary ikon
-- ismap – mapa serwera
-- usemap – mapa klienta
-- shape – kształt obszaru
-- size – rozmiar wizualny
-
-### Funkcje ramki:
-
-- sandbox – izolacja ramki
-- srcdoc – treść dokumentu
-- allow – uprawnienia ramki
-- open – element otwarty
-- start – numer startowy
-- reversed – odwrócona kolejność
-- target – okno docelowe
-
-## Zasoby Multimedialne
-
-### Obsługa mediów:
-
-- src – źródło pliku
-- srcset – zestawy obrazów
-- alt – tekst alternatywny
-- controls – panel sterowania
-- autoplay – autostart mediów
-- loop – pętla odtwarzania
-- muted – wyciszenie dźwięku
-- poster – miniatura wideo
-- playsinline – odtwarzanie wewnątrz
-- preload – wstępne ładowanie
-- decoding – metoda dekodowania
-- crossorigin – zapytania zewnętrzne
-- media – warunki mediów
-- srclang – język napisów
-
-### Ładowanie plików:
-
-- href – adres zasobu
-- hreflang – język zasobu
-- as – typ ładowania
-- async – skrypt asynchroniczny
-- defer – skrypt opóźniony
-- loading – tryb ładowania
-- fetchpriority – priorytet ładowania
-- integrity – weryfikacja pliku
-- download – wymuszenie pobierania
-- ping – śledzenie kliknięć
-- referrerpolicy – polityka poleceń
-
 ## Atrybuty Formularzy
 
 ### Przesyłanie danych:
 
 - action – adres wysyłki
-- method – metoda HTTP
+- method – metoda przesyłu
 - enctype – kodowanie danych
 - name – nazwa pola
 - value – wartość domyślna
@@ -540,6 +478,70 @@
 - formenctype – alternatywne kodowanie
 - formmethod – alternatywna metoda
 - formtarget – okno odpowiedzi
+
+## Zasoby Multimedialne
+
+### Obsługa mediów:
+
+- src – źródło pliku
+- srcset – zestawy obrazów
+- alt – tekst alternatywny
+- controls – panel sterowania
+- autoplay – autostart mediów
+- loop – pętla odtwarzania
+- muted – wyciszenie dźwięku
+- poster – miniatura wideo
+- playsinline – odtwarzanie wewnątrz
+- preload – wstępne ładowanie
+- decoding – metoda dekodowania
+- crossorigin – zapytania zewnętrzne
+- media – warunki mediów
+- srclang – język napisów
+
+### Ładowanie plików:
+
+- href – adres zasobu
+- hreflang – język zasobu
+- as – typ ładowania
+- async – skrypt asynchroniczny
+- defer – skrypt opóźniony
+- loading – tryb ładowania
+- fetchpriority – priorytet ładowania
+- integrity – weryfikacja pliku
+- download – wymuszenie pobierania
+- ping – śledzenie kliknięć
+- referrerpolicy – polityka poleceń
+
+## Układ Dokumentu
+
+### Tabele danych:
+
+- colspan – scalanie kolumn
+- rowspan – scalanie wierszy
+- headers – nagłówki komórki
+- scope – zakres nagłówka
+- span – zakres kolumn
+
+### Wymiary geometria:
+
+- width – szerokość elementu
+- height – wysokość elementu
+- coords – współrzędne mapy
+- sizes – rozmiary ikon
+- ismap – mapa serwera
+- usemap – mapa klienta
+- shape – kształt obszaru
+- size – rozmiar wizualny
+
+### Funkcje ramki:
+
+- sandbox – izolacja ramki
+- srcdoc – treść dokumentu
+- allow – uprawnienia ramki
+- open – element otwarty
+- start – numer startowy
+- reversed – odwrócona kolejność
+- target – okno docelowe
 
 ## Treść Semantyka
 
@@ -603,11 +605,17 @@
 - itemid – identyfikator obiektu
 - itemref – referencja obiektu
 
-### Techniczne inne:
+### Definicje techniczne:
 
+- type – typ elementu
+- rel – powiązania zasobów
+- http-equiv – nagłówki dokumentu
 - dir – kierunek tekstu
 - is – rozszerzenie elementu
 - slot – gniazdo szablonu
+
+### Parametry dodatkowe:
+
 - part – część cienia
 - exportparts – eksport części
 - anchor – powiązanie kotwicy
