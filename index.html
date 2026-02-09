@@ -171,9 +171,19 @@
   </head>
   <body>
     <nav class="sidebar-nav">
-      <h5>Spis treści</h5>
-    <h5>Testowy wygląd, w przyszłości będzie przeniesienie do next.js i wtedy będzie ładniejszy css, narazie skupiam się na zawartości, którą trzymam w mark downie</h5>
+      <div class="search-container" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; width: 100%; max-width: 850px; padding: 0 20px; box-sizing: border-box;">
+    <input type="text" id="tag-search" placeholder="Szukaj tagu lub atrybutu (np. 'video' lub 'href')..." 
+           style="width: 100%; padding: 12px 20px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--panel-bg); backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-family: inherit; font-size: 1em; outline: none;">
+    
+    <div class="stats-bar" style="display: flex; gap: 10px; margin-top: 10px; font-size: 0.8em; color: var(--text-main); font-weight: 500;">
+        <span id="stat-total">Tagi: 0</span> | 
+        <span id="stat-learned" style="color: var(--accent-blue)">Opanowane: 0</span> |
+        <span id="stat-not-learned" style="color: var(--mdn-link)">Do nauki: 0</span>
+        <button id="toggle-filter" style="margin-left: auto; background: none; border: 1px solid var(--accent-blue); color: var(--accent-blue); border-radius: 4px; cursor: pointer; padding: 2px 8px;">Pokaż tylko do nauki</button>
+    </div>
+</div>
       
+      <h5>Spis treści</h5>      
       <div id="dynamic-nav"></div>
     </nav>
 
@@ -627,34 +637,105 @@ const linkedContent = enrichWithMdnLinks(rawContent);
 preview.innerHTML = marked.parse(linkedContent);
 
 // Merytorycznie: Inicjalizacja interakcji po wyrenderowaniu HTML
-function initInteractivity() {
-  const items = preview.querySelectorAll("li");
-  
-  items.forEach(item => {
-    item.style.cursor = "pointer";
-    item.addEventListener("click", (e) => {
-      // Merytorycznie: sprawdzamy czy użytkownik nie kliknął w link MDN
-      if (e.target.tagName === 'A') return;
+const searchInput = document.getElementById('tag-search');
+    const toggleFilterBtn = document.getElementById('toggle-filter');
+    let showOnlyNotLearned = false;
 
-      item.classList.toggle("not-learned");
-      
-      // Merytorycznie: Opcjonalne powiadomienie dźwiękowe lub wizualne można dodać tutaj
+    function updateStats() {
+        const total = preview.querySelectorAll('li').length;
+        const notLearned = preview.querySelectorAll('li.not-learned').length;
+        document.getElementById('stat-total').innerText = `Tagi: ${total}`;
+        document.getElementById('stat-learned').innerText = `Opanowane: ${total - notLearned}`;
+        document.getElementById('stat-not-learned').innerText = `Do nauki: ${notLearned}`;
+        
+        // Zapisz stan do localStorage
+        const learnedIds = Array.from(preview.querySelectorAll('li.not-learned')).map(li => li.innerText.trim());
+        localStorage.setItem('html_progress', JSON.stringify(learnedIds));
+    }
+
+    function filterElements() {
+        const query = searchInput.value.toLowerCase();
+        const items = preview.querySelectorAll('li');
+        
+        items.forEach(item => {
+            const text = item.innerText.toLowerCase();
+            const matchesSearch = text.includes(query);
+            const isNotLearned = item.classList.contains('not-learned');
+            
+            let shouldShow = matchesSearch;
+            if (showOnlyNotLearned && !isNotLearned) {
+                shouldShow = false;
+            }
+
+            item.style.display = shouldShow ? 'flex' : 'none';
+        });
+
+        // Ukryj puste nagłówki sekcji
+        preview.querySelectorAll('h2, h3').forEach(header => {
+            let next = header.nextElementSibling;
+            let hasVisibleContent = false;
+            while(next && next.tagName !== 'H2' && next.tagName !== 'H3') {
+                if(next.tagName === 'UL') {
+                    const visibleLis = Array.from(next.querySelectorAll('li')).filter(li => li.style.display !== 'none');
+                    if(visibleLis.length > 0) hasVisibleContent = true;
+                }
+                next = next.nextElementSibling;
+            }
+            header.style.display = hasVisibleContent ? 'block' : 'none';
+        });
+    }
+
+    // Inicjalizacja interaktywności (nadpisanie Twojej funkcji)
+    function initInteractivity() {
+        const items = preview.querySelectorAll("li");
+        const savedNotLearned = JSON.parse(localStorage.getItem('html_progress') || "[]");
+
+        items.forEach(item => {
+            item.style.cursor = "pointer";
+            
+            // Przywróć postęp
+            if (savedNotLearned.includes(item.innerText.trim())) {
+                item.classList.add("not-learned");
+            }
+
+            item.addEventListener("click", (e) => {
+                if (e.target.tagName === 'A' || e.target.tagName === 'STRONG') return;
+                item.classList.toggle("not-learned");
+                updateStats();
+                if (showOnlyNotLearned) filterElements();
+            });
+        });
+        updateStats();
+    }
+
+    // Event Listeners
+    searchInput.addEventListener('input', filterElements);
+    
+    toggleFilterBtn.addEventListener('click', () => {
+        showOnlyNotLearned = !showOnlyNotLearned;
+        toggleFilterBtn.innerText = showOnlyNotLearned ? "Pokaż wszystko" : "Pokaż tylko do nauki";
+        toggleFilterBtn.style.background = showOnlyNotLearned ? "var(--mdn-link)" : "none";
+        toggleFilterBtn.style.color = showOnlyNotLearned ? "white" : "var(--accent-blue)";
+        filterElements();
     });
-  });
-}
 
-initInteractivity();
+    // --- URUCHOMIENIE ---
+    const linkedContent = enrichWithMdnLinks(rawContent);
+    preview.innerHTML = marked.parse(linkedContent);
+    initInteractivity();
 
-// --- AUTOMATYCZNA NAWIGACJA (pozostaje bez zmian) ---
-const headers = preview.querySelectorAll("h2");
-headers.forEach((header, index) => {
-  const id = `section-${index}`;
-  header.id = id;
-  const link = document.createElement("a");
-  link.href = `#${id}`;
-  link.innerText = header.innerText;
-  navContainer.appendChild(link);
-});
+    // Generowanie nawigacji (Twój kod)
+    const headers = preview.querySelectorAll("h2");
+    headers.forEach((header, index) => {
+        const id = `section-${index}`;
+        header.id = id;
+        const link = document.createElement("a");
+        link.href = `#${id}`;
+        link.innerText = header.innerText;
+        navContainer.appendChild(link);
+    });
+
+;
     </script>
   </body>
 </html>
