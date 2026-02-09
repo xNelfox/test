@@ -184,7 +184,7 @@
       const navContainer = document.getElementById("dynamic-nav");
 
       const rawContent = `
-## Struktura dokumentu:
+      ## Struktura dokumentu:
 
 ### Konfiguracja dokumentu:
 
@@ -415,49 +415,163 @@
 - http-equiv="refresh" – odświeżanie strony
 - http-equiv="default-style" – styl domyślny
 
-## 2. Skrypty i Typowanie
+## Definiowanie Typów
 
-### Zaawansowane skrypty:
+### Zaawansowane funkcje:
 
+- type="speculationrules" – wstępne renderowanie
 - type="importmap" – mapowanie modułów
 - type="module" – skrypt modułowy
-- type="speculationrules" – zasady prerenderingu
 
-### Pola input:
+### Wejścia formularza:
 
-- type="button" – przycisk ogólny
-- type="checkbox" – pole wyboru
-- type="color" – wybór koloru
-- type="date" – wybór daty
-- type="datetime-local" – data czas
-- type="email" – adres e-mail
-- type="file" – wybór pliku
-- type="hidden" – pole ukryte
-- type="image" – przycisk obrazkowy
-- type="month" – wybór miesiąca
-- type="number" – pole liczbowe
-- type="password" – pole hasła
-- type="radio" – przycisk opcji
-- type="range" – suwak wartości
-- type="reset" – czyszczenie pól
-- type="search" – pole wyszukiwania
-- type="submit" – wysyłka formularza
-- type="tel" – numer telefonu
 - type="text" – pole tekstowe
-- type="time" – wybór godziny
+- type="password" – pole hasła
+- type="email" – adres e-mail
 - type="url" – adres strony
+- type="tel" – numer telefonu
+- type="search" – pole wyszukiwania
+- type="number" – pole liczbowe
+- type="range" – suwak wartości
+- type="checkbox" – pole wyboru
+- type="radio" – przycisk opcji
+- type="color" – wybór koloru
+- type="file" – wybór pliku
+- type="date" – wybór daty
+- type="time" – wybór godziny
+- type="datetime-local" – data czas
+- type="month" – wybór miesiąca
 - type="week" – wybór tygodnia
+- type="hidden" – pole ukryte
+- type="submit" – wysyłka formularza
+- type="image" – przycisk obrazkowy
+- type="reset" – czyszczenie pól
+- type="button" – przycisk ogólny
 
-## 3. Interakcja i Formularze
+---
 
-### Dane wejściowe:
+## Konfiguracja Metadanych
+
+### Powiązania rel:
+
+- rel="preload" – priorytetowe pobieranie
+- rel="modulepreload" – ładowanie modułów
+- rel="prefetch" – wstępne pobieranie
+- rel="preconnect" – wczesne połączenie
+- rel="dns-prefetch" – pobieranie DNS
+- rel="compression-dictionary" – słownik kompresji
+- rel="noopener" – bezpieczne linki
+- rel="noreferrer" – blokada źródła
+- rel="manifest" – manifest aplikacji
+- rel="alternate stylesheet" – style alternatywne
+- rel="me" – weryfikacja autora
+
+### Nagłówki dokumentu:
+
+- http-equiv="content-security-policy" – polityka bezpieczeństwa
+- http-equiv="content-type" – kodowanie znaków
+- http-equiv="refresh" – odświeżanie strony
+- http-equiv="default-style" – styl domyślny
+
+## Atrybuty Typu
+
+### Funkcje skryptów:
+
+- type="speculationrules" – wstępne renderowanie
+- type="importmap" – mapowanie modułów
+- type="module" – skrypt modułowy
+
+### Wejścia formularza:
+
+- type="text" – pole tekstowe
+- type="password" – pole hasła
+- type="email" – adres e-mail
+- type="url" – adres strony
+- type="tel" – numer telefonu
+- type="search" – pole wyszukiwania
+- type="number" – pole liczbowe
+- type="range" – suwak wartości
+- type="checkbox" – pole wyboru
+- type="radio" – przycisk opcji
+- type="color" – wybór koloru
+- type="file" – wybór pliku
+- type="date" – wybór daty
+- type="time" – wybór godziny
+- type="datetime-local" – data czas
+- type="month" – wybór miesiąca
+- type="week" – wybór tygodnia
+- type="hidden" – pole ukryte
+- type="submit" – wysyłka formularza
+- type="image" – przycisk obrazkowy
+- type="reset" – czyszczenie pól
+- type="button" – przycisk ogólny
+
+## Konfiguracja Metadanych
+
+### Powiązania rel:
+
+- rel="preload" – priorytetowe pobieranie
+- rel="modulepreload" – ładowanie modułów
+- rel="prefetch" – wstępne pobieranie
+- rel="preconnect" – wczesne połączenie
+- rel="dns-prefetch" – pobieranie DNS
+- rel="compression-dictionary" – słownik kompresji
+- rel="noopener" – bezpieczne linki
+- rel="noreferrer" – blokada źródła
+- rel="manifest" – manifest aplikacji
+- rel="alternate stylesheet" – style alternatywne
+- rel="me" – weryfikacja autora
+
+### Nagłówki dokumentu:
+
+- http-equiv="content-security-policy" – polityka bezpieczeństwa
+- http-equiv="content-type" – kodowanie znaków
+- http-equiv="refresh" – odświeżanie strony
+- http-equiv="default-style" – styl domyślny
+
+## Atrybuty Typu
+
+### Funkcje skryptów:
+
+- type="speculationrules" – wstępne renderowanie
+- type="importmap" – mapowanie modułów
+- type="module" – skrypt modułowy
+
+### Wejścia formularza:
+
+- type="text" – pole tekstowe
+- type="password" – pole hasła
+- type="email" – adres e-mail
+- type="url" – adres strony
+- type="tel" – numer telefonu
+- type="search" – pole wyszukiwania
+- type="number" – pole liczbowe
+- type="range" – suwak wartości
+- type="checkbox" – pole wyboru
+- type="radio" – przycisk opcji
+- type="color" – wybór koloru
+- type="file" – wybór pliku
+- type="date" – wybór daty
+- type="time" – wybór godziny
+- type="datetime-local" – data czas
+- type="month" – wybór miesiąca
+- type="week" – wybór tygodnia
+- type="hidden" – pole ukryte
+- type="submit" – wysyłka formularza
+- type="image" – przycisk obrazkowy
+- type="reset" – czyszczenie pól
+- type="button" – przycisk ogólny
+
+## Atrybuty Formularzy
+
+### Przesyłanie danych:
 
 - action – adres wysyłki
 - method – metoda HTTP
-- enctype – typ kodowania
+- enctype – kodowanie danych
 - name – nazwa pola
 - value – wartość domyślna
-- content – wartość metadanych
+- content – treść metadanych
 
 ### Walidacja pól:
 
@@ -481,11 +595,12 @@
 - list – lista podpowiedzi
 - multiple – wiele wartości
 - checked – pole zaznaczone
+- selected – element wybrany
 - capture – źródło mediów
 - accept – akceptowane pliki
 - accept-charset – kodowanie formularza
 
-### Powiązania pól:
+### Powiązania elementów:
 
 - for – powiązanie etykiety
 - form – przypisanie formularza
@@ -494,7 +609,7 @@
 - formmethod – alternatywna metoda
 - formtarget – okno odpowiedzi
 
-## 4. Media i Zasoby
+## Zasoby Multimedialne
 
 ### Obsługa mediów:
 
@@ -509,9 +624,11 @@
 - playsinline – odtwarzanie wewnątrz
 - preload – wstępne ładowanie
 - decoding – metoda dekodowania
-- cross-origin – zapytania CORS
+- crossorigin – zapytania zewnętrzne
+- media – warunki mediów
+- srclang – język napisów
 
-### Ładowanie zasobów:
+### Ładowanie plików:
 
 - href – adres zasobu
 - hreflang – język zasobu
@@ -525,7 +642,7 @@
 - ping – śledzenie kliknięć
 - referrerpolicy – polityka poleceń
 
-## 5. Struktura i Tabele
+## Układ Dokumentu
 
 ### Tabele danych:
 
@@ -535,26 +652,28 @@
 - scope – zakres nagłówka
 - span – zakres kolumn
 
-### Geometria wymiary:
+### Wymiary geometria:
 
-- width – szerokość elementu
-- height – wysokość elementu
 - coords – współrzędne mapy
 - sizes – rozmiary ikon
 - ismap – mapa serwera
 - usemap – mapa klienta
+- shape – kształt obszaru
+- size – rozmiar wizualny
 
-### Funkcje specjalne:
+### Funkcje ramki:
 
 - sandbox – izolacja ramki
+- srcdoc – treść dokumentu
+- allow – uprawnienia ramki
 - open – element otwarty
 - start – numer startowy
 - reversed – odwrócona kolejność
 - target – okno docelowe
 
-## 6. Tekst i Semantyka
+## Treść Semantyka
 
-### Opisy źródła:
+### Źródła opisy:
 
 - cite – źródło cytatu
 - datetime – data czas
@@ -562,8 +681,9 @@
 - title – opis pomocniczy
 - lang – język elementu
 - translate – zgoda tłumaczenia
+- charset – kodowanie znaków
 
-### Edycja formatowanie:
+### Formatowanie edycja:
 
 - contenteditable – edycja treści
 - spellcheck – sprawdzanie pisowni
@@ -574,26 +694,27 @@
 - low – dolna granica
 - optimum – wartość optymalna
 - kind – rodzaj ścieżki
+- dirname – kierunek zapisu
 
-## 7. Atrybuty Globalne
+## Atrybuty Globalne
 
-### Identyfikacja style:
+### Tożsamość style:
 
 - id – unikalny identyfikator
 - class – klasa stylów
 - style – style liniowe
 - data-\* – własne dane
 - nonce – kod bezpieczeństwa
+- role – rola elementu
 
-### Dostępność zachowanie:
+### Interakcja użytkownika:
 
 - tabindex – kolejność tabulacji
 - accesskey – skrót klawiaturowy
 - draggable – przeciąganie elementu
 - hidden – ukrycie elementu
 - inert – ignorowanie interakcji
-- popover – okno popover
-- role – rola ARIA
+- popover – okno wyskakujące
 
 ### Klawiatura wejście:
 
@@ -604,14 +725,28 @@
 - virtualkeyboardpolicy – polityka klawiatury
 - writingsuggestions – sugestie pisania
 
+### Dane strukturalne:
+
+- itemscope – zakres obiektu
+- itemtype – typ obiektu
+- itemprop – właściwość obiektu
+- itemid – identyfikator obiektu
+- itemref – referencja obiektu
+
 ### Techniczne inne:
 
 - dir – kierunek tekstu
 - is – rozszerzenie elementu
 - slot – gniazdo szablonu
-- part – część Shadow-DOM
-- exportparts – eksport Shadow-DOM
+- part – część cienia
+- exportparts – eksport części
 - anchor – powiązanie kotwicy
+- csp – zasady bezpieczeństwa
+- elementtiming – pomiar elementu
+- data – źródło danych
+- alpha – poziom przezroczystości
+- colorspace – przestrzeń kolorów
+- default – wartość domyślna
 
       `;
 
