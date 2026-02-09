@@ -290,10 +290,11 @@
 - <input> – pole wprowadzania
 - <textarea> – obszar tekstowy
 - <select> – lista wyboru
+- <selectedcontent> – wybrana treść
 - <optgroup> – grupa opcji
 - <option> – opcja wyboru
 - <datalist> – lista podpowiedzi
-- <selectedcontent> – wybrana treść
+- <output> – wynik działania
 
 ### Sterowanie treścią:
 
@@ -304,7 +305,6 @@
 - <summary> – podsumowanie szczegółów
 - <progress> – pasek postępu
 - <meter> – pomiar skalarny
-- <output> – wynik działania
 
 ## Przetwarzanie danych:
 
@@ -376,60 +376,60 @@
 - <bdi> – izolacja tekstu
 - <wbr> – łamanie linii
 
-## Konfiguracja i Metadane (<link>, <meta>)
+## Konfiguracja Metadanych
 
-### Atrybuty relacji (rel):
+### Powiązania zasobów:
 
-- rel="alternate stylesheet" – alternatywne style
-- rel="compression-dictionary" – słownik kompresji
-- rel="dns-prefetch" – prefetch DNS
-- rel="manifest" – manifest PWA
-- rel="me" – weryfikacja autora
-- rel="modulepreload" – preload modułów
-- rel="noopener" – bezpieczne linki
-- rel="noreferrer" – blokada źródeł
+- rel="preload" – priorytetowe pobieranie
+- rel="modulepreload" – ładowanie modułów
+- rel="prefetch" – wstępne pobieranie
 - rel="preconnect" – wczesne połączenie
-- rel="prefetch" – opcjonalne pobieranie
-- rel="preload" – krytyczne pobieranie
+- rel="dns-prefetch" – pobieranie DNS
+- rel="compression-dictionary" – słownik kompresji
+- rel="noopener" – bezpieczne linki
+- rel="noreferrer" – blokada źródła
+- rel="manifest" – manifest aplikacji
+- rel="alternate stylesheet" – style alternatywne
+- rel="me" – weryfikacja autora
 
-### Metadane strony (name):
+### Opisy treści:
 
-- name="application-name" – nazwa aplikacji
-- name="author" – autor treści
-- name="color-scheme" – schemat kolorów
-- name="description" – opis strony
-- name="generator" – użyty program
-- name="keywords" – słowa kluczowe
-- name="referrer" – kontrola źródła
-- name="theme-color" – kolor paska
 - name="viewport" – skalowanie ekranu
-- name="creator" – twórca treści
-- name="googlebot" – robot Google
-- name="publisher" – wydawca serwisu
 - name="robots" – roboty wyszukiwarek
+- name="googlebot" – robot Google
+- name="description" – opis strony
+- name="keywords" – słowa kluczowe
+- name="theme-color" – kolor paska
+- name="color-scheme" – schemat kolorów
+- name="author" – autor treści
+- name="creator" – twórca treści
+- name="publisher" – wydawca serwisu
+- name="application-name" – nazwa aplikacji
+- name="generator" – użyty program
+- name="referrer" – kontrola źródła
 
-### Nagłówki dokumentu (http-equiv):
+### Nagłówki dokumentu:
 
 - http-equiv="content-security-policy" – polityka bezpieczeństwa
 - http-equiv="content-type" – kodowanie znaków
-- http-equiv="default-style" – styl domyślny
 - http-equiv="refresh" – odświeżanie strony
+- http-equiv="default-style" – styl domyślny
 
-## Skrypty i Typowanie (type)
+## 2. Skrypty i Typowanie
 
 ### Zaawansowane skrypty:
 
 - type="importmap" – mapowanie modułów
 - type="module" – skrypt modułowy
-- type="speculationrules" – pre-renderowanie stron
+- type="speculationrules" – zasady prerenderingu
 
-### Typy pól wejściowych (input):
+### Pola input:
 
 - type="button" – przycisk ogólny
 - type="checkbox" – pole wyboru
 - type="color" – wybór koloru
 - type="date" – wybór daty
-- type="datetime-local" – data i czas
+- type="datetime-local" – data czas
 - type="email" – adres e-mail
 - type="file" – wybór pliku
 - type="hidden" – pole ukryte
@@ -448,9 +448,9 @@
 - type="url" – adres strony
 - type="week" – wybór tygodnia
 
-## Interakcja i Formularze
+## 3. Interakcja i Formularze
 
-### Przetwarzanie i Dane:
+### Dane wejściowe:
 
 - action – adres wysyłki
 - method – metoda HTTP
@@ -459,21 +459,21 @@
 - value – wartość domyślna
 - content – wartość metadanych
 
-### Walidacja i Ograniczenia:
+### Walidacja pól:
 
 - required – pole wymagane
 - readonly – tylko odczyt
 - disabled – pole nieaktywne
 - pattern – wzorzec pola
-- novalidate – wyłącz walidację
-- formnovalidate – brak walidacji
+- novalidate – brak walidacji
+- formnovalidate – pominięcie walidacji
 - maxlength – limit znaków
 - minlength – minimum znaków
 - max – wartość maksymalna
 - min – wartość minimalna
 - step – skok wartości
 
-### UI i Podpowiedzi:
+### Interfejs podpowiedzi:
 
 - placeholder – tekst zastępczy
 - autocomplete – autouzupełnianie pól
@@ -482,10 +482,10 @@
 - multiple – wiele wartości
 - checked – pole zaznaczone
 - capture – źródło mediów
-- accept – typy plików
-- accept-charset – kodowanie znaków
+- accept – akceptowane pliki
+- accept-charset – kodowanie formularza
 
-### Powiązania formularza:
+### Powiązania pól:
 
 - for – powiązanie etykiety
 - form – przypisanie formularza
@@ -494,9 +494,9 @@
 - formmethod – alternatywna metoda
 - formtarget – okno odpowiedzi
 
-## Media i Zasoby Zewnętrzne
+## 4. Media i Zasoby
 
-### Multimedia (Audio/Video/Img):
+### Obsługa mediów:
 
 - src – źródło pliku
 - srcset – zestawy obrazów
@@ -511,7 +511,7 @@
 - decoding – metoda dekodowania
 - cross-origin – zapytania CORS
 
-### Zasoby i Ładowanie:
+### Ładowanie zasobów:
 
 - href – adres zasobu
 - hreflang – język zasobu
@@ -525,9 +525,9 @@
 - ping – śledzenie kliknięć
 - referrerpolicy – polityka poleceń
 
-## Struktura, Tabele i Układ
+## 5. Struktura i Tabele
 
-### Tabele:
+### Tabele danych:
 
 - colspan – scalanie kolumn
 - rowspan – scalanie wierszy
@@ -535,7 +535,7 @@
 - scope – zakres nagłówka
 - span – zakres kolumn
 
-### Wymiary i Geometria:
+### Geometria wymiary:
 
 - width – szerokość elementu
 - height – wysokość elementu
@@ -544,7 +544,7 @@
 - ismap – mapa serwera
 - usemap – mapa klienta
 
-### Specjalne:
+### Funkcje specjalne:
 
 - sandbox – izolacja ramki
 - open – element otwarty
@@ -552,18 +552,18 @@
 - reversed – odwrócona kolejność
 - target – okno docelowe
 
-## Tekst i Semantyka
+## 6. Tekst i Semantyka
 
-### Opisy i Źródła:
+### Opisy źródła:
 
 - cite – źródło cytatu
-- datetime – data i czas
+- datetime – data czas
 - label – etykieta elementu
 - title – opis pomocniczy
 - lang – język elementu
 - translate – zgoda tłumaczenia
 
-### Formatowanie i Edycja:
+### Edycja formatowanie:
 
 - contenteditable – edycja treści
 - spellcheck – sprawdzanie pisowni
@@ -575,9 +575,9 @@
 - optimum – wartość optymalna
 - kind – rodzaj ścieżki
 
-## Atrybuty Globalne i Techniczne
+## 7. Atrybuty Globalne
 
-### Identyfikacja i Style:
+### Identyfikacja style:
 
 - id – unikalny identyfikator
 - class – klasa stylów
@@ -585,7 +585,7 @@
 - data-\* – własne dane
 - nonce – kod bezpieczeństwa
 
-### Zachowanie i Dostępność:
+### Dostępność zachowanie:
 
 - tabindex – kolejność tabulacji
 - accesskey – skrót klawiaturowy
@@ -595,7 +595,7 @@
 - popover – okno popover
 - role – rola ARIA
 
-### Klawiatura i Wejście:
+### Klawiatura wejście:
 
 - inputmode – tryb klawiatury
 - enterkeyhint – przycisk Enter
@@ -604,7 +604,7 @@
 - virtualkeyboardpolicy – polityka klawiatury
 - writingsuggestions – sugestie pisania
 
-### Inne:
+### Techniczne inne:
 
 - dir – kierunek tekstu
 - is – rozszerzenie elementu
@@ -616,30 +616,40 @@
       `;
 
 function enrichWithMdnLinks(text) {
-  // 1. Obsługa tagów HTML: <tag>
+  // 1. Obsługa tagów HTML: <tag> - MDN używa /Web/HTML/Element/
   text = text.replace(/<(!?[a-z1-6]+)>(\s*[–-]\s*)?/gi, (match, tag) => {
     const cleanTag = tag.startsWith('!') ? 'Doctype' : tag.toLowerCase();
     const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${cleanTag}`;
     return `<a href="${url}" target="_blank" class="mdn-link">&lt;${tag}&gt;</a> `;
   });
 
-  // 2. Obsługa atrybutów rel, name, http-equiv, type: rel="value"
-  // Linkuje bezpośrednio do dokumentacji konkretnej wartości atrybutu
+  // 2. Obsługa atrybutów rel, name, http-equiv, type
   text = text.replace(/(rel|name|http-equiv|type)="([^"]+)"(\s*[–-]\s*)?/gi, (match, attr, value) => {
     let url;
-    if (attr === 'rel') url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/${value}`;
-    else if (attr === 'name') url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/${value}`;
-    else if (attr === 'http-equiv') url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/http-equiv/${value}`;
-    else if (attr === 'type') url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/${value}`;
+    const cleanVal = value.toLowerCase();
+
+    // Merytorycznie: MDN przeniosło wiele atrybutów do sekcji /Reference/
+    if (attr === 'rel') {
+      url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/${cleanVal}`;
+      // Dla nowszych wartości jak compression-dictionary MDN czasem wymaga /Reference/Attributes/
+    } 
+    else if (attr === 'name') {
+      // Dla meta name="referrer" i innych
+      url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/${cleanVal}`;
+    } 
+    else if (attr === 'http-equiv') {
+      url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/http-equiv/${cleanVal}`;
+    } 
+    else if (attr === 'type') {
+      url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/${cleanVal}`;
+    }
     
     return `<a href="${url}" target="_blank" class="mdn-link"><strong>${attr}</strong>="${value}"</a> `;
   });
 
-  // 3. Obsługa atrybutów globalnych: słowo na początku linii (po myślniku z markdowna)
-  // Wyrażenie szuka tekstu po "- " który nie jest linkiem i kończy się myślnikiem/pauzą
+  // 3. Obsługa atrybutów globalnych: - attribute --
   text = text.replace(/^- ([a-z*]+)(\s*[–-]\s*)/gm, (match, attr) => {
-    // Specjalny przypadek dla data-*
-    const cleanAttr = attr.replace('*', '');
+    const cleanAttr = attr.replace('*', '').toLowerCase();
     const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/${cleanAttr}`;
     return `- <a href="${url}" target="_blank" class="mdn-link">${attr}</a> `;
   });
