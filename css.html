@@ -990,29 +990,14 @@ const preview = document.getElementById("preview");
       const searchInput = document.getElementById('tag-search');
       const toggleFilterBtn = document.getElementById('toggle-filter');
       let showOnlyNotLearned = false;
-
-      function enrichWithMdnLinks(text) {
-        // Tagi
-        text = text.replace(/<(!?[a-z1-6]+)>(\s*[–-]\s*)?/gi, (match, tag) => {
-          const cleanTag = tag.startsWith('!') ? 'Doctype' : tag.toLowerCase();
-          const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/${cleanTag}`;
-          return `<a href="${url}" target="_blank" class="mdn-link">&lt;${tag}&gt;</a> `;
-        });
-
-        // Atrybuty globalne i media (lista z myślnikiem)
-        text = text.replace(/^- ([a-z*]+)(\s*[–-]\s*)/gm, (match, attr) => {
-          const cleanAttr = attr.replace('*', '').toLowerCase();
-          const url = `https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/${cleanAttr}`;
-          if (rawContent.includes("Zarządzanie mediami") && !["id", "class", "style", "hidden"].includes(cleanAttr)) {
-             // Link do atrybutów specyficznych jeśli nie globalne
-             const specUrl = `https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/${cleanAttr}`;
-             return `- <a href="${specUrl}" target="_blank" class="mdn-link">${attr}</a> `;
-          }
-          return `- <a href="${url}" target="_blank" class="mdn-link">${attr}</a> `;
-        });
-
-        return text;
-      }
+function enrichWithMdnLinks(text) {
+  // Wyrażenie regularne dopasowujące linie zaczynające się od "- nazwa-wlasciwosci"
+  // Grupa 1: nazwa właściwości, Grupa 2: separator (myślnik), Grupa 3: opis
+  return text.replace(/^- ([\w-]+)(\s*[–-]\s*)(.*)/gm, (match, prop, separator, description) => {
+    const url = `https://developer.mozilla.org/en-US/docs/Web/CSS/${prop}`;
+    return `- <a href="${url}" target="_blank" class="mdn-link">${prop}</a> ${separator} ${description}`;
+  });
+}
 
       function updateStats() {
         const items = preview.querySelectorAll('li');
@@ -1022,8 +1007,7 @@ const preview = document.getElementById("preview");
         document.getElementById('stat-not-learned').innerText = `Do nauki: ${notLearned}`;
         
         const notLearnedTexts = Array.from(preview.querySelectorAll('li.not-learned')).map(li => li.innerText.trim());
-        localStorage.setItem('html_progress', JSON.stringify(notLearnedTexts));
-      }
+localStorage.setItem('css_progress', JSON.stringify(notLearnedTexts));      }
 
       function filterElements() {
         const query = searchInput.value.toLowerCase();
@@ -1057,8 +1041,7 @@ const preview = document.getElementById("preview");
         preview.innerHTML = marked.parse(enrichWithMdnLinks(rawContent));
         
         const items = preview.querySelectorAll("li");
-        const saved = JSON.parse(localStorage.getItem('html_progress') || "[]");
-
+const saved = JSON.parse(localStorage.getItem('css_progress') || "[]");
         items.forEach(item => {
           item.style.cursor = "pointer";
           if (saved.includes(item.innerText.trim())) item.classList.add("not-learned");
