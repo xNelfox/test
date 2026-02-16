@@ -227,16 +227,16 @@
 
     <script>
       const rawContent = `
-# Kompendium arkuszy CSS
+## Kompendium arkuszy CSS
 
-## Konfiguracja bazowa
+### Konfiguracja bazowa
 
 - @charset – kodowanie znaków
 - @import – import arkusza
 - @namespace – przestrzeń nazw
 - @layer – warstwa kaskadowości
 
-## Definicje zasobów
+### Definicje zasobów
 
 - @font-face – definicja fontu
 - @font-feature-display – wyświetlanie znaków
@@ -244,14 +244,14 @@
 - @color-profile – profil kolorystyczny
 - @counter-style – styl licznika
 
-## Logika programowania
+### Logika programowania
 
 - @property – własność niestandardowa
 - @function – funkcja użytkownika
 - @keyframes – klatki animacji
 - @custom-media – własne media
 
-## Adaptacja zasięgu
+### Adaptacja zasięgu
 
 - @media – zapytanie mediów
 - @supports – test wsparcia
@@ -260,19 +260,19 @@
 - @starting-style – styl początkowy
 - @view-transition – przejście widoku
 
-## Układ pozycjonowania
+### Układ pozycjonowania
 
 - @page – ustawienia druku
 - @position-try – próba pozycjonowania
-# Rozszerzenia selektorów CSS
+## Rozszerzenia selektorów CSS
 
-## Generowanie treści
+### Generowanie treści
 
 - ::before – treść przed
 - ::after – treść po
 - ::marker – znacznik listy
 
-## Formularze interakcji
+### Formularze interakcji
 
 - ::placeholder – tekst zastępczy
 - ::file-selector-button – przycisk pliku
@@ -280,7 +280,7 @@
 - ::picker() – obszar wyboru
 - ::checkmark – ikona zaznaczenia
 
-## Typografia tekstu
+### Typografia tekstu
 
 - ::first-letter – pierwsza litera
 - ::first-line – pierwsza linia
@@ -290,7 +290,7 @@
 - ::grammar-error – błąd gramatyczny
 - ::highlight – podświetlenie tekstu
 
-## Komponenty izolowane
+### Komponenty izolowane
 
 - ::backdrop – tło warstwy
 - ::details-content – treść szczegółów
@@ -299,23 +299,23 @@
 - ::cue – napisy multimedialne
 - ::cue() – styl napisów
 
-## Mechanizmy przewijania
+### Mechanizmy przewijania
 
 - ::column – kolumna układu
 - ::scroll-button() – przycisk przewijania
 - ::scroll-marker – znacznik przewijania
 - ::scroll-marker-group – grupa znaczników
 
-## Animacje przejść
+### Animacje przejść
 
 - ::view-transition – przejście widoku
 - ::view-transition-group() – grupa przejścia
 - ::view-transition-image-pair() – para obrazów
 - ::view-transition-old() – stary widok
 - ::view-transition-new() – nowy widok
-# Dynamika elementów CSS
+## Dynamika elementów CSS
 
-## Stany użytkownika
+### Stany użytkownika
 
 - :hover – najechanie kursorem
 - :active – kliknięcie elementu
@@ -329,7 +329,7 @@
 - :local-link – link lokalny
 - :link – nieodwiedzony link
 
-## Formularze walidacja
+### Formularze walidacja
 
 - :enabled – pole aktywne
 - :disabled – pole zablokowane
@@ -350,7 +350,7 @@
 - :autofill – autouzupełnianie pola
 - :blank – puste pole
 
-## Struktura drzewa
+### Struktura drzewa
 
 - :root – korzeń dokumentu
 - :empty – brak treści
@@ -365,7 +365,7 @@
 - :nth-of-type() – typ numerowany
 - :nth-last-of-type() – typ odliczany
 
-## Logika selektorów
+### Logika selektorów
 
 - :is() – dopasowanie elementów
 - :where() – dopasowanie bezspecyficzne
@@ -374,9 +374,9 @@
 - :scope – zasięg lokalny
 - :defined – zdefiniowany element
 
-# Interfejsy multimedialne CSS
+## Interfejsy multimedialne CSS
 
-## Odtwarzanie mediów
+### Odtwarzanie mediów
 
 - :playing – trwa odtwarzanie
 - :paused – wstrzymane odtwarzanie
@@ -386,7 +386,7 @@
 - :volume-locked – blokada głośności
 - :stalled – zatrzymanie przesyłu
 
-## Wyświetlanie okna
+### Wyświetlanie okna
 
 - :fullscreen – tryb pełnoekranowy
 - :modal – okno modalne
@@ -394,7 +394,7 @@
 - :open – element otwarty
 - :picture-in-picture – obraz w obrazie
 
-## Przejścia czasowe
+### Przejścia czasowe
 
 - :active-view-transition – aktywne przejście
 - :active-view-transition-type() – typ przejścia
@@ -402,27 +402,27 @@
 - :past – element przeszły
 - :future – element przyszły
 
-## Kontekst treści
+### Kontekst treści
 
 - :lang() – język dokumentu
 - :dir() – kierunek tekstu
 - :heading – nagłówek treści
 
-## Architektura komponentu
+### Architektura komponentu
 
 - :host – host komponentu
 - :host() – funkcja hosta
 - :host-context() – kontekst hosta
 - :has-slotted – posiada slot
 
-## Ustawienia druku
+### Ustawienia druku
 
 - :left – strona lewa
 - :right – strona prawa
 - :first – strona pierwsza
-# Składnia powiązań CSS
+## Składnia powiązań CSS
 
-## Relacje elementów
+### Relacje elementów
 
 - > – dziecko bezpośrednie
 - + – sąsiad bezpośredni
@@ -430,7 +430,7 @@
 - " " – dowolny potomek
 - || – kolumna tabeli
 
-## Identyfikatory grup
+### Identyfikatory grup
 
 - .class – selektor klasy
 - #id – identyfikator unikalny
@@ -439,7 +439,7 @@
 - & – zagnieżdżenie rodzica
 - | – separator przestrzeni
 
-## Dopasowanie atrybutów
+### Dopasowanie atrybutów
 
 - [attr] – posiadanie atrybutu
 - [attr=value] – wartość dokładna
@@ -451,15 +451,15 @@
 - [attr operator value i] – ignorowanie wielkości
 - [attr operator value s] – rozróżnianie wielkości
 
-## Kontrola czasu
+### Kontrola czasu
 
 - from to – ramy czasowe
 - 0% 50% 100% – postęp animacji
 - entry 20% exit 80% – zakres przewijania
 - 0% 50% 100% from to – klatki kluczowe
-# Funkcje systemowe CSS
+## Funkcje systemowe CSS
 
-## Obliczenia logiczne
+### Obliczenia logiczne
 
 - abs() – wartość bezwzględna
 - calc() – obliczenie matematyczne
@@ -473,7 +473,7 @@
 - sign() – znak liczby
 - if() – warunek logiczny
 
-## Matematyka wyższa
+### Matematyka wyższa
 
 - acos() – arkus cosinus
 - asin() – arkus sinus
@@ -487,7 +487,7 @@
 - sqrt() – pierwiastek kwadratowy
 - hypot() – długość przeciwprostokątnej
 
-## Zarządzanie danymi
+### Zarządzanie danymi
 
 - attr() – pobranie atrybutu
 - var() – zmienna użytkownika
@@ -497,7 +497,7 @@
 - sibling-count() – liczba rodzeństwa
 - sibling-index() – indeks elementu
 
-## Definicje barw
+### Definicje barw
 
 - rgb() – model barw
 - hsl() – model odcienia
@@ -513,7 +513,7 @@
 - light-dark() – tryb jasny-ciemny
 - pallete-mix() – mieszanie palet
 
-## Grafika obrazu
+### Grafika obrazu
 
 - linear-gradient() – gradient liniowy
 - radial-gradient() – gradient promieniowy
@@ -526,9 +526,9 @@
 - url() – adres zasobu
 - paint() – skrypt rysowania
 - element() – renderowanie elementu
-- cross-fade() – przenikanie obrazów# Geometria i efekty CSS
+- cross-fade() – przenikanie obrazów## Geometria i efekty CSS
 
-## Filtry wizualne
+### Filtry wizualne
 
 - blur() – rozmycie obrazu
 - brightness() – jasność obrazu
@@ -541,7 +541,7 @@
 - saturate() – nasycenie barw
 - sepia() – efekt sepii
 
-## Kształty masek
+### Kształty masek
 
 - circle() – kształt koła
 - ellipse() – kształt elipsy
@@ -553,7 +553,7 @@
 - superrellipse() – super elipsa
 - xywh() – prostokąt współrzędnych
 
-## Przekształcenia obiektów
+### Przekształcenia obiektów
 
 - matrix() – macierz transformacji
 - matrix3d() – macierz przestrzenna
@@ -577,7 +577,7 @@
 - translateY() – przesunięcie pionowe
 - translateZ() – przesunięcie głębi
 
-## Pozycjonowanie siatki
+### Pozycjonowanie siatki
 
 - anchor() – punkt kotwiczenia
 - anchor-size() – rozmiar zakotwiczenia
@@ -586,7 +586,7 @@
 - repeat() – powtórzenie siatki
 - ray() – promień pozycjonowania
 
-## Dynamika czasu
+### Dynamika czasu
 
 - cubic-bezier() – krzywa przejścia
 - linear() – ruch jednostajny
@@ -595,9 +595,9 @@
 - view() – obszar widoczności
 - progress() – postęp operacji
 
-# Kompendium właściwości CSS
+## Kompendium właściwości CSS
 
-## Układ i geometria
+### Układ i geometria
 
 - width – szerokość elementu
 - min-width – minimalna szerokość elementu
@@ -624,7 +624,7 @@
 - container-type – typ kontenera
 - resize – kontrola zmiany rozmiaru przez użytkownika
 
-## Marginesy wewnętrzne (Padding)
+### Marginesy wewnętrzne (Padding)
 
 - padding – marginesy wewnętrzne elementu
 - padding-top – margines wewnętrzny górny
@@ -638,7 +638,7 @@
 - padding-inline-start – margines wewnętrzny liniowy-start
 - padding-inline-end – margines wewnętrzny liniowy-koniec
 
-## Pozycjonowanie i współrzędne
+### Pozycjonowanie i współrzędne
 
 - position – tryb pozycjonowania elementu
 - z-index – kolejność nakładania warstw
@@ -660,7 +660,7 @@
 - anchor-name – nazwa zakotwiczenia
 - anchor-scope – zasięg kotwicy
 
-## Flexbox i Grid
+### Flexbox i Grid
 
 - align-content – wyrównanie zawartości
 - align-items – wyrównanie elementów
@@ -680,7 +680,7 @@
 - box-orient – orientacja zawartości bloku
 - box-pack – pakowanie zawartości bloku
 
-## Tło i dekoracje
+### Tło i dekoracje
 
 - background – tło elementu
 - background-attachment – przywiązanie tła
@@ -701,7 +701,7 @@
 - opacity – stopień przezroczystości
 - visibility – widoczność elementu
 
-## Obramowanie (Border)
+### Obramowanie (Border)
 
 - border – obramowanie elementu
 - border-width – szerokość obramowania
@@ -717,7 +717,7 @@
 - border-image-source – źródło obrazu obramowania
 - border-image-width – szerokość obrazu obramowania
 
-### Obramowania kierunkowe (Fizyczne)
+#### Obramowania kierunkowe (Fizyczne)
 - border-top – obramowanie górne
 - border-top-width – szerokość górnego obramowania
 - border-top-style – styl górnego obramowania
@@ -739,7 +739,7 @@
 - border-right-style – styl prawego obramowania
 - border-right-color – kolor prawego obramowania
 
-### Obramowania logiczne
+#### Obramowania logiczne
 - border-block – obramowanie blokowe
 - border-block-width – szerokość blokowa
 - border-block-style – styl blokowy
@@ -769,7 +769,7 @@
 - border-end-start-radius – promień narożnika-startu
 - border-end-end-radius – promień narożnika-końca
 
-## Obrys (Outline) i Kształty
+### Obrys (Outline) i Kształty
 
 - outline – obrys zewnętrzny elementu
 - outline-width – szerokość obrysu zewnętrznego
@@ -794,7 +794,7 @@
 - corner-end-start-shape – kształt narożnika koniec-start
 - corner-end-end-shape – kształt narożnika koniec-koniec
 
-## Typografia i Tekst
+### Typografia i Tekst
 
 - color – kolor tekstu
 - text-align – wyrównanie tekstu
@@ -850,7 +850,7 @@
 - alignment-baseline – linia bazowa
 - vertical-align – wyrównanie pionowe
 
-## Animacje i Transformacje
+### Animacje i Transformacje
 
 - animation – animacja elementu
 - animation-name – nazwa klatek
@@ -891,7 +891,7 @@
 - view-transition-class – klasa przejścia widoku
 - will-change – informacja o planowanych zmianach elementu
 
-## Przewijanie (Scroll)
+### Przewijanie (Scroll)
 
 - overflow – obsługa przepełnienia treści
 - overflow-x – przepełnienie poziome
@@ -941,7 +941,7 @@
 - scroll-marker-group – grupa znaczników przewijania
 - scroll-target-group – grupa docelowa przewijania
 
-## Maskowanie i Przycinanie
+### Maskowanie i Przycinanie
 
 - mask – kompletne maskowanie elementu
 - mask-image – obraz maskujący element
@@ -961,7 +961,7 @@
 - clip-path – ścieżka przycinania
 - clip-rule – reguła wypełnienia przycinania
 
-## Kolumny i Tabele
+### Kolumny i Tabele
 
 - columns – kolumny tekstu
 - column-count – liczba kolumn
@@ -975,7 +975,7 @@
 - table-layout – algorytm układu tabeli
 - caption-side – położenie tytułu tabeli
 
-## Interfejs i System
+### Interfejs i System
 
 - appearance – wygląd systemowy
 - accent-color – kolor akcentu
@@ -989,7 +989,7 @@
 - content – treść generowana
 - all – resetowanie właściwości
 
-## Druk i Podziały
+### Druk i Podziały
 
 - page – przypisanie do konkretnej strony druku
 - page-break-before – wymuszenie strony przed elementem
@@ -1002,7 +1002,7 @@
 - widows – minimalna liczba linii na górze strony
 - print-color-adjust – kontrola kolorów w druku
 
-## SVG i Grafika Wektorowa
+### SVG i Grafika Wektorowa
 
 - stroke – kolor obrysu (SVG)
 - stroke-width – szerokość obrysu (SVG)
@@ -1029,7 +1029,7 @@
 - rx – promień zaokrąglenia X (SVG)
 - ry – promień zaokrąglenia Y (SVG)
 
-## Inne
+### Inne
 
 - object-fit – dopasowanie zawartości obiektowej
 - object-position – pozycja zawartości obiektowej
