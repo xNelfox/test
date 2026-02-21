@@ -226,8 +226,7 @@
       </div>
 
     <script>
-      const rawContent = `
-## Geometria wymiarów
+      const rawContent = `## Geometria wymiarów
 
 ### Rozmiary bazowe:
 
@@ -1293,24 +1292,24 @@
 - max-content – rozmiar maksymalny
 - min-content – rozmiar minimalny
 
-## Funkcje systemowe
+## Funkcje matematyczne
 
-### Obliczenia logiczne:
+### Obliczenia podstawowe:
 
 - abs() – wartość bezwzględna
-- calc() – obliczenie matematyczne
+- calc() – operacja matematyczna
 - calc-size() – rozmiar obliczony
-- clamp() – zakres wartości
+- clamp() – ogranicznik zakresu
 - max() – wartość maksymalna
 - min() – wartość minimalna
 - pow() – potęgowanie liczby
-- mod() – reszta cykliczna
+- mod() – reszta modulo
 - rem() – reszta arytmetyczna
 - round() – zaokrąglenie liczby
-- sign() – znak liczby
+- sign() – zwrot liczby
 - if() – warunek logiczny
 
-### Matematyka wyższa:
+### Funkcje trygonometryczne:
 
 - acos() – arkus cosinus
 - asin() – arkus sinus
@@ -1319,42 +1318,60 @@
 - cos() – cosinus kąta
 - sin() – sinus kąta
 - tan() – tangens kąta
+
+### Analiza numeryczna:
+
 - exp() – funkcja wykładnicza
 - log() – logarytm naturalny
 - sqrt() – pierwiastek kwadratowy
-- hypot() – długość przeciwprostokątnej
+- hypot() – długość wektora
 
-### Zarządzanie danymi:
+## Funkcje danych
 
-- attr() – pobranie atrybutu
-- type() – typ danych
+### Zmienne systemowe:
+
+- attr() – odczyt atrybutu
+- type() – definicja typu
 - var() – zmienna użytkownika
 - env() – zmienna środowiskowa
+- layer() – przypisanie warstwy
+
+### Liczniki elementów:
+
 - counter() – wartość licznika
 - counters() – liczniki zagnieżdżone
 - symbols() – symbole licznika
-- sibling-count() – liczba rodzeństwa
-- sibling-index() – indeks elementu
-- layer() – przypisanie warstwy
+- sibling-count() – liczba sąsiedztwa
+- sibling-index() – indeks sąsiedztwa
 
-### Definicje barw:
+## Funkcje barwne
 
-- rgb() – model barw
-- hsl() – model odcienia
-- hwb() – model jasności
+### Modele podstawowe:
+
+- rgb() – składowe barwne
+- hsl() – parametry odcienia
+- hwb() – parametry jasności
+- color() – profil kolorystyczny
+- device-cmyk() – model drukarski
+
+### Korekcja percepcji:
+
 - lab() – przestrzeń barwna
 - lch() – model oświetlenia
 - oklab() – korekcja barwna
-- oklch() – percepcja kolorów
-- color() – profil koloru
-- device-cmyk() – model drukarski
+- oklch() – percepcja koloru
+
+### Mieszanie odcieni:
+
 - color-mix() – mieszanie barw
-- contrast-color() – kolor kontrastowy
-- light-dark() – tryb oświetlenia
-- dynamic-range-limit-mix() – mieszanie dynamiki
+- contrast-color() – dobór kontrastu
+- light-dark() – adaptacja oświetlenia
+- dynamic-range-limit-mix() – limit dynamiki
 - pallete-mix() – mieszanie palet
 
-### Grafika obrazu:
+## Funkcje obrazu
+
+### Gradienty barwne:
 
 - linear-gradient() – gradient liniowy
 - radial-gradient() – gradient promieniowy
@@ -1362,81 +1379,97 @@
 - repeating-linear-gradient() – powtórzenie liniowe
 - repeating-radial-gradient() – powtórzenie promieniowe
 - repeating-conic-gradient() – powtórzenie stożkowe
-- image() – zasób obrazu
-- image-set() – zestaw obrazów
-- url() – adres zasobu
+
+### Zasoby graficzne:
+
+- image() – źródło obrazu
+- image-set() – zestaw rozdzielczości
+- url() – lokalizacja zasobu
 - paint() – skrypt rysowania
 - element() – renderowanie elementu
 - cross-fade() – przenikanie obrazów
 
-### Filtry wizualne:
+## Funkcje wizualne
 
-- blur() – rozmycie obrazu
-- brightness() – jasność obrazu
-- contrast() – kontrast obrazu
-- drop-shadow() – cień elementu
+### Filtry rastrowe:
+
+- blur() – rozmycie gaussowskie
+- brightness() – poziom jasności
+- contrast() – poziom kontrastu
+- drop-shadow() – cień rzutowany
 - grayscale() – skala szarości
-- hue-rotate() – obrót barwy
-- invert() – odwrócenie kolorów
+- hue-rotate() – rotacja barwy
+- invert() – inwersja kolorów
 - opacity() – stopień przezroczystości
 - saturate() – nasycenie barw
 - sepia() – efekt sepii
 
-### Kształty masek:
+### Geometria masek:
 
-- circle() – kształt koła
-- ellipse() – kształt elipsy
-- inset() – prostokąt wewnętrzny
+- circle() – maska kołowa
+- ellipse() – maska eliptyczna
+- inset() – margines wewnętrzny
 - path() – ścieżka wektorowa
-- polygon() – wielokąt dowolny
+- polygon() – obrys wielokątny
 - rect() – obszar prostokątny
 - shape() – kształt swobodny
-- superellipse() – super elipsa
-- xywh() – prostokąt współrzędnych
+- superellipse() – kontur superelipsy
+- xywh() – prostokąt geometryczny
 
-## Funkcje transformacji
+## Funkcje przekształcenia
 
-### Geometria obiektów:
+### Transformacje płaskie:
 
-- matrix() – macierz dwuwymiarowa
-- matrix3d() – macierz przestrzenna
-- perspective() – głębia widoku
-- rotate() – obrót płaski
+- rotate() – obrót płaszczyzny
+- scale() – skalowanie dwuosiowe
+- scaleX() – skalowanie poziome
+- scaleY() – skalowanie pionowe
+- skew() – pochylenie złożone
+- skewX() – pochylenie poziome
+- skewY() – pochylenie pionowe
+- translate() – przesunięcie dwuosiowe
+- translateX() – przesunięcie poziome
+- translateY() – przesunięcie pionowe
+
+### Transformacje przestrzenne:
+
+- perspective() – głębia rzutu
 - rotate3d() – obrót trójwymiarowy
 - rotateX() – obrót poziomy
 - rotateY() – obrót pionowy
 - rotateZ() – obrót osiowy
-- scale() – skalowanie ogólne
 - scale3d() – skalowanie objętościowe
-- scaleX() – skalowanie szerokości
-- scaleY() – skalowanie wysokości
 - scaleZ() – skalowanie głębi
-- skew() – pochylenie dwuosiowe
-- skewX() – pochylenie poziome
-- skewY() – pochylenie pionowe
-- translate() – przesunięcie dwuosiowe
 - translate3d() – przesunięcie przestrzenne
-- translateX() – przesunięcie poziome
-- translateY() – przesunięcie pionowe
 - translateZ() – przesunięcie głębokości
 
-### Rozkład siatki:
+### Struktury macierzowe:
 
-- anchor() – punkt zakotwiczenia
-- anchor-size() – wymiar kotwicy
-- fit-content() – dopasowanie zawartości
-- minmax() – zakres wymiarowy
-- repeat() – powielanie elementów
+- matrix() – macierz transformacji
+- matrix3d() – macierz przestrzenna
 - ray() – ścieżka promienia
 
-### Przebieg animacji:
+## Funkcje układu
 
-- cubic-bezier() – krzywa prędkości
+### Wymiarowanie kontenerów:
+
+- fit-content() – dopasowanie zawartości
+- minmax() – zakres wymiarowy
+- repeat() – powielanie cykliczne
+
+### Kotwiczenie elementów:
+
+- anchor() – punkt odniesienia
+- anchor-size() – wymiar odniesienia
+
+### Dynamika ruchu:
+
+- cubic-bezier() – krzywa interpolacji
 - linear() – tempo jednostajne
-- steps() – zmiana skokowa
-- scroll() – zależność przewijania
-- view() – detekcja widoczności
-- progress() – stan zaawansowania
+- steps() – przejście skokowe
+- scroll() – postęp przewijania
+- view() – zasięg widoczności
+- progress() – wartość postępu
 
       `;
 const preview = document.getElementById("preview");
