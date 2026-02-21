@@ -241,21 +241,21 @@
 - <style> – arkusz stylów
 - <body> – treść dokumentu
 
-### Układ strony:
+### Podział strony:
 
 - <header> – nagłówek sekcji
 - <nav> – menu nawigacyjne
 - <search> – sekcja wyszukiwania
 - <main> – treść główna
+- <article> – wpis samodzielny
 - <section> – sekcja tematyczna
-- <article> – samodzielny wpis
 - <hgroup> – grupa nagłówków
 - <aside> – treść boczna
 - <address> – dane kontaktowe
 - <footer> – stopka sekcji
 - <div> – blok ogólny
 
-### Bloki treści:
+### Bloki tekstowe:
 
 - <h1> – nagłówek pierwszy
 - <h2> – nagłówek drugi
@@ -263,7 +263,7 @@
 - <h4> – nagłówek czwarty
 - <h5> – nagłówek piąty
 - <h6> – nagłówek szósty
-- <p> – blok tekstu
+- <p> – akapit tekstu
 - <span> – kontener liniowy
 - <a> – odnośnik zewnętrzny
 
@@ -284,7 +284,7 @@
 
 ### Tabele danych:
 
-- <table> – struktura tabeli
+- <table> – kontener tabeli
 - <caption> – tytuł tabeli
 - <colgroup> – grupa kolumn
 - <col> – definicja kolumny
@@ -306,7 +306,7 @@
 - <embed> – zasób zewnętrzny
 - <object> – obiekt zewnętrzny
 
-### Grafika wizualna:
+### Elementy graficzne:
 
 - <img> – obraz rastrowy
 - <picture> – kontener obrazu
@@ -321,17 +321,17 @@
 
 ### Struktura formularza:
 
-- <form> – formularz danych
+- <form> – kontener formularza
 - <fieldset> – grupa pól
 - <legend> – tytuł grupy
 - <label> – etykieta pola
 
-### Pola danych:
+### Elementy wejściowe:
 
 - <input> – pole wprowadzania
 - <textarea> – obszar tekstowy
 - <select> – lista wyboru
-- <selectedcontent> – wybrana treść
+- <selectedcontent> – treść wybrana
 - <optgroup> – grupa opcji
 - <option> – opcja wyboru
 - <datalist> – lista podpowiedzi
@@ -342,8 +342,8 @@
 - <button> – przycisk akcji
 - <dialog> – okno dialogowe
 - <geolocation> – lokalizacja użytkownika
-- <details> – szczegóły treści
-- <summary> – podsumowanie szczegółów
+- <details> – sekcja rozwijana
+- <summary> – tytuł sekcji
 - <progress> – pasek postępu
 - <meter> – pomiar skalarny
 
@@ -377,7 +377,7 @@
 - <blockquote> – cytat blokowy
 - <q> – cytat liniowy
 - <cite> – źródło cytatu
-- <abbr> – skrót nazwy
+- <abbr> – skrót wyrazu
 - <dfn> – definicja terminu
 
 ### Dane informacyjne:
@@ -393,7 +393,7 @@
 
 ## Formatowanie treści
 
-### Stylistyka znaków:
+### Stylistyka tekstu:
 
 - <b> – pogrubienie tekstu
 - <i> – pochylenie tekstu
@@ -409,26 +409,26 @@
 - <mark> – zaznaczenie tekstu
 - <small> – pomniejszenie tekstu
 
-### Orientacja linii:
+### Ciągłość tekstu:
 
 - <sub> – indeks dolny
 - <sup> – indeks górny
 - <bdo> – kierunek tekstu
 - <bdi> – izolacja tekstu
-- <wbr> – łamanie linii
+- <wbr> – potencjalne łamanie
 - <br> – przełamanie linii
-- <hr> – linia pozioma
+- <hr> – separator tematyczny
 
 ## Atrybuty globalne
 
-### Tożsamość wizualna:
+### Tożsamość elementu:
 
-- id – unikalny identyfikator
+- id – identyfikator unikalny
 - class – klasa stylów
 - style – style liniowe
-- data-\* – własne dane
-- aria-\* – dostępność elementu
-- role – rola elementu
+- data-* – dane własne
+- aria-* – dostępność elementu
+- role – funkcja elementu
 - title – opis pomocniczy
 
 ### Kontrola interakcji:
@@ -437,8 +437,8 @@
 - accesskey – skrót klawiaturowy
 - draggable – przeciąganie elementu
 - hidden – ukrycie elementu
-- inert – ignorowanie interakcji
-- popover – okno wyskakujące
+- inert – blokada interakcji
+- popover – element wyskakujący
 - contenteditable – edycja treści
 - spellcheck – sprawdzanie pisowni
 
@@ -447,7 +447,7 @@
 - lang – język elementu
 - dir – kierunek tekstu
 - translate – zgoda tłumaczenia
-- autocapitalize – automatyczne wielkie
+- autocapitalize – wielkie litery
 - nonce – kod bezpieczeństwa
 
 ### Dane strukturalne:
@@ -463,7 +463,7 @@
 ### Definicje zasobów:
 
 - type – typ elementu
-- rel – powiązania zasobów
+- rel – relacja zasobu
 - http-equiv – nagłówki dokumentu
 - charset – kodowanie znaków
 - content – treść metadanych
@@ -476,7 +476,7 @@
 - exportparts – eksport części
 - anchor – powiązanie kotwicy
 - csp – zasady bezpieczeństwa
-- elementtiming – pomiar elementu
+- elementtiming – pomiar wydajności
 
 ### Właściwości renderowania:
 
@@ -485,7 +485,7 @@
 - colorspace – przestrzeń kolorów
 - default – wartość domyślna
 
-## Układ Elementów
+## Układ elementów
 
 ### Struktura komórek:
 
@@ -495,20 +495,20 @@
 - scope – zakres nagłówka
 - span – zasięg kolumn
 
-### Wymiary mapy:
+### Struktura mapy:
 
 - coords – współrzędne mapy
 - shape – kształt obszaru
-- ismap – mapa serwera
-- usemap – mapa klienta
+- ismap – mapa serwerowa
+- usemap – mapa kliencka
 
 ### Kontrola ramek:
 
 - sandbox – izolacja ramki
-- srcdoc – treść dokumentu
 - allow – uprawnienia ramki
+- srcdoc – kod strony
 - target – okno docelowe
-- open – element otwarty
+- open – stan otwarcia
 
 ## Zarządzanie mediami
 
@@ -530,7 +530,7 @@
 - muted – wyciszenie dźwięku
 - playsinline – odtwarzanie lokalne
 - decoding – metoda dekodowania
-- media – warunki mediów
+- media – warunki medialne
 - srclang – język napisów
 
 ### Logika połączeń:
@@ -538,9 +538,9 @@
 - href – adres zasobu
 - hreflang – język zasobu
 - as – typ ładowania
-- async – skrypt asynchroniczny
-- defer – skrypt opóźniony
-- loading – tryb ładowania
+- async – ładowanie asynchroniczne
+- defer – ładowanie opóźnione
+- loading – strategia ładowania
 - fetchpriority – priorytet ładowania
 - integrity – weryfikacja pliku
 - download – wymuszenie pobierania
@@ -557,13 +557,13 @@
 - name – nazwa pola
 - value – wartość domyślna
 
-### Walidacja wpisów:
+### Walidacja pól:
 
 - required – pole wymagane
 - readonly – tylko odczyt
 - disabled – pole nieaktywne
 - pattern – wzorzec pola
-- novalidate – brak walidacji
+- novalidate – wyłączenie walidacji
 - formnovalidate – pominięcie walidacji
 - maxlength – limit znaków
 - minlength – minimum znaków
@@ -571,15 +571,15 @@
 - min – wartość minimalna
 - step – skok wartości
 
-### Wybór opcji:
+### Obsługa pól:
 
 - placeholder – tekst zastępczy
 - autocomplete – autouzupełnianie pól
-- autofocus – automatyczne skupienie
-- list – lista podpowiedzi
-- multiple – wiele wartości
+- autofocus – skupienie automatyczne
+- list – powiązanie podpowiedzi
+- multiple – wybór wielokrotny
 - checked – pole zaznaczone
-- selected – element wybrany
+- selected – pole wybrane
 - size – rozmiar wizualny
 
 ### Metody wejścia:
@@ -588,8 +588,8 @@
 - accept – akceptowane pliki
 - accept-charset – kodowanie formularza
 - inputmode – tryb klawiatury
-- enterkeyhint – przycisk Enter
-- autocorrect – automatyczna korekta
+- enterkeyhint – klawisz zatwierdzenia
+- autocorrect – korekta automatyczna
 - virtualkeyboardpolicy – polityka klawiatury
 - writingsuggestions – sugestie pisania
 
@@ -600,28 +600,29 @@
 - formaction – alternatywny adres
 - formenctype – alternatywne kodowanie
 - formmethod – alternatywna metoda
-- formtarget – okno odpowiedzi
+- formtarget – alternatywne okno
 
-## Semantyka tekstu
+## Dane elementu
 
 ### Znaczenie treści:
 
 - cite – źródło cytatu
-- datetime – znacznik czasu
+- datetime – format daty
 - label – etykieta elementu
 - kind – rodzaj ścieżki
 - dirname – kierunek zapisu
 
 ### Parametry edycji:
 
-- wrap – zawijanie tekstu
+- wrap – zawijanie wierszy
 - cols – liczba kolumn
 - rows – liczba wierszy
 - high – próg wysoki
 - low – próg niski
-- optimum – wartość optymalna
-- start – numer startowy
-- reversed – kolejność odwrotna
+- optimum – próg optymalny
+- start – wartość początkowa
+- reversed – kolejność odwrócona
+
 
       `;
 const preview = document.getElementById("preview");
