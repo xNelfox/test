@@ -228,7 +228,12 @@
     <script>
       const rawContent = `## Geometria wymiarów
 
-### Rozmiary bazowe:
+### Definicja struktury
+
+- display – model renderowania
+- box-sizing – obliczanie rozmiaru
+
+### Rozmiary bazowe
 
 - width – szerokość obiektu
 - min-width – szerokość minimalna
@@ -238,7 +243,7 @@
 - max-height – wysokość maksymalna
 - aspect-ratio – proporcje wymiarów
 
-### Logika blokowa:
+### Logika blokowa
 
 - block-size – rozmiar blokowy
 - min-block-size – minimum blokowe
@@ -247,1037 +252,1042 @@
 - min-inline-size – minimum liniowe
 - max-inline-size – maksimum liniowe
 
-### Izolacja treści:
+### Ograniczenia renderowania
 
-- display – model renderowania
-- box-sizing – obliczanie rozmiaru
 - contain – izolacja renderowania
 - contain-intrinsic-size – rozmiar naturalny
 - contain-intrinsic-width – szerokość naturalna
 - contain-intrinsic-height – wysokość naturalna
 - contain-intrinsic-block-size – blok naturalny
 - contain-intrinsic-inline-size – linia naturalna
+
+### Dopasowanie zawartości
+
+- object-fit – skalowanie treści
+- object-position – ułożenie treści
+- object-view-box – okno widoku
+- zoom – powiększenie wizualne
+- overlay – warstwa wierzchnia
 - container – zapytanie kontenerowe
 - container-name – identyfikator kontenera
 - container-type – tryb kontenera
-- resize – skalowanie interaktywne
 
 ## Odstępy wewnętrzne
 
-### Dopełnienia bazowe:
+### Dopełnienia bazowe
 
-- padding – dopełnienie zbiorcze
-- padding-top – dopełnienie górne
-- padding-right – dopełnienie prawe
-- padding-bottom – dopełnienie dolne
-- padding-left – dopełnienie lewe
+- padding-top - dopełnienie górne
+- padding-right - dopełnienie prawe
+- padding-bottom - dopełnienie dolne
+- padding-left - dopełnienie lewe
+- padding - dopełnienie zbiorcze
 
-### Logika dopełnień:
+### Logika dopełnień
 
-- padding-block – dopełnienie pionowe
-- padding-block-start – początek blokowy
-- padding-block-end – koniec blokowy
-- padding-inline – dopełnienie poziome
-- padding-inline-start – początek liniowy
-- padding-inline-end – koniec liniowy
+- padding-block-start - początek blokowy
+- padding-block-end - koniec blokowy
+- padding-block - dopełnienie pionowe
+- padding-inline-start - początek liniowy
+- padding-inline-end - koniec liniowy
+- padding-inline - dopełnienie poziome
 
 ## Odstępy zewnętrzne
 
-### Marginesy bazowe:
+### Marginesy bazowe
 
-- margin – margines zbiorczy
-- margin-top – margines górny
-- margin-right – margines prawy
-- margin-bottom – margines dolny
-- margin-left – margines lewy
-- margin-trim – redukcja marginesu
+- margin-top - margines górny
+- margin-right - margines prawy
+- margin-bottom - margines dolny
+- margin-left - margines lewy
+- margin-trim - redukcja marginesu
+- margin - margines zbiorczy
 
-### Logika marginesów:
+### Logika marginesów
 
-- margin-block – margines pionowy
-- margin-block-start – start blokowy
-- margin-block-end – koniec blokowy
-- margin-inline – margines poziomy
-- margin-inline-start – start liniowy
-- margin-inline-end – koniec liniowy
+- margin-block-start - start blokowy
+- margin-block-end - koniec blokowy
+- margin-block - margines pionowy
+- margin-inline-start - start liniowy
+- margin-inline-end - koniec liniowy
+- margin-inline - margines poziomy
 
-## Pozycja obiektu
+## Obramowanie bazowe
 
-### Pozycjonowanie bazowe:
+### Krawędzie górne
 
-- position – tryb układu
-- z-index – hierarchia stosu
-- top – przesunięcie górne
-- right – przesunięcie prawe
-- bottom – przesunięcie dolne
-- left – przesunięcie lewe
+- border-top-width - grubość góry
+- border-top-style - styl góry
+- border-top-color - kolor góry
+- border-top - krawędź górna
 
-### Kotwice pozycji:
+### Krawędzie dolne
 
-- anchor-name – identyfikator kotwicy
-- anchor-scope – zasięg kotwiczenia
-- position-anchor – powiązanie kotwicy
-- position-area – strefa pozycjonowania
-- position-try – wariant pozycjonowania
-- position-try-fallbacks – opcje zapasowe
-- position-try-order – priorytet prób
-- position-visibility – kontrola widoczności
+- border-bottom-width - grubość dołu
+- border-bottom-style - styl dołu
+- border-bottom-color - kolor dołu
+- border-bottom - krawędź dolna
 
-### Ścieżki ruchu:
+### Krawędzie lewe
 
-- offset – ruch zbiorczy
-- offset-anchor – kotwica obiektu
-- offset-distance – dystans ścieżki
-- offset-path – trasa ruchu
-- offset-position – punkt startowy
-- offset-rotate – obrót obiektu
+- border-left-width - grubość lewej
+- border-left-style - styl lewej
+- border-left-color - kolor lewej
+- border-left - krawędź lewa
 
-## Układy elastyczne
+### Krawędzie prawe
 
-### Parametry elementów:
+- border-right-width - grubość prawej
+- border-right-style - styl prawej
+- border-right-color - kolor prawej
+- border-right - krawędź prawa
 
-- flex – elastyczność zbiorcza
-- flex-grow – współczynnik wzrostu
-- flex-shrink – współczynnik kurczenia
-- flex-basis – rozmiar początkowy
-- order – porządek wyświetlania
+### Promienie narożników
 
-### Parametry kontenera:
+- border-top-left-radius - narożnik góra-lewo
+- border-top-right-radius - narożnik góra-prawo
+- border-bottom-left-radius - narożnik dół-lewo
+- border-bottom-right-radius - narożnik dół-prawo
+- border-radius - promień zbiorczy
 
-- flex-direction – kierunek przepływu
-- flex-wrap – zawijanie elementów
-- flex-flow – konfiguracja zbiorcza
-- gap – przerwa ogólna
-- row-gap – przerwa wierszy
-- column-gap – przerwa kolumn
+### Relacje krawędzi
 
-## Układ siatki
+- border-collapse - scalanie krawędzi
+- border-spacing - odstępy komórek
 
-### Definicja siatki:
+### Parametry obrazu
 
-- grid – siatka zbiorczo
-- grid-template – szablon siatki
-- grid-template-columns – kolumny siatki
-- grid-template-rows – wiersze siatki
-- grid-template-areas – obszary siatki
+- border-image-source - źródło grafiki
+- border-image-slice - cięcie grafiki
+- border-image-width - szerokość grafiki
+- border-image-outset - wysunięcie grafiki
+- border-image-repeat - powielanie grafiki
+- border-image - obraz zbiorczy
 
-### Automatyzacja przepływu:
+### Parametry zbiorcze
 
-- grid-auto-columns – kolumny automatyczne
-- grid-auto-rows – wiersze automatyczne
-- grid-auto-flow – przepływ automatyczny
+- border-width - grubość krawędzi
+- border-style - styl linii
+- border-color - kolor krawędzi
+- border - obramowanie zbiorcze
 
-### Rozmieszczenie elementów:
+### Obrys elementu
 
-- grid-area – obszar elementu
-- grid-row – wiersz zbiorczo
-- grid-column – kolumna zbiorczo
-- grid-row-start – start wiersza
-- grid-row-end – koniec wiersza
-- grid-column-start – start kolumny
-- grid-column-end – koniec kolumny
-
-## Wyrównywanie zawartości
-
-### Oś główna:
-
-- justify-content – rozkład kontenera
-- justify-items – wyrównanie liniowe
-- justify-self – wyrównanie punktowe
-
-### Oś poprzeczna:
-
-- align-content – rozkład blokowy
-- align-items – wyrównanie pionowe
-- align-self – wyrównanie jednostkowe
-
-### Skróty wyrównania:
-
-- place-content – pozycja dwuosiowa
-- place-items – wyrównanie zbiorcze
-- place-self – wyrównanie indywidualne
-
-## Wygląd tła
-
-### Zarządzanie tłem:
-
-- background – właściwości zbiorcze
-- background-color – kolor tła
-- background-image – obraz tła
-- background-size – rozmiar tła
-- background-repeat – powielanie tła
-- background-attachment – mocowanie tła
-
-### Geometria tła:
-
-- background-position – pozycja tła
-- background-position-x – współrzędna pozioma
-- background-position-y – współrzędna pionowa
-- background-origin – punkt odniesienia
-- background-clip – granica docięcia
-
-### Efekty wizualne:
-
-- filter – filtry graficzne
-- backdrop-filter – filtrowanie tła
-- box-shadow – cień obiektu
-- opacity – stopień krycia
-- visibility – widoczność elementu
-
-### Mieszanie warstw:
-
-- background-blend-mode – mieszanie tła
-- mix-blend-mode – mieszanie warstw
-- isolation – izolacja kontekstu
-- box-decoration-break – renderowanie przełamań
-
-## Obramowanie i narożniki
-
-### Obramowanie ogólne:
-
-- border – obramowanie zbiorcze
-- border-width – grubość krawędzi
-- border-style – styl linii
-- border-color – kolor krawędzi
-- border-radius – promień zaokrąglenia
-
-### Zaokrąglenia szczegółowe:
-
-- border-top-left-radius – narożnik góra-lewo
-- border-top-right-radius – narożnik góra-prawo
-- border-bottom-left-radius – narożnik dół-lewo
-- border-bottom-right-radius – narożnik dół-prawo
-
-### Krawędzie kierunkowe:
-
-- border-top – krawędź górna
-- border-top-color – kolor góry
-- border-top-style – styl góry
-- border-top-width – grubość góry
-- border-bottom – krawędź dolna
-- border-bottom-color – kolor dołu
-- border-bottom-style – styl dołu
-- border-bottom-width – grubość dołu
-- border-left – krawędź lewa
-- border-left-color – kolor lewej
-- border-left-style – styl lewej
-- border-left-width – grubość lewej
-- border-right – krawędź prawa
-- border-right-color – kolor prawej
-- border-right-style – styl prawej
-- border-right-width – grubość prawej
-
-### Stylizacja tabel:
-
-- border-collapse – scalanie krawędzi
-- border-spacing – odstępy komórek
-
-## Obrazy obramowania
-
-### Parametry obrazu:
-
-- border-image – obraz zbiorczy
-- border-image-source – źródło grafiki
-- border-image-slice – cięcie grafiki
-- border-image-width – szerokość grafiki
-- border-image-outset – wysunięcie grafiki
-- border-image-repeat – powielanie grafiki
+- outline-width - szerokość obrysu
+- outline-style - styl obrysu
+- outline-color - kolor obrysu
+- outline-offset - odsunięcie obrysu
+- outline - obrys zbiorczy
 
 ## Obramowanie logiczne
 
-### Osie główne:
+### Kierunek blokowy
 
-- border-block – obramowanie blokowe
-- border-block-width – szerokość blokowa
-- border-block-style – styl blokowy
-- border-block-color – kolor blokowy
-- border-inline – obramowanie liniowe
-- border-inline-width – szerokość liniowa
-- border-inline-style – styl liniowy
-- border-inline-color – kolor liniowy
+- border-block-start-width - grubość początkowa
+- border-block-start-style - styl początkowy
+- border-block-start-color - barwa początkowa
+- border-block-start - krawędź początkowa
+- border-block-end-width - grubość końcowa
+- border-block-end-style - styl końcowy
+- border-block-end-color - barwa końcowa
+- border-block-end - krawędź końcowa
 
-### Kierunek blokowy:
+### Kierunek liniowy
 
-- border-block-start – krawędź początkowa
-- border-block-start-color – barwa początkowa
-- border-block-start-style – styl początkowy
-- border-block-start-width – grubość początkowa
-- border-block-end – krawędź końcowa
-- border-block-end-color – barwa końcowa
-- border-block-end-style – styl końcowy
-- border-block-end-width – grubość końcowa
+- border-inline-start-width - grubość początkowa
+- border-inline-start-style - styl początkowy
+- border-inline-start-color - barwa początkowa
+- border-inline-start - margines początkowy
+- border-inline-end-width - grubość końcowa
+- border-inline-end-style - styl końcowy
+- border-inline-end-color - barwa końcowa
+- border-inline-end - margines końcowy
 
-### Kierunek liniowy:
+### Osie główne
 
-- border-inline-start – margines początkowy
-- border-inline-start-color – barwa początkowa
-- border-inline-start-style – styl początkowy
-- border-inline-start-width – grubość początkowa
-- border-inline-end – margines końcowy
-- border-inline-end-color – barwa końcowa
-- border-inline-end-style – styl końcowy
-- border-inline-end-width – grubość końcowa
+- border-block-width - szerokość blokowa
+- border-block-style - styl blokowy
+- border-block-color - kolor blokowy
+- border-block - obramowanie blokowe
+- border-inline-width - szerokość liniowa
+- border-inline-style - styl liniowy
+- border-inline-color - kolor liniowy
+- border-inline - obramowanie liniowe
 
-### Narożniki logiczne:
+### Narożniki logiczne
 
-- border-start-start-radius – promień góra-lewo
-- border-start-end-radius – promień góra-prawo
-- border-end-start-radius – promień dół-lewo
-- border-end-end-radius – promień dół-prawo
-
-## Obrys konturów
-
-### Parametry obrysu:
-
-- outline – obrys zbiorczy
-- outline-width – szerokość obrysu
-- outline-style – styl obrysu
-- outline-color – kolor obrysu
-- outline-offset – odsunięcie obrysu
+- border-start-start-radius - promień góra-lewo
+- border-start-end-radius - promień góra-prawo
+- border-end-start-radius - promień dół-lewo
+- border-end-end-radius - promień dół-prawo
 
 ## Kształtowanie narożników
 
-### Konfiguracja ogólna:
+### Konfiguracja ogólna
 
-- corner-shape – kształt narożników
-- corner-top-shape – profil górny
-- corner-bottom-shape – profil dolny
-- corner-left-shape – profil lewy
-- corner-right-shape – profil prawy
+- corner-top-shape - profil górny
+- corner-bottom-shape - profil dolny
+- corner-left-shape - profil lewy
+- corner-right-shape - profil prawy
+- corner-shape - kształt narożników
 
-### Narożniki fizyczne:
+### Narożniki fizyczne
 
-- corner-top-left-shape – góra-lewo
-- corner-top-right-shape – góra-prawo
-- corner-bottom-left-shape – dół-lewo
-- corner-bottom-right-shape – dół-prawo
+- corner-top-left-shape - krawędź góra-lewo
+- corner-top-right-shape - krawędź góra-prawo
+- corner-bottom-left-shape - krawędź dół-lewo
+- corner-bottom-right-shape - krawędź dół-prawo
 
-### Narożniki logiczne:
+### Narożniki logiczne
 
-- corner-block-start-shape – krawędź początkowa
-- corner-block-end-shape – krawędź końcowa
-- corner-inline-start-shape – margines początkowy
-- corner-inline-end-shape – margines końcowy
+- corner-block-start-shape - krawędź początkowa
+- corner-block-end-shape - krawędź końcowa
+- corner-inline-start-shape - margines początkowy
+- corner-inline-end-shape - margines końcowy
 
-### Punkty stykowe:
+### Punkty stykowe
 
-- corner-start-start-shape – punkt start-start
-- corner-start-end-shape – punkt start-koniec
-- corner-end-start-shape – punkt koniec-start
-- corner-end-end-shape – punkt koniec-koniec
+- corner-start-start-shape - punkt start-start
+- corner-start-end-shape - punkt start-koniec
+- corner-end-start-shape - punkt koniec-start
+- corner-end-end-shape - punkt koniec-koniec
+
+## Układy strukturalne
+
+### Wielokolumnowość treści
+
+- column-count - liczba kolumn
+- column-width - szerokość kolumny
+- column-fill - wypełnianie kolumn
+- column-span - rozpiętość elementu
+- columns - kolumny zbiorcze
+
+### Linie oddzielające
+
+- column-rule-width - grubość linii
+- column-rule-style - styl linii
+- column-rule-color - kolor linii
+- column-rule - linia zbiorcza
+
+### Formatowanie wyliczeń
+
+- list-style-type – symbol punktora
+- list-style-position – ułożenie punktora
+- list-style-image – grafika punktora
+- list-style – wyliczenie zbiorcze
+
+### Układy tabelaryczne
+
+- table-layout – logika układu
+- caption-side – umiejscowienie podpisu
+- empty-cells – komórki puste
+
+### Opływanie bloków
+
+- float – opływanie tekstu
+- clear – przerwanie opływania
+
+## Układy elastyczne
+
+### Parametry elementów
+
+- flex-grow - współczynnik wzrostu
+- flex-shrink - współczynnik kurczenia
+- flex-basis - rozmiar początkowy
+- flex - elastyczność zbiorcza
+- order - porządek wyświetlania
+
+### Parametry kontenera
+
+- flex-direction - kierunek przepływu
+- flex-wrap - zawijanie elementów
+- flex-flow - konfiguracja zbiorcza
+- row-gap - odstęp wierszy
+- column-gap - odstęp kolumn
+- gap - przerwa ogólna
+
+## Układ siatki
+
+### Definicja struktury
+
+- grid-template-columns - kolumny siatki
+- grid-template-rows - wiersze siatki
+- grid-template-areas - obszary siatki
+- grid-template - szablon siatki
+- grid - siatka zbiorczo
+
+### Automatyzacja przepływu
+
+- grid-auto-columns - kolumny automatyczne
+- grid-auto-rows - wiersze automatyczne
+- grid-auto-flow - przepływ automatyczny
+
+### Rozmieszczenie elementów
+
+- grid-row-start - start wiersza
+- grid-row-end - koniec wiersza
+- grid-column-start - start kolumny
+- grid-column-end - koniec kolumny
+- grid-row - wiersz zbiorczo
+- grid-column - kolumna zbiorczo
+- grid-area - obszar elementu
+
+## Wyrównywanie zawartości
+
+### Kontrola pozioma
+
+- justify-items - wyrównanie liniowe
+- justify-self - wyrównanie punktowe
+- justify-content - rozkład kontenera
+
+### Kontrola pionowa
+
+- align-items - wyrównanie pionowe
+- align-self - wyrównanie jednostkowe
+- align-content - rozkład blokowy
+
+### Skróty pozycjonowania
+
+- place-items - wyrównanie zbiorcze
+- place-self - wyrównanie indywidualne
+- place-content - pozycja dwuosiowa
+
+## Wygląd tła
+
+### Zarządzanie tłem
+
+- background-color - kolor tła
+- background-image - obraz tła
+- background-size - rozmiar tła
+- background-repeat - powielanie tła
+- background-attachment - mocowanie tła
+- background - właściwości zbiorcze
+
+### Geometria tła
+
+- background-position-x - współrzędna pozioma
+- background-position-y - współrzędna pionowa
+- background-position - pozycja tła
+- background-origin - punkt odniesienia
+- background-clip - granica docięcia
+
+### Efekty wizualne
+
+- filter - filtry graficzne
+- backdrop-filter - filtrowanie tła
+- box-shadow - cień obiektu
+- opacity - stopień krycia
+- visibility - widoczność elementu
+
+### Mieszanie warstw
+
+- background-blend-mode - mieszanie tła
+- mix-blend-mode - mieszanie warstw
+- isolation - izolacja kontekstu
+- box-decoration-break - renderowanie przełamań
+
+### Parametry obrazu
+
+- image-rendering – przetwarzanie obrazu
+- image-orientation – orientacja grafiki
+- image-resolution – rozdzielczość zasobu
+
+## Kontrola przewijania
+
+### Obsługa przepełnienia
+
+- overflow-x - oś pozioma
+- overflow-y - oś pionowa
+- overflow-inline - oś liniowa
+- overflow-block - oś blokowa
+- overflow-clip-margin - margines docięcia
+- overflow-anchor - zakotwiczenie przewijania
+- overflow-wrap - łamanie wyrazów
+- overflow - przepełnienie zbiorcze
+
+### Estetyka pasków
+
+- scroll-behavior - płynność ruchu
+- scrollbar-color - kolorystyka paska
+- scrollbar-width - grubość paska
+- scrollbar-gutter - rynna przewijania
+- overscroll-behavior-x - granica pozioma
+- overscroll-behavior-y - granica pionowa
+- overscroll-behavior-inline - granica liniowa
+- overscroll-behavior-block - granica blokowa
+- overscroll-behavior - granice przewijania
+
+### Mechanizm przyciągania
+
+- scroll-snap-type - model przyciągania
+- scroll-snap-align - wyrównanie punktu
+- scroll-snap-stop - wymuszenie zatrzymania
+
+### Fizyczne marginesy
+
+- scroll-padding-top - dopełnienie górne
+- scroll-padding-right - dopełnienie prawe
+- scroll-padding-bottom - dopełnienie dolne
+- scroll-padding-left - dopełnienie lewe
+- scroll-padding - dopełnienie zbiorcze
+- scroll-margin-top - margines górny
+- scroll-margin-right - margines prawy
+- scroll-margin-bottom - margines dolny
+- scroll-margin-left - margines lewy
+- scroll-margin - margines zbiorczy
+
+### Logiczne marginesy
+
+- scroll-padding-block-start - krawędź początkowa
+- scroll-padding-block-end - krawędź końcowa
+- scroll-padding-block - dopełnienie blokowe
+- scroll-padding-inline-start - margines początkowy
+- scroll-padding-inline-end - margines końcowy
+- scroll-padding-inline - dopełnienie liniowe
+- scroll-margin-block-start - start blokowy
+- scroll-margin-block-end - koniec blokowy
+- scroll-margin-block - odstęp blokowy
+- scroll-margin-inline-start - start liniowy
+- scroll-margin-inline-end - koniec liniowy
+- scroll-margin-inline - odstęp liniowy
+
+### Zaawansowane interakcje
+
+- scroll-timeline-name - nazwa osi
+- scroll-timeline-axis - kierunek osi
+- scroll-timeline - oś czasu
+- scroll-marker-group - grupa znaczników
+- scroll-target-group - grupa docelowa
 
 ## Typografia tekstu
 
-### Podstawy wyrównania:
+### Podstawy wyrównania
 
-- color – barwa znaków
-- direction – kierunek pisma
-- writing-mode – tryb składu
-- vertical-align – wyrównanie pionowe
-- text-align – justowanie poziome
-- text-align-last – wyrównanie końcówki
-- text-justify – metoda justowania
-- text-indent – wcięcie akapitowe
+- color - barwa znaków
+- direction - kierunek pisma
+- writing-mode - tryb składu
+- vertical-align - wyrównanie pionowe
+- text-align - justowanie poziome
+- text-align-last - wyrównanie końcówki
+- text-justify - metoda justowania
+- text-indent - wcięcie akapitowe
 
-### Zarządzanie liniami:
+### Zarządzanie liniami
 
-- line-height – interlinia tekstu
-- line-height-step – skok interlinii
-- line-break – łamanie wiersza
-- line-clamp – limit wierszy
-- word-break – dzielenie słów
-- word-spacing – odstępy międzywyrazowe
-- letter-spacing – światło międzyznakowe
-- hyphens – przenoszenie wyrazów
-- hyphenate-character – symbol przeniesienia
-- hyphenate-limit-chars – limity przenoszenia
+- line-height - interlinia tekstu
+- line-height-step - skok interlinii
+- line-break - łamanie wiersza
+- line-clamp - limit wierszy
+- word-break - dzielenie słów
+- word-spacing - odstępy międzywyrazowe
+- letter-spacing - światło międzyznakowe
+- initial-letter – inicjał wpuszczany
+- hanging-punctuation – interpunkcja wisząca
+- hyphens - przenoszenie wyrazów
+- hyphenate-character - symbol przeniesienia
+- hyphenate-limit-chars - limity przenoszenia
 
-### Zawijanie znaków:
+### Zawijanie znaków
 
-- white-space – puste znaki
-- white-space-collapse – redukcja spacji
-- text-wrap – zawijanie wierszy
-- text-wrap-mode – model zawijania
-- text-wrap-style – styl zawijania
-- text-overflow – przepełnienie treści
-- tab-size – szerokość tabulacji
+- white-space-collapse - redukcja spacji
+- white-space - puste znaki
+- text-wrap-mode - model zawijania
+- text-wrap-style - styl zawijania
+- text-wrap - zawijanie wierszy
+- text-overflow - przepełnienie treści
+- tab-size - szerokość tabulacji
 
-### Dekoracje tekstu:
-
-- text-decoration – ozdobniki zbiorcze
-- text-decoration-line – linia ozdobna
-- text-decoration-style – styl linii
-- text-decoration-color – kolor linii
-- text-decoration-thickness – grubość linii
-- text-decoration-skip – pomijanie elementów
-- text-decoration-skip-ink – przerwanie podglifu
-- text-decoration-inset – wstawka linii
-- text-underline-position – umiejscowienie podkreślenia
-- text-underline-offset – przesunięcie podkreślenia
-- text-shadow – cień typograficzny
-- text-transform – zmiana wielkości
-- text-emphasis – akcenty zbiorcze
-- text-emphasis-color – kolor akcentu
-- text-emphasis-style – kształt akcentu
-- text-emphasis-position – pozycja akcentu
-
-### Geometria pudełka:
+### Geometria tekstu
 
 - text-box – kontener tekstowy
 - text-box-trim – przycinanie kontenera
 - text-box-edge – krawędź kontenera
 - text-autospace – światło automatyczne
 - text-spacing-trim – redukcja odstępów
-- initial-letter – inicjał wpuszczany
-- hanging-punctuation – interpunkcja wisząca
 
-### Listy znaczników:
+### Dekoracje liniowe
 
-- list-style – wyliczenie zbiorcze
-- list-style-type – symbol punktora
-- list-style-position – ułożenie punktora
-- list-style-image – grafika punktora
+- text-decoration-line - linia ozdobna
+- text-decoration-style - styl linii
+- text-decoration-color - kolor linii
+- text-decoration-thickness - grubość linii
+- text-decoration-skip - pomijanie elementów
+- text-decoration-skip-ink - przerwanie podglifu
+- text-decoration-inset - wstawka linii
+- text-underline-position - umiejscowienie podkreślenia
+- text-underline-offset - przesunięcie podkreślenia
+- text-decoration - ozdobniki zbiorcze
 
-### Orientacja znaków:
+### Stylizacja znaków
 
-- text-rendering – optymalizacja wykreślania
-- text-size-adjust – skalowanie systemowe
-- text-orientation – kierunek znaków
-- text-combine-upright – pionowe scalanie
-- text-anchor – kotwiczenie tekstu
+- text-shadow - cień typograficzny
+- text-transform - zmiana wielkości
+- text-emphasis-color - kolor akcentu
+- text-emphasis-style - kształt akcentu
+- text-emphasis-position - pozycja akcentu
+- text-emphasis - akcenty zbiorcze
 
-### Interakcja adnotacji:
+### Orientacja znaków
 
-- caret-color – kolor kursora
-- caret-shape – postać kursora
+- text-rendering - optymalizacja wykreślania
+- text-size-adjust - skalowanie systemowe
+- text-orientation - kierunek znaków
+- text-combine-upright - pionowe scalanie
+- text-anchor - kotwiczenie tekstu
+
+### Kształty tekstu
+
+- shape-outside – obrys zewnętrzny
+- shape-margin – margines obrysu
+- shape-image-threshold – próg alfa
+
+### Generowanie treści
+
+- content – treść generowana
+- counter-reset – resetowanie licznika
+- counter-set – ustawienie licznika
+
+### Znaki specjalne
+
 - quotes – znaki cudzysłowu
 - ruby-position – pozycja ruby
 - ruby-align – wyrównanie ruby
 - ruby-overhang – nawis ruby
 
+### Zapis matematyczny
+
+- math-style – styl zapisu
+- math-depth – głębia zagnieżdżenia
+- math-shift – przesunięcie pionowe
+
 ## Typografia czcionki
 
-### Parametry podstawowe:
+### Parametry podstawowe
 
-- font – właściwości zbiorcze
-- font-family – rodzina krojów
-- font-size – rozmiar znaków
-- font-size-adjust – korekta proporcji
-- font-weight – grubość kreski
-- font-style – styl pochylenia
-- font-stretch – stopień rozciągnięcia
-- font-smooth – wygładzanie krawędzi
+- font-family - rodzina krojów
+- font-size - rozmiar znaków
+- font-size-adjust - korekta proporcji
+- font-weight - grubość kreski
+- font-style - styl pochylenia
+- font-stretch - stopień rozciągnięcia
+- font-smooth - wygładzanie krawędzi
+- font - właściwości zbiorcze
 
-### Estetyka renderowania:
+### Estetyka renderowania
 
-- font-kerning – światło międzyliterowe
-- font-optical-sizing – skalowanie optyczne
-- font-palette – paleta kolorystyczna
-- font-language-override – nadpisanie systemowe
+- font-kerning - światło międzyliterowe
+- font-optical-sizing - skalowanie optyczne
+- font-palette - paleta kolorystyczna
+- font-language-override - nadpisanie systemowe
 
-## Warianty OpenType
+### Warianty tekstu
 
-### Warianty tekstu:
+- font-variant-ligatures - obsługa ligatur
+- font-variant-caps - wariant kapitalików
+- font-variant-numeric - formatowanie cyfr
+- font-variant-alternates - glify alternatywne
+- font-variant-position - indeksy typograficzne
+- font-variant-emoji - prezentacja emoji
+- font-variant-east-asian - pismo azjatyckie
+- font-variant - odmiany zbiorcze
 
-- font-variant – odmiany zbiorcze
-- font-variant-ligatures – obsługa ligatur
-- font-variant-caps – wariant kapitalików
-- font-variant-numeric – formatowanie cyfr
-- font-variant-alternates – glify alternatywne
-- font-variant-position – indeksy typograficzne
-- font-variant-emoji – prezentacja emoji
-- font-variant-east-asian – pismo azjatyckie
+### Synteza czcionki
 
-### Synteza czcionki:
-
-- font-synthesis – generowanie brakujące
-- font-synthesis-weight – symulacja grubości
-- font-synthesis-style – symulacja kursywy
-- font-synthesis-small-caps – symulacja kapitalików
-- font-synthesis-position – symulacja indeksów
-
-### Ustawienia niskopoziomowe:
-
-- font-feature-settings – funkcje OpenType
-- font-variation-settings – konfiguracja osi
-
-## Dynamika transformacji
-
-### Transformacje podstawowe:
-
-- transform – modyfikacja kształtu
-- translate – przesunięcie obiektu
-- rotate – obrót obiektu
-- scale – skalowanie obiektu
-- transform-origin – punkt odniesienia
-- transform-box – kontener transformacji
-- will-change – optymalizacja sprzętowa
-- content-visibility – kontrola renderowania
-
-### Przestrzeń trójwymiarowa:
-
-- perspective – głębia rzutowania
-- perspective-origin – punkt zbiegu
-- transform-style – model renderowania
-- backface-visibility – widoczność rewersu
-
-## Animacje elementów
-
-### Klasyczne przejścia:
-
-- transition – przejście zbiorcze
-- transition-property – wybór właściwości
-- transition-duration – czas trwania
-- transition-timing-function – krzywa dynamiki
-- transition-delay – zwłoka startowa
-- transition-behavior – tryb zachowania
-
-### Klasyczne animacje:
-
-- animation – animacja zbiorcza
-- animation-name – nazwa sekwencji
-- animation-duration – cykl trwania
-- animation-timing-function – tempo ruchu
-- animation-delay – zwłoka początkowa
-- animation-iteration-count – licznik powtórzeń
-- animation-direction – kierunek odtwarzania
-- animation-fill-mode – utrwalenie stanu
-- animation-play-state – kontrola biegu
-- animation-composition – model składania
-
-## Nowoczesne osie
-
-### Dynamika widoku:
-
-- animation-timeline – oś czasu
-- animation-range – zakres klatek
-- animation-range-start – start zakresu
-- animation-range-end – koniec zakresu
-- timeline-scope – zasięg widoczności
-- view-timeline – oś rzutni
-- view-timeline-name – nazwa rzutni
-- view-timeline-axis – orientacja osi
-- view-timeline-inset – margines docięcia
-
-### Przejścia rzutni:
-
-- view-transition-name – identyfikator przejścia
-- view-transition-class – kategoria przejścia
-
-## Kontrola przewijania
-
-### Obsługa przepełnienia:
-
-- overflow – przepełnienie zbiorcze
-- overflow-x – oś pozioma
-- overflow-y – oś pionowa
-- overflow-inline – oś liniowa
-- overflow-block – oś blokowa
-- overflow-clip-margin – margines docięcia
-- overflow-anchor – zakotwiczenie przewijania
-- overflow-wrap – łamanie wyrazów
-
-### Estetyka pasków:
-
-- scroll-behavior – płynność ruchu
-- scrollbar-color – kolorystyka paska
-- scrollbar-width – grubość paska
-- scrollbar-gutter – rynna przewijania
-- overscroll-behavior – granice przewijania
-- overscroll-behavior-x – granica pozioma
-- overscroll-behavior-y – granica pionowa
-- overscroll-behavior-inline – granica liniowa
-- overscroll-behavior-block – granica blokowa
-
-### Mechanizm przyciągania:
-
-- scroll-snap-type – model przyciągania
-- scroll-snap-align – wyrównanie punktu
-- scroll-snap-stop – wymuszenie zatrzymania
-
-### Fizyczne marginesy:
-
-- scroll-padding – dopełnienie zbiorcze
-- scroll-padding-top – dopełnienie górne
-- scroll-padding-right – dopełnienie prawe
-- scroll-padding-bottom – dopełnienie dolne
-- scroll-padding-left – dopełnienie lewe
-- scroll-margin – margines zbiorczy
-- scroll-margin-top – margines górny
-- scroll-margin-right – margines prawy
-- scroll-margin-bottom – margines dolny
-- scroll-margin-left – margines lewy
-
-### Logiczne marginesy:
-
-- scroll-padding-block – dopełnienie blokowe
-- scroll-padding-block-start – krawędź początkowa
-- scroll-padding-block-end – krawędź końcowa
-- scroll-padding-inline – dopełnienie liniowe
-- scroll-padding-inline-start – margines początkowy
-- scroll-padding-inline-end – margines końcowy
-- scroll-margin-block – odstęp blokowy
-- scroll-margin-block-start – start blokowy
-- scroll-margin-block-end – koniec blokowy
-- scroll-margin-inline – odstęp liniowy
-- scroll-margin-inline-start – start liniowy
-- scroll-margin-inline-end – koniec liniowy
-
-### Zaawansowane interakcje:
-
-- scroll-timeline – oś czasu
-- scroll-timeline-name – nazwa osi
-- scroll-timeline-axis – kierunek osi
-- scroll-marker-group – grupa znaczników
-- scroll-target-group – grupa docelowa
-
-## Maski docięcia
-
-### Ścieżki docięcia:
-
-- clip-path – ścieżka docięcia
-- clip-rule – reguła wypełniania
-
-### Maskowanie obrazem:
-
-- mask – maska zbiorcza
-- mask-image – obraz maski
-- mask-mode – tryb maskowania
-- mask-repeat – powielanie maski
-- mask-position – ułożenie maski
-- mask-size – rozmiar maski
-- mask-origin – punkt odniesienia
-- mask-clip – granica docięcia
-- mask-type – typ maskowania
-- mask-composite – składanie masek
-
-### Maskowanie obramowania:
-
-- mask-border – obramowanie zbiorcze
-- mask-border-source – źródło maski
-- mask-border-slice – cięcie maski
-- mask-border-width – szerokość maski
-- mask-border-outset – wysunięcie maski
-- mask-border-repeat – powielanie krawędzi
-- mask-border-mode – tryb obramowania
-
-## Układy kolumnowe
-
-### Wielokolumnowość treści:
-
-- columns – kolumny zbiorcze
-- column-count – liczba kolumn
-- column-width – szerokość kolumny
-- column-fill – wypełnianie kolumn
-- column-span – rozpiętość elementu
-
-### Linie oddzielające:
-
-- column-rule – linia zbiorcza
-- column-rule-width – grubość linii
-- column-rule-style – styl linii
-- column-rule-color – kolor linii
-
-### Specyfika tabel:
-
-- table-layout – logika układu
-- caption-side – umiejscowienie podpisu
-- empty-cells – komórki puste
+- font-synthesis-weight - symulacja grubości
+- font-synthesis-style - symulacja kursywy
+- font-synthesis-small-caps - symulacja kapitalików
+- font-synthesis-position - symulacja indeksów
+- font-synthesis - generowanie brakujące
+- font-feature-settings - funkcje OpenType
+- font-variation-settings - konfiguracja osi
 
 ## Interfejs systemowy
 
-### Motywy systemowe:
+### Motywy systemowe
 
+- all – czyszczenie właściwości
 - appearance – wygląd systemowy
 - color-scheme – schemat kolorów
 - accent-color – kolor akcentu
+- dynamic-range-limit – limit dynamiki
 - forced-colors – kolory wymuszone
 - forced-color-adjust – korekta kolorów
-- dynamic-range-limit – limit dynamiki
 
-### Kontrola wskaźnika:
+### Obsługa wskaźnika
 
 - cursor – kursor myszy
-- caret – kursor tekstowy
-- caret-animation – animacja kursora
-- user-select – zaznaczanie tekstu
 - pointer-events – zdarzenia wskaźnika
 - touch-action – gesty dotykowe
+- user-select – zaznaczanie tekstu
 
-### Nowoczesne pola:
+### Edycja tekstowa
 
+- caret – kursor tekstowy
+- caret-color – kolor kursora
+- caret-shape – postać kursora
+- caret-animation – animacja kursora
 - field-sizing – wymiarowanie pola
+- resize – skalowanie interaktywne
+
+### Logika interakcji
+
 - interpolate-size – animacja rozmiaru
 - interactivity – tryb interakcji
 - interest-delay – zwłoka interakcji
 - interest-delay-start – start zwłoki
 
-### Treść liczników:
-
-- content – treść generowana
-- counter-reset – resetowanie licznika
-- counter-set – ustawienie licznika
-- all – czyszczenie właściwości
-
-## Druk treści
-
-### Kontrola stron:
-
-- page – arkusz druku
-- orphans – będrasty dolne
-- widows – bękarty górne
-- print-color-adjust – kolory wydruku
-
-### Przełamania sekcji:
-
-- break-before – przełamanie przednie
-- break-after – przełamanie tylne
-- break-inside – przełamanie wewnętrzne
-
-## Grafika cyfrowa
-
-### Kontrola obrysu:
-
-- stroke – kolor obrysu
-- stroke-width – szerokość linii
-- stroke-opacity – przezroczystość linii
-- stroke-linecap – zakończenie krawędzi
-- stroke-linejoin – połączenie krawędzi
-- stroke-miterlimit – limit ścięcia
-- stroke-dasharray – wzór przerywany
-- stroke-dashoffset – przesunięcie wzoru
-
-### Wypełnienie kolorem:
-
-- fill – kolor wnętrza
-- fill-opacity – przezroczystość wnętrza
-- fill-rule – reguła wypełniania
-- paint-order – kolejność malowania
-- color-interpolation – interpolacja barw
-- color-interpolation-filters – filtrowanie barw
-
-### Wykończenie linii:
-
-- marker – znacznik zbiorczy
-- marker-start – znacznik początkowy
-- marker-mid – znacznik środkowy
-- marker-end – znacznik końcowy
-
-### Wyrównanie linii:
-
-- alignment-baseline – wyrównanie bazowe
-- dominant-baseline – linia główna
-- baseline-source – źródło bazowe
-
-### Efekty oświetlenia:
-
-- vector-effect – efekt wektorowy
-- lighting-color – barwa oświetlenia
-- stop-color – kolor punktowy
-- stop-opacity – przezroczystość punktu
-- flood-color – kolor zalewowy
-- flood-opacity – przezroczystość zalewowa
-
-### Renderowanie grafiki:
-
-- shape-rendering – wygładzanie kształtów
-- image-rendering – przetwarzanie obrazu
-- image-orientation – orientacja grafiki
-- image-resolution – rozdzielczość zasobu
-
-## Pozycjonowanie i geometria
-
-### Pozycjonowanie logiczne:
-
-- inset – wstawka zbiorcza
-- inset-block – wstawka blokowa
-- inset-inline – wstawka liniowa
-- inset-block-start – krawędź początkowa
-- inset-block-end – krawędź końcowa
-- inset-inline-start – margines początkowy
-- inset-inline-end – margines końcowy
-
-### Geometria obiektów:
-
-- cx – środek poziomy
-- cy – środek pionowy
-- d – ścieżka kształtu
-- x – punkt poziomy
-- y – punkt pionowy
-- r – promień główny
-- rx – promień poziomy
-- ry – promień pionowy
-
-## Przepływ i dopasowanie
-
-### Kształty opływania:
-
-- float – opływanie tekstu
-- clear – przerwanie opływania
-- shape-outside – obrys zewnętrzny
-- shape-margin – margines obrysu
-- shape-image-threshold – próg alfa
-
-### Dopasowanie zawartości:
-
-- object-fit – skalowanie treści
-- object-position – ułożenie treści
-- object-view-box – okno widoku
-- overlay – warstwa wierzchnia
-- zoom – powiększenie wizualne
-
-## Logika zapisu
-
-### Przepływ czytania:
+### Dostępność treści
 
 - reading-flow – kierunek odczytu
 - reading-order – kolejność odczytu
 - unicode-bidi – tekst dwukierunkowy
 - speak-as – wymowa licznika
 
-### Renderowanie matematyki:
+## Pozycja obiektu
 
-- math-style – styl zapisu
-- math-depth – głębia zagnieżdżenia
-- math-shift – przesunięcie pionowe
+### Pozycjonowanie bazowe
+
+- top - przesunięcie górne
+- right - przesunięcie prawe
+- bottom - przesunięcie dolne
+- left - przesunięcie lewe
+- z-index - hierarchia stosu
+- position - tryb układu
+
+### Wstawki logiczne
+
+- inset-block-start – krawędź początkowa
+- inset-block-end – krawędź końcowa
+- inset-block – wstawka blokowa
+- inset-inline-start – margines początkowy
+- inset-inline-end – margines końcowy
+- inset-inline – wstawka liniowa
+- inset – wstawka zbiorcza
+
+### Kotwice pozycji
+
+- anchor-name - identyfikator kotwicy
+- anchor-scope - zasięg kotwiczenia
+- position-anchor - powiązanie kotwicy
+- position-area - strefa pozycjonowania
+- position-try-fallbacks - opcje zapasowe
+- position-try-order - priorytet prób
+- position-try - wariant pozycjonowania
+- position-visibility - kontrola widoczności
+
+### Ścieżki ruchu
+
+- offset-position - punkt startowy
+- offset-path - trasa ruchu
+- offset-distance - dystans ścieżki
+- offset-rotate - obrót obiektu
+- offset-anchor - kotwica obiektu
+- offset - ruch zbiorczy
+
+## Maski docięcia
+
+### Ścieżki docięcia
+
+- clip-rule - reguła wypełniania
+- clip-path - ścieżka docięcia
+
+### Maskowanie obrazem
+
+- mask-image - obraz maski
+- mask-mode - tryb maskowania
+- mask-repeat - powielanie maski
+- mask-position - ułożenie maski
+- mask-size - rozmiar maski
+- mask-origin - punkt odniesienia
+- mask-clip - granica docięcia
+- mask-type - typ maskowania
+- mask-composite - składanie masek
+- mask - maska zbiorcza
+
+### Maskowanie obramowania
+
+- mask-border-source - źródło maski
+- mask-border-slice - cięcie maski
+- mask-border-width - szerokość maski
+- mask-border-outset - wysunięcie maski
+- mask-border-repeat - powielanie krawędzi
+- mask-border-mode - tryb obramowania
+- mask-border - obramowanie zbiorcze
+
+## Dynamika interakcji
+
+### Przejścia stanów
+
+- transition-property - wybór właściwości
+- transition-duration - czas trwania
+- transition-timing-function - krzywa dynamiki
+- transition-delay - zwłoka startowa
+- transition-behavior - tryb zachowania
+- transition - przejście zbiorcze
+
+### Animacje sekwencyjne
+
+- animation-name - nazwa sekwencji
+- animation-duration - cykl trwania
+- animation-timing-function - tempo ruchu
+- animation-delay - zwłoka początkowa
+- animation-iteration-count - licznik powtórzeń
+- animation-direction - kierunek odtwarzania
+- animation-fill-mode - utrwalenie stanu
+- animation-play-state - kontrola biegu
+- animation-composition - model składania
+- animation - animacja zbiorcza
+
+### Kontrola czasu
+
+- animation-timeline - oś czasu
+- animation-range-start - start zakresu
+- animation-range-end - koniec zakresu
+- animation-range - zakres klatek
+- timeline-scope - zasięg widoczności
+
+### Parametry rzutni
+
+- view-timeline-name - nazwa rzutni
+- view-timeline-axis - orientacja osi
+- view-timeline-inset - margines docięcia
+- view-timeline - oś rzutni
+
+## Dynamika transformacji
+
+### Transformacje podstawowe
+
+- transform-origin - punkt odniesienia
+- transform-box - kontener transformacji
+- translate - przesunięcie obiektu
+- rotate - obrót obiektu
+- scale - skalowanie obiektu
+- transform - modyfikacja kształtu
+
+### Przestrzeń trójwymiarowa
+
+- perspective - głębia rzutowania
+- perspective-origin - punkt zbiegu
+- transform-style - model renderowania
+- backface-visibility - widoczność rewersu
+
+### Optymalizacja widoku
+
+- will-change - optymalizacja sprzętowa
+- content-visibility - kontrola renderowania
+- view-transition-name - identyfikator przejścia
+- view-transition-class - kategoria przejścia
+
+## Grafika wektorowa
+
+### Geometria kształtu
+
+- x – punkt poziomy
+- y – punkt pionowy
+- cx – środek poziomy
+- cy – środek pionowy
+- r – promień główny
+- rx – promień poziomy
+- ry – promień pionowy
+- d – ścieżka kształtu
+
+### Kontrola obrysu
+
+- stroke-width - szerokość linii
+- stroke-opacity - przezroczystość linii
+- stroke-linecap - zakończenie krawędzi
+- stroke-linejoin - połączenie krawędzi
+- stroke-miterlimit - limit ścięcia
+- stroke-dasharray - wzór przerywany
+- stroke-dashoffset - przesunięcie wzoru
+- stroke - kolor obrysu
+
+### Wypełnienie kolorem
+
+- fill-opacity - przezroczystość wnętrza
+- fill-rule - reguła wypełniania
+- paint-order - kolejność malowania
+- color-interpolation - interpolacja barw
+- color-interpolation-filters - filtrowanie barw
+- fill - kolor wnętrza
+
+### Wykończenie linii
+
+- marker-start - znacznik początkowy
+- marker-mid - znacznik środkowy
+- marker-end - znacznik końcowy
+- marker - znacznik zbiorczy
+
+### Wyrównanie linii
+
+- alignment-baseline - wyrównanie bazowe
+- dominant-baseline - linia główna
+- baseline-source - źródło bazowe
+
+### Filtry grafiki
+
+- lighting-color – barwa oświetlenia
+- flood-color – kolor zalewowy
+- flood-opacity – przezroczystość zalewowa
+- vector-effect – efekt wektorowy
+- shape-rendering – wygładzanie kształtów
+
+### Parametry gradientu
+
+- stop-color – kolor punktowy
+- stop-opacity – przezroczystość punktu
+
+## Druk treści
+
+### Kontrola stron
+
+- orphans - bękarty dolne
+- widows - bękarty górne
+- print-color-adjust - kolory wydruku
+- page - arkusz druku
+
+### Przełamania sekcji
+
+- break-before - przełamanie przednie
+- break-after - przełamanie tylne
+- break-inside - przełamanie wewnętrzne
 
 ## Składnia powiązań
 
-### Relacje elementów:
+### Relacje elementów
 
+- " " – potomek dowolny
 - > – dziecko bezpośrednie
 - + – sąsiad bezpośredni
-- ~ – sąsiad ogólny
-- " " – potomek dowolny
 - || – kolumna siatki
+- ~ – sąsiad ogólny
 
-### Identyfikatory grup:
+### Identyfikatory grup
 
+- & – referencja rodzica
+- * – selektor uniwersalny
 - . – selektor klasy
 - # – identyfikator unikalny
-- * – selektor uniwersalny
 - , – grupowanie selektorów
-- & – referencja rodzica
 - | – separator przestrzeni
 
-### Dopasowanie atrybutów:
+### Dopasowanie atrybutów
 
 - [attribute] – obecność atrybutu
-- [attribute=value] – dopasowanie ścisłe
-- [attribute~=value] – fraza rozdzielona
-- [attribute|=value] – początek łącznika
-- [attribute^=value] – początek ciągu
 - [attribute$=value] – koniec ciągu
 - [attribute*=value] – fragment dowolny
+- [attribute^=value] – początek ciągu
+- [attribute|=value] – początek łącznika
+- [attribute~=value] – fraza rozdzielona
+- [attribute=value] – dopasowanie ścisłe
 - [attribute i] – ignorowanie wielkości
 - [attribute s] – rozróżnianie wielkości
 
-### Kontrola czasu:
+### Kontrola czasu
 
-- from to – ramy animacji
 - 0% 100% – postęp procentowy
-- entry exit – zakres widoczności
 - % from to – punkty kluczowe
+- entry exit – zakres widoczności
+- from to – ramy animacji
 
 ## Pseudo-klasy
 
-### Stany użytkownika:
+### Stany użytkownika
 
-- :hover – najechanie kursorem
 - :active – aktywacja przycisku
+- :any-link – odnośnik dowolny
 - :focus – skupienie elementu
 - :focus-visible – fokus widoczny
 - :focus-within – fokus wewnętrzny
-- :target – cel odnośnika
-- :target-current – cel bieżący
-- :target-before – cel poprzedni
-- :target-after – cel następny
-- :visited – link odwiedzony
-- :any-link – odnośnik dowolny
-- :local-link – odnośnik lokalny
+- :hover – najechanie kursorem
 - :link – odnośnik nieodwiedzony
+- :local-link – odnośnik lokalny
+- :target – cel odnośnika
+- :target-after – cel następny
+- :target-before – cel poprzedni
+- :target-current – cel bieżący
+- :visited – link odwiedzony
 
-### Walidacja pól:
+### Walidacja pól
 
-- :enabled – pole aktywne
+- :autofill – autouzupełnianie systemowe
+- :checked – pole zaznaczone
+- :default – wybór domyślny
 - :disabled – pole zablokowane
+- :enabled – pole aktywne
+- :in-range – zakres domknięty
+- :indeterminate – stan nieokreślony
+- :invalid – wartość błędna
+- :optional – pole opcjonalne
+- :out-of-range – zakres przekroczony
+- :placeholder-shown – widoczność placeholderu
 - :read-only – tylko odczyt
 - :read-write – edycja dozwolona
-- :placeholder-shown – widoczność placeholderu
-- :default – wybór domyślny
-- :checked – pole zaznaczone
-- :indeterminate – stan nieokreślony
 - :required – pole wymagane
-- :optional – pole opcjonalne
-- :valid – wartość poprawna
-- :invalid – wartość błędna
-- :user-valid – walidacja użytkownika
 - :user-invalid – błąd użytkownika
-- :in-range – zakres domknięty
-- :out-of-range – zakres przekroczony
-- :autofill – autouzupełnianie systemowe
+- :user-valid – walidacja użytkownika
+- :valid – wartość poprawna
 
-### Struktura drzewa:
+### Struktura drzewa
 
-- :root – korzeń dokumentu
 - :empty – element pusty
 - :first-child – dziecko pierwsze
+- :first-of-type – typ pierwszy
 - :last-child – dziecko ostatnie
-- :only-child – dziecko jedyne
+- :last-of-type – typ ostatni
 - :nth-child() – potomek numerowany
 - :nth-last-child() – potomek końcowy
-- :first-of-type – typ pierwszy
-- :last-of-type – typ ostatni
-- :only-of-type – typ jedyny
-- :nth-of-type() – typ numerowany
 - :nth-last-of-type() – typ końcowy
+- :nth-of-type() – typ numerowany
+- :only-child – dziecko jedyne
+- :only-of-type – typ jedyny
+- :root – korzeń dokumentu
 
-### Logika selektorów:
+### Logika selektorów
 
-- :is() – grupowanie selektorów
-- :where() – dopasowanie bezspecyficzne
-- :not() – wykluczenie elementu
-- :has() – warunek potomstwa
-- :scope – zakres kontekstowy
 - :defined – definicja komponentu
+- :has() – warunek potomstwa
+- :is() – grupowanie selektorów
+- :not() – wykluczenie elementu
+- :scope – zakres kontekstowy
+- :where() – dopasowanie bezspecyficzne
 
-### Odtwarzanie mediów:
+### Odtwarzanie mediów
 
-- :playing – odtwarzanie trwające
-- :paused – odtwarzanie wstrzymane
 - :buffering – ładowanie danych
-- :seeking – przeszukiwanie osi
 - :muted – wyciszenie dźwięku
-- :volume-locked – blokada głośności
+- :paused – odtwarzanie wstrzymane
+- :playing – odtwarzanie trwające
+- :seeking – przeszukiwanie osi
 - :stalled – przerwanie transmisji
+- :volume-locked – blokada głośności
 
-### Wyświetlanie treści:
+### Wyświetlanie treści
 
 - :fullscreen – tryb pełnoekranowy
 - :modal – okno modalne
-- :popover-open – popover aktywny
 - :open – stan otwarty
 - :picture-in-picture – tryb miniatury
+- :popover-open – popover aktywny
 
-### Relacje czasowe:
+### Relacje czasowe
 
 - :active-view-transition – przejście aktywne
 - :active-view-transition-type() – typ przejścia
+- :current – element bieżący
+- :future – element przyszły
 - :interest-source – źródło uwagi
 - :interest-target – cel uwagi
-- :current – element bieżący
 - :past – element przeszły
-- :future – element przyszły
 
-### Kontekst dokumentu:
+### Kontekst dokumentu
 
-- :lang() – kod języka
 - :dir() – kierunek pisma
 - :heading – nagłówek ogólny
 - :heading() – poziom nagłówka
+- :lang() – kod języka
 
-### Architektura komponentu:
+### Architektura komponentu
 
+- :has-slotted – obecność gniazda
 - :host – host cienia
 - :host() – selektor hosta
-- :has-slotted – obecność gniazda
 - :state() – stan niestandardowy
 
-### Ustawienia druku:
+### Ustawienia druku
 
+- :blank – strona pusta
+- :first – strona inicjalna
 - :left – strona lewa
 - :right – strona prawa
-- :first – strona inicjalna
-- :blank – strona pusta
 
 ## Pseudo-elementy
 
-### Generowanie treści:
+### Generowanie treści
 
-- ::before – wstawka przednia
 - ::after – wstawka tylna
+- ::before – wstawka przednia
 - ::marker – znacznik listy
 
-### Interfejs formularzy:
+### Interfejs formularzy
 
-- ::placeholder – tekst zastępczy
-- ::file-selector-button – przycisk pliku
-- ::picker-icon – ikona wyboru
-- ::picker() – obszar wyboru
 - ::checkmark – symbol zaznaczenia
+- ::file-selector-button – przycisk pliku
+- ::picker() – obszar wyboru
+- ::picker-icon – ikona wyboru
+- ::placeholder – tekst zastępczy
 
-### Typografia tekstu:
+### Typografia tekstu
 
 - ::first-letter – inicjał akapitu
 - ::first-line – wiersz pierwszy
-- ::selection – zaznaczenie użytkownika
-- ::target-text – fraza docelowa
-- ::spelling-error – błąd ortograficzny
 - ::grammar-error – błąd gramatyczny
 - ::highlight – wyróżnienie niestandardowe
+- ::selection – zaznaczenie użytkownika
+- ::spelling-error – błąd ortograficzny
+- ::target-text – fraza docelowa
 
-### Elementy izolowane:
+### Elementy izolowane
 
 - ::backdrop – tło modalne
-- ::details-content – treść rozwijana
-- ::slotted() – zawartość gniazda
-- ::part() – część składowa
 - ::cue – napisy multimedialne
 - ::cue() – styl napisów
+- ::details-content – treść rozwijana
+- ::part() – część składowa
+- ::slotted() – zawartość gniazda
 
-### Mechanizmy przewijania:
+### Mechanizmy przewijania
 
 - ::column – kolumna tekstu
 - ::scroll-button() – przycisk przewijania
 - ::scroll-marker – punkt przewijania
 - ::scroll-marker-group – grupa punktów
 
-### Stany przejścia:
+### Stany przejścia
 
 - ::view-transition – kontener przejścia
 - ::view-transition-group() – grupa animacji
 - ::view-transition-image-pair() – para klatek
-- ::view-transition-old() – stan poprzedni
 - ::view-transition-new() – stan bieżący
+- ::view-transition-old() – stan poprzedni
 
 ## Dyrektywy arkusza
 
-### Konfiguracja pliku:
+### Konfiguracja pliku
 
 - @charset – kodowanie znaków
 - @import – import arkusza
-- @namespace – przestrzeń nazw
 - @layer – warstwa kaskady
+- @namespace – przestrzeń nazw
 - @page – format druku
 
-### Rejestr zasobów:
+### Rejestr zasobów
 
+- @color-profile – profil koloru
+- @counter-style – styl licznika
 - @font-face – definicja czcionki
 - @font-feature-values – warianty typograficzne
 - @font-palette-values – paleta barw
-- @color-profile – profil koloru
-- @counter-style – styl licznika
 
-### Komponenty logiki:
+### Komponenty logiki
 
-- @property – definicja właściwości
-- @function – funkcja niestandardowa
 - @custom-media – media użytkownika
+- @function – funkcja niestandardowa
 - @keyframes – klatki animacji
+- @property – definicja właściwości
 
-### Reguły kontekstowe:
+### Reguły kontekstowe
 
-- @media – zapytanie mediów
-- @supports – test wsparcia
 - @container – warunek kontenera
+- @media – zapytanie mediów
+- @position-try – wariant pozycjonowania
 - @scope – zasięg selektora
 - @starting-style – styl początkowy
+- @supports – test wsparcia
 - @view-transition – animacja przejścia
-- @position-try – wariant pozycjonowania
 
 ## Słowa kluczowe
 
-### Kontrola kaskady:
+### Kontrola kaskady
 
 - !important – wymuszenie priorytetu
 - inherit – dziedziczenie wartości
@@ -1286,7 +1296,7 @@
 - revert-layer – cofnięcie warstwy
 - unset – resetowanie wartości
 
-### Adaptacja rozmiaru:
+### Adaptacja rozmiaru
 
 - fit-content – dopasowanie treści
 - max-content – rozmiar maksymalny
@@ -1294,104 +1304,99 @@
 
 ## Funkcje matematyczne
 
-### Obliczenia podstawowe:
+### Obliczenia podstawowe
 
 - abs() – wartość bezwzględna
 - calc() – operacja matematyczna
 - calc-size() – rozmiar obliczony
 - clamp() – ogranicznik zakresu
+- exp() – funkcja wykładnicza
+- hypot() – długość wektora
+- if() – warunek logiczny
+- log() – logarytm naturalny
 - max() – wartość maksymalna
 - min() – wartość minimalna
-- pow() – potęgowanie liczby
 - mod() – reszta modulo
+- pow() – potęgowanie liczby
 - rem() – reszta arytmetyczna
 - round() – zaokrąglenie liczby
 - sign() – zwrot liczby
-- if() – warunek logiczny
+- sqrt() – pierwiastek kwadratowy
 
-### Funkcje trygonometryczne:
+### Obliczenia trygonometryczne
 
-- acos() – arkus cosinus
-- asin() – arkus sinus
-- atan() – arkus tangens
+- acos() – kąt cosinusa
+- asin() – kąt sinusa
+- atan() – kąt tangensa
 - atan2() – kąt współrzędnych
 - cos() – cosinus kąta
 - sin() – sinus kąta
 - tan() – tangens kąta
 
-### Analiza numeryczna:
+## Zarządzanie danymi
 
-- exp() – funkcja wykładnicza
-- log() – logarytm naturalny
-- sqrt() – pierwiastek kwadratowy
-- hypot() – długość wektora
-
-## Funkcje danych
-
-### Zmienne systemowe:
+### Zmienne systemowe
 
 - attr() – odczyt atrybutu
-- type() – definicja typu
-- var() – zmienna użytkownika
 - env() – zmienna środowiskowa
 - layer() – przypisanie warstwy
+- type() – definicja typu
+- var() – zmienna użytkownika
 
-### Liczniki elementów:
+### Liczniki elementów
 
 - counter() – wartość licznika
 - counters() – liczniki zagnieżdżone
-- symbols() – symbole licznika
 - sibling-count() – liczba sąsiedztwa
 - sibling-index() – indeks sąsiedztwa
+- symbols() – symbole licznika
 
-## Funkcje barwne
+## Estetyka barwna
 
-### Modele podstawowe:
+### Modele kolorystyczne
 
-- rgb() – składowe barwne
-- hsl() – parametry odcienia
-- hwb() – parametry jasności
 - color() – profil kolorystyczny
 - device-cmyk() – model drukarski
+- hsl() – parametry odcienia
+- hwb() – parametry jasności
+- rgb() – składowe barwne
 
-### Korekcja percepcji:
+### Percepcja barwna
 
 - lab() – przestrzeń barwna
 - lch() – model oświetlenia
 - oklab() – korekcja barwna
 - oklch() – percepcja koloru
 
-### Mieszanie odcieni:
+### Mieszanie odcieni
 
 - color-mix() – mieszanie barw
 - contrast-color() – dobór kontrastu
-- light-dark() – adaptacja oświetlenia
 - dynamic-range-limit-mix() – limit dynamiki
+- light-dark() – adaptacja oświetlenia
 - pallete-mix() – mieszanie palet
 
-## Funkcje obrazu
+### Gradienty barwne
 
-### Gradienty barwne:
-
+- conic-gradient() – gradient stożkowy
 - linear-gradient() – gradient liniowy
 - radial-gradient() – gradient promieniowy
-- conic-gradient() – gradient stożkowy
+- repeating-conic-gradient() – powtórzenie stożkowe
 - repeating-linear-gradient() – powtórzenie liniowe
 - repeating-radial-gradient() – powtórzenie promieniowe
-- repeating-conic-gradient() – powtórzenie stożkowe
 
-### Zasoby graficzne:
+## Renderowanie grafiki
 
+### Zasoby wizualne
+
+- cross-fade() – przenikanie obrazów
+- element() – renderowanie elementu
 - image() – źródło obrazu
 - image-set() – zestaw rozdzielczości
-- url() – lokalizacja zasobu
 - paint() – skrypt rysowania
-- element() – renderowanie elementu
-- cross-fade() – przenikanie obrazów
+- url() – lokalizacja zasobu
 
-## Funkcje wizualne
-
-### Filtry rastrowe:
+### Filtry rastrowe
 
 - blur() – rozmycie gaussowskie
 - brightness() – poziom jasności
@@ -1404,7 +1409,7 @@
 - saturate() – nasycenie barw
 - sepia() – efekt sepii
 
-### Geometria masek:
+### Geometria masek
 
 - circle() – maska kołowa
 - ellipse() – maska eliptyczna
@@ -1416,9 +1421,9 @@
 - superellipse() – kontur superelipsy
 - xywh() – prostokąt geometryczny
 
-## Funkcje przekształcenia
+## Transformacja elementów
 
-### Transformacje płaskie:
+### Przekształcenia płaskie
 
 - rotate() – obrót płaszczyzny
 - scale() – skalowanie dwuosiowe
@@ -1431,7 +1436,7 @@
 - translateX() – przesunięcie poziome
 - translateY() – przesunięcie pionowe
 
-### Transformacje przestrzenne:
+### Przekształcenia przestrzenne
 
 - perspective() – głębia rzutu
 - rotate3d() – obrót trójwymiarowy
@@ -1443,33 +1448,30 @@
 - translate3d() – przesunięcie przestrzenne
 - translateZ() – przesunięcie głębokości
 
-### Struktury macierzowe:
+### Struktury macierzowe
 
 - matrix() – macierz transformacji
 - matrix3d() – macierz przestrzenna
 - ray() – ścieżka promienia
 
-## Funkcje układu
+## Architektura układu
 
-### Wymiarowanie kontenerów:
+### Wymiarowanie kontenerów
 
+- anchor() – punkt odniesienia
+- anchor-size() – wymiar odniesienia
 - fit-content() – dopasowanie zawartości
 - minmax() – zakres wymiarowy
 - repeat() – powielanie cykliczne
 
-### Kotwiczenie elementów:
-
-- anchor() – punkt odniesienia
-- anchor-size() – wymiar odniesienia
-
-### Dynamika ruchu:
+### Dynamika ruchu
 
 - cubic-bezier() – krzywa interpolacji
 - linear() – tempo jednostajne
-- steps() – przejście skokowe
-- scroll() – postęp przewijania
-- view() – zasięg widoczności
 - progress() – wartość postępu
+- scroll() – postęp przewijania
+- steps() – przejście skokowe
+- view() – zasięg widoczności
 
       `;
 const preview = document.getElementById("preview");
