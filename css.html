@@ -226,7 +226,8 @@
       </div>
 
     <script>
-      const rawContent = `## Geometria wymiarów
+      const rawContent = `
+      ## Geometria wymiarów
 
 ### Definicja struktury
 
@@ -459,6 +460,7 @@
 - column-width - szerokość kolumny
 - column-fill - wypełnianie kolumn
 - column-span - rozpiętość elementu
+- column-gap - odstęp kolumn
 - columns - kolumny zbiorcze
 
 ### Linie oddzielające
@@ -502,7 +504,6 @@
 - flex-wrap - zawijanie elementów
 - flex-flow - konfiguracja zbiorcza
 - row-gap - odstęp wierszy
-- column-gap - odstęp kolumn
 - gap - przerwa ogólna
 
 ## Układ siatki
@@ -744,6 +745,7 @@
 
 - content – treść generowana
 - counter-reset – resetowanie licznika
+- counter-increment – zwiększanie licznika
 - counter-set – ustawienie licznika
 
 ### Znaki specjalne
@@ -809,7 +811,6 @@
 - color-scheme – schemat kolorów
 - accent-color – kolor akcentu
 - dynamic-range-limit – limit dynamiki
-- forced-colors – kolory wymuszone
 - forced-color-adjust – korekta kolorów
 
 ### Obsługa wskaźnika
@@ -834,6 +835,7 @@
 - interactivity – tryb interakcji
 - interest-delay – zwłoka interakcji
 - interest-delay-start – start zwłoki
+- interest-delay-end – koniec zwłoki
 
 ### Dostępność treści
 
@@ -1472,6 +1474,7 @@
 - scroll() – postęp przewijania
 - steps() – przejście skokowe
 - view() – zasięg widoczności
+
 
       `;
 const preview = document.getElementById("preview");
