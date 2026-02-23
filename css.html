@@ -342,13 +342,20 @@
 - border-right-color - kolor prawej
 - border-right - krawędź prawa
 
+### Stylizacja krawędzi
+
+- border-width - grubość krawędzi
+- border-style - styl linii
+- border-color - kolor krawędzi
+- border - obramowanie zbiorcze
+
 ### Promienie narożników
 
 - border-top-left-radius - narożnik góra-lewo
 - border-top-right-radius - narożnik góra-prawo
 - border-bottom-left-radius - narożnik dół-lewo
 - border-bottom-right-radius - narożnik dół-prawo
-- border-radius - promień zbiorczy
+- border-radius - narożnik zbiorczy
 
 ### Relacje krawędzi
 
@@ -364,13 +371,6 @@
 - border-image-repeat - powielanie grafiki
 - border-image - obraz zbiorczy
 
-### Parametry zbiorcze
-
-- border-width - grubość krawędzi
-- border-style - styl linii
-- border-color - kolor krawędzi
-- border - obramowanie zbiorcze
-
 ### Obrys elementu
 
 - outline-width - szerokość obrysu
@@ -385,22 +385,22 @@
 
 - border-block-start-width - grubość początkowa
 - border-block-start-style - styl początkowy
-- border-block-start-color - barwa początkowa
+- border-block-start-color - kolor początkowy
 - border-block-start - krawędź początkowa
 - border-block-end-width - grubość końcowa
 - border-block-end-style - styl końcowy
-- border-block-end-color - barwa końcowa
+- border-block-end-color - kolor końcowy
 - border-block-end - krawędź końcowa
 
 ### Kierunek liniowy
 
 - border-inline-start-width - grubość początkowa
 - border-inline-start-style - styl początkowy
-- border-inline-start-color - barwa początkowa
+- border-inline-start-color - kolor początkowy
 - border-inline-start - margines początkowy
 - border-inline-end-width - grubość końcowa
 - border-inline-end-style - styl końcowy
-- border-inline-end-color - barwa końcowa
+- border-inline-end-color - kolor końcowy
 - border-inline-end - margines końcowy
 
 ### Osie główne
@@ -416,20 +416,20 @@
 
 ### Narożniki logiczne
 
-- border-start-start-radius - promień góra-lewo
-- border-start-end-radius - promień góra-prawo
-- border-end-start-radius - promień dół-lewo
-- border-end-end-radius - promień dół-prawo
+- border-start-start-radius - krawędź góra-lewo
+- border-start-end-radius - krawędź góra-prawo
+- border-end-start-radius - krawędź dół-lewo
+- border-end-end-radius - krawędź dół-prawo
 
 ## Kształtowanie narożników
 
 ### Konfiguracja ogólna
 
-- corner-top-shape - krawędź górny
-- corner-bottom-shape - krawędź dolny
-- corner-left-shape - krawędź lewy
-- corner-right-shape - krawędź prawy
-- corner-shape - kształt narożników
+- corner-top-shape - krawędź górna
+- corner-bottom-shape - krawędź dolna
+- corner-left-shape - krawędź lewa
+- corner-right-shape - krawędź prawa
+- corner-shape - krawędź narożników
 
 ### Narożniki fizyczne
 
@@ -459,7 +459,7 @@
 - column-count - liczba kolumn
 - column-width - szerokość kolumny
 - column-fill - wypełnianie kolumn
-- column-span - rozpiętość elementu
+- column-span - zasięg kolumnowy
 - column-gap - odstęp kolumn
 - columns - kolumny zbiorcze
 
@@ -504,7 +504,7 @@
 - flex-wrap - zawijanie elementów
 - flex-flow - konfiguracja zbiorcza
 - row-gap - odstęp wierszy
-- gap - przerwa ogólna
+- gap - odstęp ogólny
 
 ## Układ siatki
 
@@ -536,21 +536,21 @@
 
 ### Kontrola pozioma
 
-- justify-items - wyrównanie liniowe
-- justify-self - wyrównanie punktowe
-- justify-content - rozkład kontenera
+- justify-items - wyrównanie elementów
+- justify-self - wyrównanie własne
+- justify-content - wyrównanie kontenera
 
 ### Kontrola pionowa
 
-- align-items - wyrównanie pionowe
-- align-self - wyrównanie jednostkowe
-- align-content - rozkład blokowy
+- align-items - wyrównanie elementów
+- align-self - wyrównanie własne
+- align-content - wyrównanie kontenera
 
 ### Skróty pozycjonowania
 
 - place-items - wyrównanie zbiorcze
 - place-self - wyrównanie indywidualne
-- place-content - pozycja dwuosiowa
+- place-content - wyrównanie całościowe
 
 ## Wygląd tła
 
@@ -569,7 +569,7 @@
 - background-position-y - współrzędna pionowa
 - background-position - pozycja tła
 - background-origin - punkt odniesienia
-- background-clip - granica docięcia
+- background-clip - punkt docięcia
 
 ### Efekty wizualne
 
@@ -1474,7 +1474,6 @@
 - scroll() - postęp przewijania
 - steps() - przejście skokowe
 - view() - zasięg widoczności
-
 
       `;
 const preview = document.getElementById("preview");
