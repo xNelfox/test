@@ -1482,16 +1482,17 @@ const preview = document.getElementById("preview");
       const toggleFilterBtn = document.getElementById('toggle-filter');
       let showOnlyNotLearned = false;
 function enrichWithMdnLinks(text) {
-  // Zmiana: ^- ([a-zA-Z][\w-]+(?:\(\))?)
-  // Dodaliśmy [a-zA-Z] na początku, aby linkować tylko to, co zaczyna się od litery.
-  // Selektory takie jak ">", "+", "~" zostaną zignorowane.
-  return text.replace(/^- ([a-zA-Z][\w-]+(?:\(\))?)(\s*[–-]\s*)(.*)/gm, (match, prop, separator, description) => {
+  // 1. Najpierw zabezpieczamy znaki specjalne, które psują Markdown
+  // Zamieniamy np. "- >" na "- `>`", żeby marked potraktował to jako kod/tekst
+  let safeText = text.replace(/^- ([\>\+\~\|]{1,2})(\s*[–-]\s*)/gm, '- `$1` $2');
+
+  // 2. Potem linkujemy tylko nazwy właściwości (zaczynające się od litery)
+  return safeText.replace(/^- ([a-zA-Z][\w-]+(?:\(\))?)(\s*[–-]\s*)(.*)/gm, (match, prop, separator, description) => {
     const cleanProp = prop.replace('()', '');
     const url = `https://developer.mozilla.org/en-US/docs/Web/CSS/${cleanProp}`;
     return `- <a href="${url}" target="_blank" class="mdn-link">${prop}</a> ${separator} ${description}`;
   });
 }
-
       function updateStats() {
         const items = preview.querySelectorAll('li');
         const notLearned = preview.querySelectorAll('li.not-learned').length;
