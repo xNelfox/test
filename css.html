@@ -1482,18 +1482,33 @@ const preview = document.getElementById("preview");
       const toggleFilterBtn = document.getElementById('toggle-filter');
       let showOnlyNotLearned = false;
 function enrichWithMdnLinks(text) {
-  // 1. Zabezpieczamy selektory techniczne (zaczynające się od symboli: > + ~ * [ : @ . # &)
-  // Owijamy je w ` `, żeby parser Markdown ich nie dotykał i nie robił z nich HTMLa.
-  let safeText = text.replace(/^- ([\>\+\~\*\[\:\@\.\#\&\|]{1,2}.*?)(\s*[–-]\s*)(.*)/gm, (match, symbol, separator, description) => {
-    return `- <code>${symbol.trim()}</code> ${separator} ${description}`;
-  });
+  return text.split('\n').map(line => {
+    // Szukamy linii zaczynających się od "- "
+    const match = line.match(/^- (.*?)(\s*[–-]\s*)(.*)/);
+    if (!match) return line;
 
-  // 2. Linkujemy nazwy właściwości (te, które zaczynają się od litery)
-  return safeText.replace(/^- ([a-zA-Z][\w-]+(?:\(\))?)(\s*[–-]\s*)(.*)/gm, (match, prop, separator, description) => {
-    const cleanProp = prop.replace('()', '');
-    const url = `https://developer.mozilla.org/en-US/docs/Web/CSS/${cleanProp}`;
-    return `- <a href="${url}" target="_blank" class="mdn-link">${prop}</a> ${separator} ${description}`;
-  });
+    const [, element, separator, description] = match;
+    const trimmedElement = element.trim();
+
+    // LOGIKA ROZSTRZYGAJĄCA:
+    // 1. Jeśli element zaczyna się od litery i NIE zawiera znaków specjalnych (poza myślnikiem) -> to właściwość CSS (Link do MDN)
+    // 2. W każdym innym przypadku (symbole, liczby, spacje, pseudo-klasy) -> to kod techniczny (Tag <code>)
+    
+    const isStandardProperty = /^[a-z][a-z-]*$/.test(trimmedElement);
+
+    if (isStandardProperty) {
+      const url = `https://developer.mozilla.org/en-US/docs/Web/CSS/${trimmedElement}`;
+      return `- <a href="${url}" target="_blank" class="mdn-link">${trimmedElement}</a> ${separator} ${description}`;
+    } else {
+      // Dla " ", 0% 100%, > itp. - owijamy w <code>, żeby HTML tego nie interpretował
+      // Używamy .replace(/[<>]/g, ...) dla bezpieczeństwa przed XSS/błędami renderowania
+      const safeElement = trimmedElement
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+      return `- <code>${safeElement}</code> ${separator} ${description}`;
+    }
+  }).join('\n');
 }
       function updateStats() {
         const items = preview.querySelectorAll('li');
