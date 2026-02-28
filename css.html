@@ -1483,30 +1483,31 @@ const preview = document.getElementById("preview");
       let showOnlyNotLearned = false;
 function enrichWithMdnLinks(text) {
   return text.split('\n').map(line => {
-    // Szukamy linii zaczynających się od "- "
-    const match = line.match(/^- (.*?)(\s*[–-]\s*)(.*)/);
+    // 1. Szukamy separatora " - " lub " – " (półpauza), który oddziela kod od opisu.
+    // Używamy regexu, który dzieli linię na DWIE części: przed pierwszym separatorem i po nim.
+    const match = line.match(/^- (.*?) [\-–] (.*)/);
+    
     if (!match) return line;
 
-    const [, element, separator, description] = match;
+    const [, element, description] = match;
     const trimmedElement = element.trim();
 
-    // LOGIKA ROZSTRZYGAJĄCA:
-    // 1. Jeśli element zaczyna się od litery i NIE zawiera znaków specjalnych (poza myślnikiem) -> to właściwość CSS (Link do MDN)
-    // 2. W każdym innym przypadku (symbole, liczby, spacje, pseudo-klasy) -> to kod techniczny (Tag <code>)
-    
+    // Sprawdzamy, czy to standardowa właściwość (do linkowania MDN)
+    // Akceptujemy małe litery i myślniki (np. align-items)
     const isStandardProperty = /^[a-z][a-z-]*$/.test(trimmedElement);
 
     if (isStandardProperty) {
       const url = `https://developer.mozilla.org/en-US/docs/Web/CSS/${trimmedElement}`;
-      return `- <a href="${url}" target="_blank" class="mdn-link">${trimmedElement}</a> ${separator} ${description}`;
+      return `- <a href="${url}" target="_blank" class="mdn-link">${trimmedElement}</a> - ${description}`;
     } else {
-      // Dla " ", 0% 100%, > itp. - owijamy w <code>, żeby HTML tego nie interpretował
-      // Używamy .replace(/[<>]/g, ...) dla bezpieczeństwa przed XSS/błędami renderowania
+      // Dla :target-before, [attribute=value], > itp.
+      // Zamieniamy znaki specjalne na bezpieczne encje HTML
       const safeElement = trimmedElement
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;");
-      return `- <code>${safeElement}</code> ${separator} ${description}`;
+        
+      return `- <code>${safeElement}</code> - ${description}`;
     }
   }).join('\n');
 }
