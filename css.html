@@ -1482,9 +1482,10 @@ const preview = document.getElementById("preview");
       const toggleFilterBtn = document.getElementById('toggle-filter');
       let showOnlyNotLearned = false;
 function enrichWithMdnLinks(text) {
-  // Zmiana: ([\w-]+(?:\(\))?) - teraz wyłapuje nazwę z opcjonalnymi nawiasami ()
-  return text.replace(/^- ([\w-]+(?:\(\))?)(\s*[–-]\s*)(.*)/gm, (match, prop, separator, description) => {
-    // Usuwamy nawiasy z nazwy przy tworzeniu URL, bo MDN zwykle ich nie ma w ścieżce
+  // Zmiana: ^- ([a-zA-Z][\w-]+(?:\(\))?)
+  // Dodaliśmy [a-zA-Z] na początku, aby linkować tylko to, co zaczyna się od litery.
+  // Selektory takie jak ">", "+", "~" zostaną zignorowane.
+  return text.replace(/^- ([a-zA-Z][\w-]+(?:\(\))?)(\s*[–-]\s*)(.*)/gm, (match, prop, separator, description) => {
     const cleanProp = prop.replace('()', '');
     const url = `https://developer.mozilla.org/en-US/docs/Web/CSS/${cleanProp}`;
     return `- <a href="${url}" target="_blank" class="mdn-link">${prop}</a> ${separator} ${description}`;
