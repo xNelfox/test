@@ -1482,11 +1482,13 @@ const preview = document.getElementById("preview");
       const toggleFilterBtn = document.getElementById('toggle-filter');
       let showOnlyNotLearned = false;
 function enrichWithMdnLinks(text) {
-  // 1. Najpierw zabezpieczamy znaki specjalne, które psują Markdown
-  // Zamieniamy np. "- >" na "- `>`", żeby marked potraktował to jako kod/tekst
-  let safeText = text.replace(/^- ([\>\+\~\|]{1,2})(\s*[–-]\s*)/gm, '- `$1` $2');
+  // 1. Zabezpieczamy selektory techniczne (zaczynające się od symboli: > + ~ * [ : @ . # &)
+  // Owijamy je w ` `, żeby parser Markdown ich nie dotykał i nie robił z nich HTMLa.
+  let safeText = text.replace(/^- ([\>\+\~\*\[\:\@\.\#\&\|]{1,2}.*?)(\s*[–-]\s*)(.*)/gm, (match, symbol, separator, description) => {
+    return `- <code>${symbol.trim()}</code> ${separator} ${description}`;
+  });
 
-  // 2. Potem linkujemy tylko nazwy właściwości (zaczynające się od litery)
+  // 2. Linkujemy nazwy właściwości (te, które zaczynają się od litery)
   return safeText.replace(/^- ([a-zA-Z][\w-]+(?:\(\))?)(\s*[–-]\s*)(.*)/gm, (match, prop, separator, description) => {
     const cleanProp = prop.replace('()', '');
     const url = `https://developer.mozilla.org/en-US/docs/Web/CSS/${cleanProp}`;
