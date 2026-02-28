@@ -962,26 +962,23 @@
 
 ## Dynamika transformacji
 
-### Transformacje podstawowe
+### Transformacje elementów
 
-- transform-origin - punkt odniesienia
-- transform-box - obszar odniesienia
+- transform-box - obszar transformacji
+- transform-style - styl transformacji
+- transform-origin - odniesienie transformacji
 - transform - transformacja elementu
 - translate - przesunięcie elementu
+- perspective - głębia rzutowania
+- perspective-origin - odniesienie rzutowania
 - rotate - obrót elementu
 - scale - skala elementu
 
-### Przestrzeń trójwymiarowa
-
-- perspective - głębia rzutowania
-- perspective-origin - punkt zbiegu
-- transform-style - styl renderowania
-- backface-visibility - widoczność tyłu
-
 ### Optymalizacja widoku
 
-- will-change - optymalizacja sprzętowa
-- content-visibility - kontrola renderowania
+- will-change - stan treści
+- content-visibility - widoczność treści
+- backface-visibility - widoczność tyłu
 - view-transition-name - nazwa przejścia
 - view-transition-class - klasa przejścia
 
@@ -1001,22 +998,22 @@
 ### Kontrola obrysu
 
 - stroke - kolor obrysu
-- stroke-width - szerokość linii
-- stroke-opacity - krycie linii
-- stroke-linecap - zakończenie linii
-- stroke-linejoin - połączenie linii
-- stroke-miterlimit - limit ścięcia
-- stroke-dasharray - wzór przerywany
-- stroke-dashoffset - przesunięcie wzoru
+- stroke-width - szerokość obrysu
+- stroke-opacity - krycie obrysu
+- stroke-linecap - zakończenie obrysu
+- stroke-linejoin - połączenie obrysu
+- stroke-miterlimit - limit obrysu
+- stroke-dasharray - wzór obrysu
+- stroke-dashoffset - przesunięcie obrysu
 
 ### Wypełnienie kolorem
 
-- fill-opacity - krycie wnętrza
-- fill-rule - reguła wypełniania
-- fill - kolor wnętrza
+- fill-opacity - krycie wypełnienia
+- fill-rule - reguła wypełnienia
+- fill - kolor wypełnienia
 - paint-order - kolejność malowania
 - color-interpolation - interpolacja kolorów
-- color-interpolation-filters - filtrowanie kolorów
+- color-interpolation-filters - interpolacja filtrów
 
 ### Wykończenie linii
 
@@ -1028,7 +1025,7 @@
 ### Wyrównanie linii
 
 - alignment-baseline - wyrównanie bazowe
-- dominant-baseline - linia główna
+- dominant-baseline - linia bazowa
 - baseline-source - źródło bazowe
 
 ### Filtry obrazu
@@ -1041,7 +1038,7 @@
 
 ### Parametry gradientu
 
-- stop-color - kolor punktowy
+- stop-color - kolor punktu
 - stop-opacity - krycie punktu
 
 ## Druk treści
