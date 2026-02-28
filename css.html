@@ -1131,76 +1131,76 @@
 
 ### Struktura drzewa
 
+- :root - korzeń dokumentu
 - :empty - element pusty
 - :first-child - dziecko pierwsze
-- :first-of-type - typ pierwszy
 - :last-child - dziecko ostatnie
-- :last-of-type - typ ostatni
-- :nth-child() - potomek numerowany
-- :nth-last-child() - potomek końcowy
-- :nth-last-of-type() - typ końcowy
-- :nth-of-type() - typ numerowany
 - :only-child - dziecko jedyne
+- :nth-child() - dziecko numerowane
+- :nth-last-child() - dziecko końcowe
+- :first-of-type - typ pierwszy
+- :last-of-type - typ ostatni
 - :only-of-type - typ jedyny
-- :root - korzeń dokumentu
+- :nth-of-type() - typ numerowany
+- :nth-last-of-type() - typ końcowy
 
 ### Logika selektorów
 
-- :defined - definicja komponentu
-- :has() - warunek potomstwa
 - :is() - grupa selektorów
-- :not() - wykluczenie elementu
-- :scope - zakres kontekstowy
 - :where() - dopasowanie bezspecyficzne
+- :not() - wykluczenie elementu
+- :has() - warunek potomstwa
+- :defined - definicja komponentu
+- :scope - zakres kontekstowy
 
 ### Odtwarzanie mediów
 
-- :buffering - buforowanie danych
-- :muted - wyciszenie dźwięku
-- :paused - odtwarzanie wstrzymane
 - :playing - odtwarzanie trwające
-- :seeking - przeszukiwanie osi
+- :paused - odtwarzanie wstrzymane
+- :buffering - buforowanie danych
 - :stalled - przerwanie transmisji
+- :seeking - przeszukiwanie osi
+- :muted - wyciszenie dźwięku
 - :volume-locked - blokada głośności
 
 ### Wyświetlanie treści
 
-- :fullscreen - tryb pełnoekranowy
-- :modal - okno modalne
 - :open - stan otwarty
-- :picture-in-picture - tryb miniatury
+- :modal - okno modalne
 - :popover-open - okno aktywne
+- :fullscreen - tryb pełnoekranowy
+- :picture-in-picture - tryb miniatury
 
 ### Relacje czasowe
 
 - :active-view-transition - przejście aktywne
 - :active-view-transition-type() - typ przejścia
+- :past - element przeszły
 - :current - element bieżący
 - :future - element przyszły
 - :interest-source - źródło uwagi
 - :interest-target - cel uwagi
-- :past - element przeszły
 
 ### Kontekst dokumentu
 
+- :lang() - kod języka
 - :dir() - kierunek pisma
 - :heading - nagłówek ogólny
 - :heading() - poziom nagłówka
-- :lang() - kod języka
 
 ### Architektura komponentu
 
-- :has-slotted - obecność gniazda
 - :host - host cienia
 - :host() - selektor hosta
+- :has-slotted - obecność gniazda
 - :state() - stan niestandardowy
 
 ### Ustawienia druku
 
-- :blank - strona pusta
 - :first - strona inicjalna
 - :left - strona lewa
 - :right - strona prawa
+- :blank - strona pusta
 
 ## Pseudo-elementy selektora
 
